@@ -41,6 +41,10 @@ Last reviewed: 2026-10-29.
 - **Tests:** Vitest with V8 coverage thresholds at 100. It is the default, because it enables per-test mutation
   runs. Use `node --test` with coverage flags only when the project must stay dependency-free; mutation then needs
   the command runner. Use happy-dom for headless DOM and Playwright for e2e.
+- **Network block in unit tests:** a Vitest setup file, loaded only by the unit project, that makes
+  `net.Socket.prototype.connect` throw. It blocks `fetch`, `http` and raw sockets with no dependency; integration
+  tests run in a separate Vitest project without it. MSW (`onUnhandledFrame: 'error'` in v3) and nock
+  (`disableNetConnect()`) also reject unmatched HTTP requests, but not raw sockets.
 - **Mutation:** StrykerJS. Prefer a runner plugin with per-test coverage, such as `@stryker-mutator/vitest-runner`,
   which always uses `perTest`: each mutant runs only the tests that cover it. The command runner (the only option
   for `node --test`) reports no coverage and re-runs its whole command per mutant. With it, point
@@ -62,6 +66,10 @@ Last reviewed: 2026-10-29.
   `httpx.MockTransport`/`respx`-style transport mock, and a version matrix via nox or hatch. Add a test that resolves
   the type hints of every public callable (`typing.get_type_hints`) on each matrix version, because annotation
   evaluation differs between versions (lazy since 3.14).
+- **Network block in unit tests:** an autouse fixture in `conftest.py` that makes `socket.socket.connect` and
+  `socket.getaddrinfo` raise, skipped for tests with the project's integration marker. It needs no dependency;
+  `pytest-socket` (`--disable-socket`, `@pytest.mark.enable_socket`) is the packaged equivalent. Drivers with native
+  network code, such as libpq, bypass both, so real databases stay in integration tests.
 - **Mutation:** mutmut, or cosmic-ray. mutmut adds methods to classes, so tests that introspect classes (generated
   docs, per-method docstring checks) fail under it. Leave those tests out of the mutation command, with the reason
   recorded.
