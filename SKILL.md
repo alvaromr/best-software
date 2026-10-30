@@ -1,12 +1,13 @@
 ---
 name: best-software
-description: Procedures to bootstrap a new software project at professional quality, or to audit and raise an existing one (architecture, tests with TDD/100 % coverage/mutation, tooling, repo, docs, git, release, security, UI). Use when asked to start a project, make it professional or publishable, review its quality, or apply best practices. Not for CI/CD pipeline design.
+description: Procedures to bootstrap a new software project at professional quality, to audit and raise an existing one, or to score one (architecture, tests with TDD/100 % coverage/mutation, tooling, repo, docs, git, release, security, UI). Use when asked to start a project, make it professional or publishable, review or score its quality, or apply best practices. Not for CI/CD pipeline design.
 ---
 
 # Best software — procedures
 
 The values, hard constraints and decision rules are in `constitution.md`; read it first if this session has not. The detailed
-practices are in `references/` (index in the constitution). This skill adds only the end-to-end procedures.
+practices are in `references/` (index in the constitution). This skill adds only the end-to-end procedures. To score a
+project without changing it, follow `score.md`.
 
 ## Step 1 — Profile the project
 Before changing anything, establish these facts and state them in one short block. *Why:* every judgment call below

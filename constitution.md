@@ -111,5 +111,5 @@ touches a topic, read its reference before acting on it, once per session. Read 
 | UI, accessibility, strings, i18n | `ui.md` |
 | choosing a concrete tool for a stack | `toolchains.md` |
 
-For the full procedures (bootstrap a new project, audit and raise an existing one), use the `best-software`
-skill.
+For the full procedures (bootstrap a new project, audit and raise an existing one, score one), use the
+`best-software` skill.
