@@ -67,8 +67,8 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
 - **Remove unused and wrongly scoped dependencies** (`api` vs `implementation`, dev vs runtime), and verify each
   removal by building and running. *Why:* unused dependencies still carry vulnerabilities and slow builds, and a
   "false positive" may be loaded reflectively.
-- **Track the latest stable versions.** For runtimes and operating systems with an LTS line (Node, Java, Ubuntu),
-  use the latest LTS. *Why:* LTS gets security fixes for years without forced upgrades, and plain stable releases of
+- **Track the latest stable versions.** For runtimes and operating systems with an LTS line, use the latest
+  LTS. *Why:* LTS gets security fixes for years without forced upgrades, and plain stable releases of
   a runtime expire within months. For each update:
   1. Read the changelog from the current version to the target.
   2. List the impact.
@@ -86,8 +86,8 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   - Read third-party code that touches private data before installing or updating it.
 
   *Why:* compromised releases are usually caught within days, and install scripts run with your privileges.
-- **Pin the toolchain:** wrapper scripts, a runtime version file, `packageManager`, the JDK toolchain. *Why:* "works on
-  my machine" is usually a toolchain difference.
+- **Pin the toolchain:** wrapper scripts, a runtime version file, `packageManager`, the compiler toolchain. *Why:*
+  "works on my machine" is usually a toolchain difference.
 
 ## Judgment
 - Tool choice follows the goal and stays open. `toolchains.md` lists today's defaults; verify their status before
