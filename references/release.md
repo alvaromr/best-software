@@ -39,10 +39,10 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
 
   Stop at the first failure, and never print credentials. *Why:* manual releases skip steps under pressure, and
   testing the installed artifact catches packaging errors that dev installs hide.
-- **Verify the release build specifically:** minification and R8, signing, artifact contents. Compile debug tooling out
-  of release. *Why:* release-only transformations break things debug builds never show, and debug tooling in release is
-  an attack surface.
-- **Ship only what is needed:** explicit package includes, typed markers, consumer rules (R8, ProGuard) inside
+- **Verify the release build specifically:** minification and shrinking, signing, artifact contents. Compile debug
+  tooling out of release. *Why:* release-only transformations break things debug builds never show, and debug tooling
+  in release is an attack surface.
+- **Ship only what is needed:** explicit package includes, typed markers, consumer shrinker rules inside
   libraries. Update sample apps in the same procedure. *Why:* consumers should need no extra setup, and samples that lag
   mislead.
 - **Choose the artifact type by purpose** (store bundle vs QA package), and never run parallel builds of the same job.

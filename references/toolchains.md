@@ -2,7 +2,8 @@
 
 These are means, not goals. Each line names the outcome first, then today's best-known tool. Replace a tool when a
 better one reaches the same outcome. Before adopting a tool, check its current version and status with the docs MCP
-(context7) or the registry. This file is the only one in the skill that names versions or products.
+(context7) or the registry. This file is the only one in the skill that names tools or their versions; the others
+name only standards, such as SemVer or WCAG.
 
 Last reviewed: 2026-10-29.
 
@@ -12,6 +13,7 @@ Last reviewed: 2026-10-29.
 - **Container lint and scan:** `hadolint`, `trivy`.
 - **Dependency update PRs:** Renovate (`config:best-practices`, `rangeStrategy: pin`), configured as a repo file.
 - **Diagrams:** Mermaid.
+- **Private vulnerability reporting:** GitHub Private Vulnerability Reporting, or the hosting platform's equivalent.
 - **Editor settings:** `.editorconfig`.
 
 ## Kotlin / Android / JVM

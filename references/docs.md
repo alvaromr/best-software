@@ -67,7 +67,7 @@ home.
 
   *Why:* ambiguity in instructions becomes divergence in execution.
 - **Fix the output format of checklists and reports.** *Why:* the same sections every run make runs comparable.
-- **Use diagrams as code (Mermaid).** *Why:* they are versioned, diffable and reviewable with the change.
+- **Use diagrams as code.** *Why:* they are versioned, diffable and reviewable with the change.
 - **External documents leak nothing internal,** state only what the reader needs, and have every link checked. *Why:*
   internal details are a security and confidentiality risk, and noise for the reader.
 - **Explain domain jargon in the UI** for non-experts, with help kept in sync with the features. *Why:* help that the

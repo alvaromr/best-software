@@ -19,7 +19,7 @@ safety, the highest value.
   public, use a "Security" section in the README or the package description. *Why:* a policy inside a private repo
   reaches nobody outside.
 - **Recommended, not required: a private, dedicated channel.** Options, best first:
-  - the platform's private reporting, such as GitHub Private Vulnerability Reporting
+  - the hosting platform's private vulnerability reporting
   - a team or role address (`security@…`)
   - for personal projects, a forwarding alias kept only for this purpose
   - a `security.txt` (RFC 9116) on your own domain, pointing to one of these
