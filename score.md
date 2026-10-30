@@ -19,8 +19,9 @@ and regressions visible over time; the run record makes each number traceable to
   `repository`, `docs`, `git`, `release`, `security`, `operability`, `ui`. `toolchains.md` is not scored, because a
   tool can be swapped for an equivalent.
 - **Signals:** a section's signals are its reference's audit signals, plus any breach of a practice in the
-  "Never scales down" column of Step 1. Other gaps go to the report as observations, unscored. *Why:* a fixed list
-  keeps runs comparable.
+  "Never scales down" column of Step 1. A contradiction between any two artifacts is a `docs` signal, under that
+  column's coherence row, wherever it is found. Other gaps go to the report as observations, unscored. *Why:* a fixed
+  list keeps runs comparable.
 - **One section per piece of evidence.** Score each piece of evidence once, in the section whose reference states the
   practice it breaks. If several do, use the first of them in the order above.
 - **Severity is the value at stake in this instance.** Start from the value the practice protects: the one its *Why*
@@ -113,12 +114,14 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
 }
 ```
 
-`result` is `pass`, `fail` or `not_run`. Values are written as `safety`, `correctness`, `truth`, `changeability`,
+`result` is `pass`, `fail` or `not_run`. With no checks to run, `checks` is `[]` and `profile` says why. A section
+with no signals has `"worst_value": null`. Values are written as `safety`, `correctness`, `truth`, `changeability`,
 `simplicity` and `efficiency`.
 
 ## Report format (in Spanish)
 The main signal of a section is its most severe one. On a tie, the reference's audit signals come first, in their
-list order, then the "Never scales down" rows, in table order. The cap line
+list order, then the "Never scales down" rows, in table order; any tie left, pick one, since the run record keeps
+them all. The cap line
 appears whenever a hard constraint is broken, even if the mean is already below 4.0.
 
 ```markdown

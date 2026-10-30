@@ -17,8 +17,9 @@ failure goes unnoticed. This serves changeability, correctness and truth.
 - **Rename as soon as a name lies.** Rename in its own commit (`git mv`), sweep every leftover, and check that the
   target name is free first. *Why:* a lying name is a false statement read on every visit (truth).
 - **Write every professional artifact in English:** identifiers, comments, docs, commits, config comments, agent
-  instructions. Only user-facing copy uses the users' language, and one artifact never mixes languages. *Why:* English
-  is the shared language of tools, libraries and future contributors.
+  instructions. Only user-facing copy uses the users' language, and one artifact never mixes languages, except a quoted
+  template of that copy, such as a report format. *Why:* English is the shared language of tools, libraries and future
+  contributors.
 - **Key persisted data by stable identifiers,** never by display names. *Why:* display names change, and keys must not.
 
 ### Readability
