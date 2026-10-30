@@ -72,7 +72,9 @@ Last reviewed: 2026-10-29.
   network code, such as libpq, bypass both, so real databases stay in integration tests.
 - **Mutation:** mutmut, or cosmic-ray. mutmut adds methods to classes, so tests that introspect classes (generated
   docs, per-method docstring checks) fail under it. Leave those tests out of the mutation command, with the reason
-  recorded.
+  recorded. On macOS, run mutmut ≥ 3.8 with `NO_PROXY=*`. It forks one child per mutant, and a child that calls
+  CoreFoundation crashes at random, which mutmut reports as a segfault. urllib's system proxy lookup makes that call,
+  and so did setproctitle before mutmut 3.8.
 - **Architecture rules:** import-linter.
 - **Security:** ruff's `S` rules, which reimplement bandit's checks inside the gate, so bandit itself is not needed.
   Use pip-audit for vulnerable dependencies.
