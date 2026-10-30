@@ -92,7 +92,7 @@ Every professional artifact is in English: code, comments, docs, commits, agent 
 language of tools, libraries and any future contributor. Only user-facing copy uses the users' language.
 
 ## References — read before acting on the topic
-The detailed practices, each with its *Why*, live in `~/.agents/skills/engineering-standards/references/`. When a task
+The detailed practices, each with its *Why*, live in `~/.agents/skills/best-software/references/`. When a task
 touches a topic, read its reference before acting on it, once per session. Read only the ones the task touches.
 
 | When the task involves… | Read |
@@ -110,5 +110,5 @@ touches a topic, read its reference before acting on it, once per session. Read 
 | UI, accessibility, strings, i18n | `ui.md` |
 | choosing a concrete tool for a stack | `toolchains.md` |
 
-For the full procedures (bootstrap a new project, audit and raise an existing one), use the `engineering-standards`
+For the full procedures (bootstrap a new project, audit and raise an existing one), use the `best-software`
 skill.
