@@ -2,14 +2,17 @@
 An agent skill: the engineering constitution and the procedures that apply it, for agents and their owners.
 
 ## Commands
-None: the repo is Markdown only and has no gate yet. A change to a procedure is verified by running it on a real
-project.
+- Gate: `scripts/check.sh`. It runs the tests of the checks, then the mechanical checks over the Markdown; Python 3
+  standard library only.
+- Hook: `git config core.hooksPath .githooks`, once per clone; the pre-commit hook runs the gate.
+- The gate cannot judge meaning. A change to a procedure is verified by running it on a real project.
 
 ## Architecture
 - `SKILL.md`: the entry point and the bootstrap and elevate procedures.
 - `constitution.md`: values, hard constraints, decision rules and the index of references.
 - `score.md`: the scoring procedure.
 - `references/`: one practice file per topic, each practice with its *Why*; `toolchains.md` holds the concrete tools.
+- `scripts/check.py`: the mechanical checks, tested in `tests/`.
 - The installed skill is this working tree, so uncommitted edits are live for every agent at once.
 
 ## Non-negotiables
