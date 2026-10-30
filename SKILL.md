@@ -17,6 +17,9 @@ depends on them.
   simulation, data or ML.
 - **Stack and runtime versions.** For an existing project, also read its current gate, tests, coverage and conventions.
 - **Constraints:** frozen legacy, team conventions, deadlines, platforms, compliance (privacy, data residency).
+- **Previous runs:** if the repo root has `.best-software.json` (Run record, below), list this skill's commits since
+  the last run's `skill_commit` (`git log --oneline <sha>..HEAD` in the skill's folder), and report those that
+  require updating the project.
 
 Then decide which practices apply, and how strictly. The right-hand column protects safety, correctness and truth,
 which do not shrink with project size:
@@ -58,6 +61,7 @@ which do not shrink with project size:
    Each commit passes the coherence review: does anything here lie, contradict another part, or describe what no
    longer exists?
 8. **Add release artifacts** (`references/release.md`) once something is distributable.
+9. **Record the run** (Run record, below).
 
 ## Step 2b — Elevate an existing project
 1. **Prepare the branch:**
@@ -91,6 +95,38 @@ which do not shrink with project size:
    2. Run the app, CLI or package as a user would.
    3. Review coherence across every part of the repo, and fix whatever disagrees.
 7. **Report** in the format below.
+8. **Record the run** (below).
+
+## Run record (`.best-software.json`)
+Every procedure, scoring included, ends by appending one run to `.best-software.json` at the repository root. *Why:*
+it marks that the skill was applied, with which procedure and which skill version, so a later run knows what changed
+since.
+- **Private:** add `.best-software.json` to the file that `git rev-parse --git-path info/exclude` names, unless it is
+  already there. The record stays uncommittable without touching the project's `.gitignore`.
+- **Not a git repo:** write it at the project root, with `commit` and `clean_tree` as `null`, and say that nothing
+  excludes it.
+- **History:** append each run to `runs`, newest last; never rewrite earlier runs.
+- **Skill version:** the date and sha of the skill's HEAD commit, and whether its tree was clean. *Why:* the skill
+  changes continuously, so a date reads at a glance where a version number would need a release process.
+
+```json
+{
+  "note": "Private record of best-software runs. Scores are orientative and can vary between runs on the same code.",
+  "runs": [
+    {
+      "date": "<ISO 8601, UTC>",
+      "procedure": "bootstrap | elevate | score",
+      "commit": "<project HEAD sha>",
+      "clean_tree": true,
+      "skill_date": "<the skill's HEAD commit date, ISO 8601>",
+      "skill_commit": "<the skill's HEAD sha>",
+      "skill_clean_tree": true,
+      "model": "<model id>",
+      "summary": "<one line: what the run did>"
+    }
+  ]
+}
+```
 
 ## Project guide template (`AGENTS.md`, with `CLAUDE.md` as a symlink)
 The guide is part of the code. It is self-contained, so teammates without this skill can follow it, and agnostic of

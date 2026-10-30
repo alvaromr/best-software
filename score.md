@@ -2,10 +2,10 @@
 
 Measures how far a project is from the bar, as a global score and one score per section, without changing the project.
 The score is orientative: an agent assigns it, so two runs on the same commit can differ. *Why:* a number makes progress
-and regressions visible over time; the history file makes each number traceable to the signals behind it.
+and regressions visible over time; the run record makes each number traceable to the signals behind it.
 
 ## Rules
-- **Read-only.** Change nothing in the project except the score file. Files the checks write as usual and git ignores
+- **Read-only.** Change nothing in the project except the run record. Files the checks write as usual and git ignores
   (coverage, caches, build output, mutation results) are fine. If the dependencies are missing, install them from the
   lockfile alone, with the project's own package manager and no updates; if that is not possible, the checks are
   unverified.
@@ -76,55 +76,40 @@ score is at most 4.0. *Why:* a mean alone would hide a leaked secret among nines
 1. **Profile the project** (Step 1).
 2. **Run the checks** and record each command's result.
 3. **Assess every section** under the rules above.
-4. **Compare with the previous run**, if the score file has one. List each signal that appeared or disappeared, and
-   its cause: a new commit, a different `skill_commit`, or, when neither changed, the agent's judgment.
-5. **Write the score file** (below).
+4. **Compare with the previous score run**, if the run record has one. List each signal that appeared or
+   disappeared, and its cause: a new commit, a different `skill_commit`, or, when neither changed, the agent's
+   judgment.
+5. **Record the run** (`SKILL.md`, "Run record"), with the score fields below.
 6. **Report** in the format below. A leaked secret goes first, for rotation (Step 2b).
 
-## Score file (`.best-software-score.json`)
-- **Location:** the repository root. Add `.best-software-score.json` to the file that
-  `git rev-parse --git-path info/exclude` names, unless it is already there. *Why:* the score stays private and
-  uncommittable without touching the project's `.gitignore`.
-- **Not a git repo:** write it at the project root, with `commit` and `clean_tree` as `null`, and say that nothing
-  excludes it.
-- **History:** append each run to `runs`, newest last; never rewrite earlier runs.
+## Score fields
+A score run has `"procedure": "score"` and adds these fields to the common ones:
 
 ```json
 {
-  "note": "Orientative: an agent assigns this score, so it can vary between runs on the same code.",
-  "runs": [
-    {
-      "date": "<ISO 8601, UTC>",
-      "commit": "<project HEAD sha>",
-      "clean_tree": true,
-      "skill_commit": "<this skill's HEAD sha>",
-      "skill_clean_tree": true,
-      "model": "<model id>",
-      "profile": "<kind · stack · audience · constraints>",
-      "checks": [
-        { "command": "<command>", "result": "pass", "detail": "<coverage, mutation score, cached or not>" }
-      ],
-      "global": 6.4,
-      "hard_constraints_broken": [{ "constraint": 1, "evidence": "<file:line, commit or command>" }],
-      "sections": {
-        "testing": {
-          "score": 4,
-          "worst_value": "truth",
-          "signals": [
-            {
-              "signal": "<audit signal>",
-              "value": "truth",
-              "reason": "<why this value is at stake here>",
-              "evidence": "<file:line, commit or command>",
-              "verified": true
-            }
-          ]
-        },
-        "ui": { "score": null, "not_applicable": "<reason>" }
-      },
-      "observations": ["<unscored gap> — <evidence>"]
-    }
-  ]
+  "profile": "<kind · stack · audience · constraints>",
+  "checks": [
+    { "command": "<command>", "result": "pass", "detail": "<coverage, mutation score, cached or not>" }
+  ],
+  "global": 6.4,
+  "hard_constraints_broken": [{ "constraint": 1, "evidence": "<file:line, commit or command>" }],
+  "sections": {
+    "testing": {
+      "score": 4,
+      "worst_value": "truth",
+      "signals": [
+        {
+          "signal": "<audit signal>",
+          "value": "truth",
+          "reason": "<why this value is at stake here>",
+          "evidence": "<file:line, commit or command>",
+          "verified": true
+        }
+      ]
+    },
+    "ui": { "score": null, "not_applicable": "<reason>" }
+  },
+  "observations": ["<unscored gap> — <evidence>"]
 }
 ```
 
