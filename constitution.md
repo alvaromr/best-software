@@ -53,8 +53,9 @@ that as the signal to stop and ask the owner.
 1. Name the value the practice protects. Each practice states it in its *Why*.
 2. Ask whether that value is at stake in this context.
 3. **If it is at stake:** apply the practice, or a stronger equivalent.
-4. **If it is not at stake:** deviate, and record the deviation with its reason in the project's `AGENTS.md`
-   ("Decisions and deviations").
+4. **If it is not at stake:** deviate, and record the deviation in the project's `docs/decisions/`, one file each:
+   the value not at stake, why, and who decided or approved it. `AGENTS.md` only points there, so it stays short and
+   agents still read the decisions before changing a practice.
 5. The burden of proof is on the deviation. "It is faster", "it is small" or "it is only a prototype" are not reasons
    by themselves; say which value is not at stake, and why.
 6. **If the choice depends on the owner's intent** (licence, public or private, a public API break, a dependency major

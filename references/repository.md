@@ -85,8 +85,8 @@ could be published at any moment without leaking anything. This serves safety, t
   correctness and reproducibility at any size. Folder depth grows with the codebase, not ahead of it.
 - Keep a personal-data repo local, without a remote, when its content must never leave the machine. Record the reason.
 - **Relaxing the developer-agnostic rule:** relax it only when the owner asks, and only for a repo that will never be
-  published or shared. The repo may then hold the owner's own workflow and setup. Record the decision in `AGENTS.md`
-  ("Decisions and deviations"), so that before any change of plan the cleanup is a known task, not a surprise. Secrets
+  published or shared. The repo may then hold the owner's own workflow and setup. Record the decision in
+  `docs/decisions/`, so that before any change of plan the cleanup is a known task, not a surprise. Secrets
   stay out regardless (hard constraint 1). *Why:* the rule's value is consistency for others and safe publication;
   with no others and no publication, that value is not at stake, but a leaked secret still is.
 

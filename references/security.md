@@ -24,7 +24,7 @@ safety, the highest value.
   - for personal projects, a forwarding alias kept only for this purpose
   - a `security.txt` (RFC 9116) on your own domain, pointing to one of these
 
-  When none exists, state that in the policy, and record it in `AGENTS.md` ("Decisions and deviations"). Never invent
+  When none exists, state that in the policy, and record it in `docs/decisions/`. Never invent
   a channel, and never publish a main personal address. *Why:* reporters need to know where to go, or that there is
   nowhere yet. A personal address gets harvested by bots, while an alias can be replaced.
 

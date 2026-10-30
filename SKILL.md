@@ -111,8 +111,8 @@ them with judgment.
 <rule — why, one line each: gate before commit, TDD, coverage threshold, English, no secrets, commit convention,
 everything kept coherent in the same change, …>
 
-## Decisions and deviations
-<each deliberate deviation from the engineering baseline: the value not at stake and why; links to docs/decisions/>
+## Decisions
+Before changing a practice, read `docs/decisions/`.
 
 ## Where things live
 <pointers: docs/, runbooks, env template, changelog>

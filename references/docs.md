@@ -33,8 +33,8 @@ only in a chat or in someone's head. This serves truth and coherence, and the ch
 | Reader | Home | Content |
 |---|---|---|
 | newcomer / user | `README.md` | what it is, install, run, test, where to read next |
-| contributor / agent | `AGENTS.md` | commands, gate, architecture map, non-negotiables with their why, deviations |
-| maintainer | `docs/architecture/`, ADRs | why it is built this way, rejected alternatives, measured results |
+| contributor / agent | `AGENTS.md` | commands, gate, architecture map, non-negotiables with their why |
+| maintainer | `docs/architecture/`, `docs/decisions/` | why it is built this way, rejected alternatives, measured results |
 | operator | `docs/runbooks/` | deploy, rollback, rebuild from scratch, secrets backup, recovery — runnable by hand |
 | API consumer | docstrings, central "Errors" section | the contract in consumer terms, no transport details |
 | CLI user | `--help` | usage; others point to it |
@@ -51,7 +51,7 @@ home.
   docs, and a confident falsehood does more harm than a gap.
 - **Record negative results and dead ends:** what was tried, why it failed, the numbers. Put a short summary at the top.
   *Why:* nobody repeats the analysis, and nobody retries the approach that already failed.
-- **Record non-obvious invariants** next to the code or in AGENTS.md. *Why:* each one cost a regression once, and an
+- **Record non-obvious invariants** next to the code. *Why:* each one cost a regression once, and an
   unrecorded one will cost it again.
 - **Record known limitations and deferred ideas** in the repo. *Why:* chat history is not a project memory.
 - **Generalize:** write the rule a case reveals, folded into the existing structure, without dated anecdotes, ticket
