@@ -85,6 +85,11 @@ These show the reasoning; apply it, not just the outcome.
   unrun test proves nothing.
 - **Self-explanatory code vs comments.** Prefer a better name to a comment. Keep a comment where the code cannot say
   *why*, such as an invariant that once cost a regression (truth over the letter of "no comments").
+- **Thoroughness vs an endless review loop.** A review can always find one more edge case, so an empty review is not
+  the goal. Fix a finding when a failing test reproduces it, or its realistic path is explained, and its worst case
+  outweighs the cost of the fix. Dismiss any other with its reason stated, and stop reviewing when a pass brings
+  nothing that clears this bar (simplicity, where correctness is not really at stake). Safety findings are never
+  dismissed for cost, because attackers search edge cases too (`references/security.md`).
 
 ## Language of artifacts
 Every professional artifact is in English: identifiers, comments, docs, commits, config comments, agent instructions.
