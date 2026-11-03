@@ -1,2 +1,6 @@
 #!/bin/sh
-exec "$(git rev-parse --show-toplevel)/scripts/check.sh"
+# Runs the gate on a copy of the index, so unstaged edits cannot make a commit pass.
+snapshot=$(mktemp -d) || exit 1
+trap 'rm -rf "$snapshot"' EXIT
+git checkout-index --all --prefix="$snapshot/" || exit 1
+"$snapshot/scripts/check.sh"

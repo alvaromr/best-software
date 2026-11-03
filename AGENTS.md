@@ -4,8 +4,8 @@ An agent skill: the engineering constitution and the procedures that apply it, f
 ## Commands
 - Gate: `scripts/check.sh`. It runs the mechanical tests over the Markdown; Python 3 standard library only, on any
   supported version. Adding a test: `references/testing.md`.
-- Hooks: the pre-commit hook runs the gate, the commit-msg hook checks the subject (`references/git.md`), and the
-  gate's first run in a clone installs both.
+- Hooks: the pre-commit hook runs the gate on the staged files, the commit-msg hook checks the subject
+  (`references/git.md`), and the gate's first run in a clone installs both.
 - The gate cannot judge meaning. A change to a procedure is verified by running it on a real project.
 
 ## Architecture
