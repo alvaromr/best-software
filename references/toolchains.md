@@ -75,8 +75,9 @@ Last reviewed: 2026-10-29.
   docs, per-method docstring checks) fail under it. Leave those tests out of the mutation command, with the reason
   recorded. On macOS, run mutmut ≥ 3.8 with `NO_PROXY=*`. It forks one child per mutant, and a child that calls
   CoreFoundation crashes at random, which mutmut reports as a segfault. urllib's system proxy lookup makes that call,
-  and so did setproctitle before mutmut 3.8. mutmut 3.8.0 needs pytest ≤ 9.1.x: it reads each test's `item._nodeid`,
-  which pytest 9.2.0 removed, so the run fails. Drop that pin once a mutmut release stops reading it.
+  and so did setproctitle before mutmut 3.8. With pytest ≥ 9.2.0 use mutmut ≥ 3.8.1: pytest 9.2.0 (2026-10-27,
+  pytest #14758) removed `Node._nodeid`, which mutmut 3.8.0 reads, so its run fails; 3.8.1 (2026-10-28) reads the
+  public `nodeid` (mutmut #615, `HISTORY.rst`). Until 3.8.1 passes the release-age delay, pin pytest ≤ 9.1.x.
 - **Architecture rules:** import-linter.
 - **Security:** ruff's `S` rules, which reimplement bandit's checks inside the gate, so bandit itself is not needed.
   Use pip-audit for vulnerable dependencies.
