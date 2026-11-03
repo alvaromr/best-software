@@ -31,6 +31,9 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   - Generated code and a thin entry point covered by e2e may be excluded, with the reason recorded.
 
   *Why:* an exclusion is a claim that the code needs no proof, so it must be stated and defended.
+- **Measure production code only.** Tests, test helpers and the gate's own checks are verification code: they get no
+  coverage target, mutation run or tests of their own. A new check proves itself by failing once on a known violation.
+  *Why:* testing the tests never ends, and a check seen catching a real violation has already shown it works.
 - **Add mutation testing on the core,** or on everything when it is cheap:
   - Run it outside the pre-commit hook.
   - Its command runs only the unit suite. Prefer a runner that executes only the tests covering each mutant, and set

@@ -57,7 +57,8 @@ def broken_guide_link(root: Path) -> list[str]:
 CHECKS = (invalid_json_blocks, missing_references, index_mismatches, broken_guide_link)
 
 
-def main(root: Path = Path(__file__).resolve().parent.parent) -> int:
+def main() -> int:
+    root = Path(__file__).resolve().parent.parent
     errors = [error for check in CHECKS for error in check(root)]
     for error in errors:
         print(error, file=sys.stderr)

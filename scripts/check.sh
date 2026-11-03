@@ -1,6 +1,3 @@
 #!/bin/sh
-# The gate: the tests of the checks, then the checks over the skill. The pre-commit hook runs it.
-set -e
-cd "$(dirname "$0")/.."
-python3 -m unittest discover --quiet --start-directory tests
-python3 scripts/check.py
+# The gate: the mechanical checks over the skill. The pre-commit hook runs it.
+exec python3 "$(dirname "$0")/check.py"
