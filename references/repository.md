@@ -31,8 +31,8 @@ could be published at any moment without leaking anything. This serves safety, t
 | `README.md` | always | the entry point for every reader |
 | `AGENTS.md` + `CLAUDE.md` symlink | always | how to work on the repo, in one place |
 | `.gitignore`, `.editorconfig` | always | hygiene and consistent editors |
-| formatter/linter/type-checker config | always | the gate needs it |
-| lockfile + toolchain pin | always | reproducible builds |
+| formatter/linter/type-checker config | the repo has production code | the gate needs it |
+| lockfile + toolchain pin | the repo has production code | reproducible builds |
 | `.env.example` / template | the app reads env | documents every variable without secrets |
 | `CHANGELOG.md` | versioned or released | users learn what changed |
 | `LICENSE` | public or shared code; ask the owner which | without it, nobody may legally use the code |
