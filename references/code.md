@@ -120,5 +120,4 @@ failure goes unnoticed. This serves changeability, correctness and truth.
 - Repeated magic numbers. `changeability`
 - Duplicate helpers. `changeability`
 - Unused symbols. `simplicity`
-- Boolean behaviour switches. `changeability`
 - `else` over sealed or enum types. `correctness`

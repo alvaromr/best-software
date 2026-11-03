@@ -93,7 +93,6 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
 ## Audit signals
 - The version in several places. `changeability`
 - No changelog. `changeability`
-- Moved tags. `truth`
 - `latest` images. `correctness`
 - Dev tools in the runtime image. `safety`
 - A container running as root. `safety`

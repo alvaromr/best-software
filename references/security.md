@@ -128,8 +128,7 @@ safety, the highest value.
 - No CSP. `correctness`
 - `innerHTML` with user text. `safety`
 - Broad permissions. `safety`
-- Tokens or PII in logs. `safety`
+- Secrets or PII in logs. `safety`
 - Sequential public ids. `safety`
 - HTTP URLs. `safety`
-- No audit task. `correctness`
 - A privacy policy that disagrees with the analytics code. `safety`

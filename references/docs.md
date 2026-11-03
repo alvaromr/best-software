@@ -87,5 +87,4 @@ home.
 - A README without install, run and test. `changeability`
 - Knowledge found only in chat or on a server. `changeability`
 - No record of rejected alternatives. `changeability`
-- Mixed-language docs. `changeability`
 - Broken links. `truth`

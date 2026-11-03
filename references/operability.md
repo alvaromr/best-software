@@ -78,10 +78,8 @@ efficiency.
 ## Audit signals
 - `print` logging. `changeability`
 - Duplicate or truncated logs. `correctness`
-- Secrets or PII in logs. `safety`
 - No correlation id. `changeability`
 - Silent failures. `correctness`
-- No health endpoint. `correctness`
 - Optimizations without numbers. `simplicity`
 - Blocking calls in async code. `efficiency`
 - Unbounded per-frame or per-request work. `efficiency`
