@@ -145,7 +145,9 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
 The main signal of a section is the one that subtracts the most points. On a tie, the reference's audit signals come
 first, in their list order, then the "Never scales down" rows, in table order; any tie left, pick one, since the run
 record keeps them all. The cap line appears whenever a hard constraint is broken, even if the mean is already below
-4.0.
+4.0. "Qué arreglar primero" lists every signal, ordered by the global points its fix recovers, highest first: the
+section points it recovers, up to the section's 10, divided by the number of applicable sections. *Why:* the owner
+needs to know what to do next and what each fix is worth, more than the number itself.
 
 ```markdown
 ## Nota: <global>/10
@@ -157,6 +159,9 @@ record keeps them all. The cap line appears whenever a hard constraint is broken
 | Sección | Nota | Señal principal |
 |---|---|---|
 | <sección> | <nota o «n/a: motivo»> | <señal> — <evidencia> |
+
+## Qué arreglar primero
+1. <señal> — <evidencia> — <arreglo en una línea> — +<puntos de la nota global>
 
 ## Observaciones
 <huecos sin puntuar; omitir si no hay>
