@@ -1,11 +1,11 @@
 #!/bin/sh
-# Checks the subject against the repo's convention (references/git.md, "Messages"): no prefix, capitalised,
-# at most 72 characters, no final period, and a blank line before any body.
+# The convention: references/git.md, "Messages".
 message=$(grep -v '^#' "$1")
 subject=$(printf '%s\n' "$message" | sed -n 1p)
 second=$(printf '%s\n' "$message" | sed -n 2p)
 fail() { echo "commit-msg: $1: $subject" >&2; exit 1; }
-[ "${#subject}" -le 72 ] || fail "the subject passes 72 characters"
+# wc -m counts characters in every shell; ${#subject} counts bytes in some, such as dash.
+[ "$(printf '%s' "$subject" | wc -m)" -le 72 ] || fail "the subject passes 72 characters"
 case $subject in [[:upper:]]*) ;; *) fail "the subject starts without a capital letter" ;; esac
 case $subject in *.) fail "the subject ends with a period" ;; esac
 case $subject in *:*) case ${subject%%:*} in *' '*) ;; *) fail "the subject has a prefix" ;; esac ;; esac
