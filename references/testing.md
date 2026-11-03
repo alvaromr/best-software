@@ -65,7 +65,9 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   code that no compiler checks.
 - **Use realistic, coherent fixtures** loaded by name, plus an edge-case dataset (empty, many, overlapping, missing).
   *Why:* unrealistic fixtures prove behaviour on inputs that never occur.
-- **Lint and type-check test code like production code.** *Why:* sloppy tests produce false confidence.
+- **Lint and type-check test code with the tools that check production code;** verification code alone never justifies
+  adding a tool. *Why:* sloppy tests produce false confidence, but a toolchain kept only for the tests costs more than
+  it catches.
 
 ### Isolation and speed
 - **Keep the suite overwhelmingly unit tests on the pure core.** Higher levels exist only for what units cannot reach.
