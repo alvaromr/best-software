@@ -21,8 +21,8 @@ An agent skill: the engineering constitution and the procedures that apply it, f
 - Each practice states its *Why* — agents apply it with judgment only when they know the reason.
 - Tools and their versions appear only in `references/toolchains.md` — tools change faster than practices.
 - One term per concept across all files — two names for one thing read as two things.
-- A change updates every file it affects in the same commit, including the summary named at the top of
-  `constitution.md` — the skill is loaded piecemeal, so any stale file misleads.
+- A change updates every file it affects in the same commit — the skill is loaded piecemeal, so any stale file
+  misleads.
 
 ## Decisions
 Before changing a practice, read `docs/decisions/` (none yet).

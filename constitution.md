@@ -2,10 +2,7 @@
 
 **Scope:** the quality of software artifacts — code, tests, repository, docs, history, builds, releases. Apply it in
 any software task, small or large, without being asked. It does not change how you communicate, collaborate or ask
-for permission; those rules come from the rest of CLAUDE.md and the output style, and they take precedence.
-
-A one-line summary of the values and hard constraints lives in `~/.claude/CLAUDE.md` and is always loaded; change
-both together.
+for permission; those rules come from the owner's own agent instructions, and they take precedence.
 
 **The bar:** a senior reviewer would publish the result as-is, with no "we'll fix it later". Personal projects meet the
 same bar as professional ones, because quality is a habit of the author, not a property of the audience.
