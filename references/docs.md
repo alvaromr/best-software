@@ -34,7 +34,7 @@ only in a chat or in someone's head. This serves truth and coherence, and the ch
 |---|---|---|
 | newcomer / user | `README.md` | what it is, install, run, test, where to read next |
 | contributor / agent | `AGENTS.md` | commands, gate, architecture map, non-negotiables with their why |
-| maintainer | `docs/architecture/`, `docs/decisions/` | why it is built this way, rejected alternatives, measured results |
+| maintainer | `docs/architecture/`, `docs/decisions/` | design reasons, rejected alternatives, measured results |
 | operator | `docs/runbooks/` | deploy, rollback, rebuild from scratch, secrets backup, recovery — runnable by hand |
 | API consumer | docstrings, central "Errors" section | the contract in consumer terms, no transport details |
 | CLI user | `--help` | usage; others point to it |

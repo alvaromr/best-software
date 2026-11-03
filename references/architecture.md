@@ -19,9 +19,9 @@ tested in isolation. This serves changeability and correctness.
 - **Wrap every third-party library behind an in-project adapter or theme layer.** Callers see project or standard types
   only, enforced by forbidden-import rules. *Why:* an upgrade or replacement then touches one file instead of the whole
   codebase.
-- **Route each cross-cutting concern through one chokepoint:** auth, serialization, logging, error mapping, and costly or
-  sensitive calls such as paid APIs and LLMs. Add a test that fails if a new call site bypasses it. *Why:* a policy
-  applied at N call sites is eventually missed at the N+1th.
+- **Route each cross-cutting concern through one chokepoint:** auth, serialization, logging, error mapping, and
+  costly or sensitive calls such as paid APIs and LLMs. Add a test that fails if a new call site bypasses it. *Why:*
+  a policy applied at N call sites is eventually missed at the N+1th.
 - **Reach each datum through one path:** the repository. Helpers depend on the repository, never on its data sources.
   *Why:* parallel accessors drift in caching, mapping and validation, and then disagree.
 - **Write to the system of record first.** Derived stores (caches, indexes) come second, and can always be rebuilt

@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 JSON_BLOCK = re.compile(r"^```json\n(.*?)^```$", re.MULTILINE | re.DOTALL)
 REFERENCE_PATH = re.compile(r"references/([a-z-]+\.md)")
 INDEX_ROW = re.compile(r"^\|.*\| `([a-z-]+\.md)` \|$", re.MULTILINE)
+MAX_LINE_LENGTH = 120
 
 
 def markdown_files() -> list[Path]:
@@ -41,6 +42,19 @@ class SkillTest(unittest.TestCase):
         indexed = set(INDEX_ROW.findall((ROOT / "constitution.md").read_text()))
         present = {path.name for path in ROOT.glob("references/*.md")}
         self.assertEqual(indexed, present)
+
+    def test_no_markdown_line_passes_the_maximum_length(self) -> None:
+        too_long = []
+        for path in markdown_files():
+            lines = path.read_text().splitlines()
+            # The YAML frontmatter is not Markdown, so it is exempt.
+            start = lines.index("---", 1) + 1 if lines[:1] == ["---"] else 0
+            too_long += [
+                f"{path.relative_to(ROOT)}:{number}"
+                for number, line in enumerate(lines[start:], start + 1)
+                if len(line) > MAX_LINE_LENGTH
+            ]
+        self.assertEqual(too_long, [])
 
     def test_claude_md_is_a_symlink_to_agents_md(self) -> None:
         link = ROOT / "CLAUDE.md"

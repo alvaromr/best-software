@@ -40,7 +40,8 @@ safety, the highest value.
 
   *Why:* local tools and other users are also readers.
 - **Rotate with overlap,** then prove that the old credential fails and the new one works. Deliver secrets through a
-  vetted channel. *Why:* rotation that breaks consumers gets postponed, and an unproven revocation may not have happened.
+  vetted channel. *Why:* rotation that breaks consumers gets postponed, and an unproven revocation may not have
+  happened.
 - **Give each variant its own restricted keys,** and none for features it does not use. *Why:* a leak of one variant's
   key then stays contained.
 

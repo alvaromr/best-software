@@ -19,8 +19,8 @@ Last reviewed: 2026-10-29.
 - **Build:** Gradle Kotlin DSL, the version catalog (`gradle/libs.versions.toml`) and convention plugins in an included
   build. Commit the wrapper, set a JDK toolchain, and enable the configuration cache where plugins allow it.
 - **Static analysis:** detekt with `warningsAsErrors`, Compose rules where Compose is used, and formatting via
-  ktlint/detekt-formatting. Run Android Lint with `abortOnError` and `warningsAsErrors`. Set Kotlin `allWarningsAsErrors`
-  and `extraWarnings`.
+  ktlint/detekt-formatting. Run Android Lint with `abortOnError` and `warningsAsErrors`. Set Kotlin
+  `allWarningsAsErrors` and `extraWarnings`.
 - **Library surface:** `explicitApi()` and binary-compatibility-validator.
 - **Dependency hygiene:** dependency-analysis plugin, and `implementation` over `api`.
 - **Tests:** JUnit 5 or kotest, MockK only at boundaries, Turbine for flows, `kotlinx-coroutines-test` with injected

@@ -20,7 +20,8 @@ When two values conflict, the higher one wins. When they do not conflict, satisf
    worse than a missing feature, because people act on it.
 3. **Truth and coherence.** Every artifact tells the same, verified truth at every commit: code, names, tests, docs,
    comments, config, env templates, UI text and help, changelog, `AGENTS.md`, project skills. *Why:* the next change
-   is planned from what the artifacts say, so each stale or contradictory statement misleads it, and the error compounds.
+   is planned from what the artifacts say, so each stale or contradictory statement misleads it, and the error
+   compounds.
 4. **Changeability.** Changes are cheap, local and safe: tests, cohesion, low coupling, clear names. *Why:* most of a
    program's cost is in changing it, not in writing it.
 5. **Simplicity.** Build the least that achieves the values above: KISS, YAGNI, the minimalism ladder. *Why:* every

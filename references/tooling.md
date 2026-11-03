@@ -39,8 +39,8 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   *Why:* the baseline makes adoption possible on legacy code, and the ratchet makes it converge.
 - **After a tool or plugin bump, verify that the rules actually load:** the provider is registered and a known
   violation is caught. *Why:* a rule set that silently fails to load produces a green build that proves nothing.
-- **Keep the analyzer and its rule sets current,** reading changelogs and enabling new applicable rules. *Why:* new rules
-  encode new knowledge of bugs, for free.
+- **Keep the analyzer and its rule sets current,** reading changelogs and enabling new applicable rules. *Why:* new
+  rules encode new knowledge of bugs, for free.
 - **Take facts from tools** (build tasks, compiler, resolver), not from ad-hoc parsing scripts. *Why:* the tool knows
   the real configuration; a parser knows a guess.
 

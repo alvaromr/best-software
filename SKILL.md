@@ -5,9 +5,9 @@ description: Procedures to bootstrap a new software project at professional qual
 
 # Best software — procedures
 
-The values, hard constraints and decision rules are in `constitution.md`; read it first if this session has not. The detailed
-practices are in `references/` (index in the constitution). This skill adds only the end-to-end procedures. To score a
-project without changing it, follow `score.md`.
+The values, hard constraints and decision rules are in `constitution.md`; read it first if this session has not. The
+detailed practices are in `references/` (index in the constitution). This skill adds only the end-to-end procedures.
+To score a project without changing it, follow `score.md`.
 
 ## Step 1 — Profile the project
 Before changing anything, establish these facts and state them in one short block. *Why:* every judgment call below
@@ -31,7 +31,7 @@ which do not shrink with project size:
 | structured logging depth, metrics | mutation testing on the core |
 | web hardening (exposure-dependent) | no secrets in repo or history; validated input |
 | ADRs, runbooks, SECURITY/PRIVACY docs | README + AGENTS.md; docs single-sourced and coherent |
-| i18n: strings in resources once a second language is planned; assistive-tech verification depth | keyboard and contrast basics |
+| i18n resources once a second language is planned; assistive-tech verification depth | keyboard and contrast basics |
 | release channel and packaging | single version source, changelog, immutable tags |
 
 ## Step 2a — Bootstrap a new project
@@ -69,7 +69,8 @@ which do not shrink with project size:
      Then update the default branch and create a clean branch from it (`chore/engineering-baseline`, or one per topic).
    - **If the project is not a git repo:** ask whether to initialise one before changing anything. Otherwise, deliver
      the assessment only.
-2. **Measure the baseline.** *Why:* without a "before" there is no proof of improvement, and no way to spot a regression.
+2. **Measure the baseline.** *Why:* without a "before" there is no proof of improvement, and no way to spot a
+   regression.
    - Run the existing build and tests.
    - Record coverage, lint and type findings, the dependency audit and the outdated dependencies.
    - Note what is unknown.
@@ -130,9 +131,9 @@ a later run knows what changed since.
 
 ## Project guide template (`AGENTS.md`, with `CLAUDE.md` as a symlink)
 The guide is part of the code. It is self-contained, so teammates without this skill can follow it, and agnostic of
-the individual developer, so it works the same for everyone (`references/repository.md`). It holds only what tooling cannot express,
-and points to files instead of copying them. Non-negotiables carry their reason in one line, so contributors can apply
-them with judgment.
+the individual developer, so it works the same for everyone (`references/repository.md`). It holds only what tooling
+cannot express, and points to files instead of copying them. Non-negotiables carry their reason in one line, so
+contributors can apply them with judgment.
 
 ```markdown
 # <Project>
