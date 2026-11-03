@@ -11,7 +11,6 @@ Last reviewed: 2026-10-29.
 - **Hooks installed from the repo:** `lefthook` or `pre-commit`, or a build-installed hook script.
 - **Secret scanning:** `gitleaks`.
 - **Container lint and scan:** `hadolint`, `trivy`.
-- **Dependency update PRs:** Renovate (`config:best-practices`, `rangeStrategy: pin`), configured as a repo file.
 - **Diagrams:** Mermaid.
 - **Private vulnerability reporting:** GitHub Private Vulnerability Reporting, or the hosting platform's equivalent.
 - **Editor settings:** `.editorconfig`.

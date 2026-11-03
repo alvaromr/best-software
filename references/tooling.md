@@ -69,7 +69,9 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   "false positive" may be loaded reflectively.
 - **Track the latest stable versions.** For runtimes and operating systems with an LTS line, use the latest
   LTS. *Why:* LTS gets security fixes for years without forced upgrades, and plain stable releases of
-  a runtime expire within months. For each update:
+  a runtime expire within months. The agent working on the project finds what is outdated with the package manager's
+  own report and updates it; no update bot. *Why:* a bot needs a hosted remote, and many repos live on one machine
+  only. For each update:
   1. Read the changelog from the current version to the target.
   2. List the impact.
   3. Flag every major jump to the owner.

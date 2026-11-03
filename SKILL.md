@@ -71,7 +71,7 @@ which do not shrink with project size:
      the assessment only.
 2. **Measure the baseline.** *Why:* without a "before" there is no proof of improvement, and no way to spot a regression.
    - Run the existing build and tests.
-   - Record coverage, lint and type findings, and the dependency audit.
+   - Record coverage, lint and type findings, the dependency audit and the outdated dependencies.
    - Note what is unknown.
 3. **Assess every topic** against its reference's audit signals. Rank the findings by the value order: safety first,
    then correctness, truth, changeability, simplicity and efficiency.
