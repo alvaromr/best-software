@@ -89,8 +89,9 @@ These show the reasoning; apply it, not just the outcome.
   *why*, such as an invariant that once cost a regression (truth over the letter of "no comments").
 
 ## Language of artifacts
-Every professional artifact is in English: code, comments, docs, commits, agent instructions. *Why:* it is the shared
-language of tools, libraries and any future contributor. Only user-facing copy uses the users' language.
+Every professional artifact is in English: identifiers, comments, docs, commits, config comments, agent instructions.
+Only user-facing copy uses the users' language, and one artifact never mixes languages, except a quoted template of
+that copy, such as a report format. *Why:* it is the shared language of tools, libraries and any future contributor.
 
 ## References — read before acting on the topic
 The detailed practices, each with its *Why*, live in `~/.agents/skills/best-software/references/`. When a task

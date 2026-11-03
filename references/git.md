@@ -59,8 +59,8 @@ server or a chat, is the single source of truth. This serves truth, correctness 
 ### Source of truth
 - **Reflect every change made on a server or device in the repo,** secrets excepted. *Why:* server drift is
   undocumented state that the next deploy destroys.
-- **Secrets never enter history.** When one leaks, rotate it first, then purge it. *Why:* deleting the file does not
-  delete the commit, and only rotation makes the leak harmless.
+- **When a secret leaks into history, rotate it first, then purge it** (`security.md`, "Secrets"). *Why:* deleting
+  the file does not delete the commit, and only rotation makes the leak harmless.
 - **Before publishing, audit the full history** for secrets, personal data, third-party material and anything tied to
   one developer, which should never have entered (criterion in `repository.md`). Squash when the history is unfit to publish. *Why:*
   publishing exposes every past commit, not just the tree.
