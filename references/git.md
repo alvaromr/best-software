@@ -22,7 +22,7 @@ server or a chat, is the single source of truth. This serves truth, correctness 
   history should explain the change, not replay the process.
 
 ### Messages
-- **Write messages in English and the imperative.** The subject is ≤72 characters and describes the observable outcome
+- **Write messages in the imperative.** The subject is ≤72 characters and describes the observable outcome
   for whom it changes; the body explains *why* when not obvious. *Why:* history is read to understand intent, and the
   diff already shows what.
 - **Use one convention per repo:**
