@@ -88,8 +88,16 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   - Read third-party code that touches private data before installing or updating it.
 
   *Why:* compromised releases are usually caught within days, and install scripts run with your privileges.
-- **Pin the toolchain:** wrapper scripts, a runtime version file, `packageManager`, the compiler toolchain. *Why:*
-  "works on my machine" is usually a toolchain difference.
+- **Pin the toolchain as exactly as the project kind requires:**
+  - Services and apps: the exact runtime patch that production runs; for a container, the base image by digest.
+  - Libraries and SDKs tested across a version matrix: each supported minor, tested on its latest patch, with the gate
+    printing the patch each environment used.
+  - Build tools, package managers, installers and compilers: the exact version, always, through wrapper scripts,
+    `packageManager` or a version file.
+
+  *Why:* "works on my machine" is usually a toolchain difference, so the gate runs what production runs. A library's
+  users pick the patch, and the latest one carries the security fixes, so a frozen old patch keeps fixed bugs; the
+  printed patch makes a difference between machines visible instead of silent.
 
 ## Judgment
 - Tool choice follows the goal and stays open. `toolchains.md` lists today's defaults; verify their status before
@@ -107,4 +115,4 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
 - No lockfile, or one that is uncommitted. `correctness`
 - Unused dependencies. `simplicity`
 - No audit task. `correctness`
-- An unpinned toolchain. `correctness`
+- A toolchain pinned less exactly than its project kind requires. `correctness`
