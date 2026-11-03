@@ -73,10 +73,10 @@ server or a chat, is the single source of truth. This serves truth, correctness 
 - A ticket prefix is required only where work is tracked; never invent one.
 
 ## Audit signals
-- Vague subjects such as "fix", "wip" or "changes".
-- Mixed refactor and feature commits.
-- Merge spaghetti.
-- Secrets in `git log -p`.
-- Moved tags.
-- Assistant trailers.
-- Server drift.
+- Vague subjects such as "fix", "wip" or "changes". `changeability`
+- Mixed refactor and feature commits. `correctness`
+- Merge spaghetti. `changeability`
+- Secrets in `git log -p`. `safety`
+- Moved tags. `truth`
+- Assistant trailers. `truth`
+- Server drift. `truth`

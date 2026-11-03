@@ -75,12 +75,12 @@ safety for their data.
 - Internal tools still meet keyboard and contrast basics. Full assistive-technology verification scales with audience.
 
 ## Audit signals
-- Unlabeled controls.
-- No keyboard path.
-- Colour-only state.
-- Clamped font scaling.
-- Hardcoded colours, scattered strings, or sentences built from fragments.
-- Raw library widgets in feature code.
-- No empty or error states.
-- A locked orientation.
-- Silent fallbacks on error.
+- Unlabeled controls. `correctness`
+- No keyboard path. `correctness`
+- Colour-only state. `correctness`
+- Clamped font scaling. `correctness`
+- Hardcoded colours, scattered strings, or sentences built from fragments. `changeability`
+- Raw library widgets in feature code. `changeability`
+- No empty or error states. `correctness`
+- A locked orientation. `correctness`
+- Silent fallbacks on error. `correctness`

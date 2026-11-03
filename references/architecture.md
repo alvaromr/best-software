@@ -106,11 +106,11 @@ tested in isolation. This serves changeability and correctness.
 - Inside frozen legacy that will not evolve, make surgical changes only, and record the exception.
 
 ## Audit signals
-- Domain files import framework, HTTP, database or UI packages.
-- Business rules appear in controllers, ViewModels, templates or entities.
-- Two code paths read or write the same datum.
-- Adding a feature means editing a central `when`/`switch`.
-- Vendor types appear in public signatures.
-- An interface has one implementation and no test seam.
-- A boolean parameter changes behaviour.
-- Values are hardcoded where configuration belongs.
+- Domain files import framework, HTTP, database or UI packages. `changeability`
+- Business rules appear in controllers, ViewModels, templates or entities. `changeability`
+- Two code paths read or write the same datum. `correctness`
+- Adding a feature means editing a central `when`/`switch`. `changeability`
+- Vendor types appear in public signatures. `changeability`
+- An interface has one implementation and no test seam. `simplicity`
+- A boolean parameter changes behaviour. `changeability`
+- Values are hardcoded where configuration belongs. `changeability`

@@ -98,13 +98,13 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   once.
 
 ## Audit signals
-- No single gate.
-- Hooks that are manual or absent.
-- No formatter config.
-- Warnings allowed.
-- A hand-edited baseline.
-- Floating versions.
-- No lockfile, or one that is uncommitted.
-- Unused dependencies.
-- No audit task.
-- An unpinned toolchain.
+- No single gate. `correctness`
+- Hooks that are manual or absent. `correctness`
+- No formatter config. `changeability`
+- Warnings allowed. `correctness`
+- A hand-edited baseline. `truth`
+- Floating versions. `correctness`
+- No lockfile, or one that is uncommitted. `correctness`
+- Unused dependencies. `simplicity`
+- No audit task. `correctness`
+- An unpinned toolchain. `correctness`

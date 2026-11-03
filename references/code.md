@@ -112,13 +112,13 @@ failure goes unnoticed. This serves changeability, correctness and truth.
   debt.
 
 ## Audit signals
-- Vague names.
-- Mixed languages in one artifact.
-- Comments that narrate the code, or commented-out code.
-- Empty or broad catches.
-- `any`, `!!` or ignores with no reason.
-- Repeated magic numbers.
-- Duplicate helpers.
-- Unused symbols.
-- Boolean behaviour switches.
-- `else` over sealed or enum types.
+- Vague names. `changeability`
+- Mixed languages in one artifact. `changeability`
+- Comments that narrate the code, or commented-out code. `changeability`
+- Empty or broad catches. `correctness`
+- `any`, `!!` or ignores with no reason. `correctness`
+- Repeated magic numbers. `changeability`
+- Duplicate helpers. `changeability`
+- Unused symbols. `simplicity`
+- Boolean behaviour switches. `changeability`
+- `else` over sealed or enum types. `correctness`

@@ -91,13 +91,13 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
 - Choose the distribution channel by cost and requirements, and record the decision.
 
 ## Audit signals
-- The version in several places.
-- No changelog.
-- Moved tags.
-- `latest` images.
-- Dev tools in the runtime image.
-- A container running as root.
-- Deploys that always restart.
-- A manual-only release.
-- Edited migrations.
-- No health or version endpoint.
+- The version in several places. `changeability`
+- No changelog. `changeability`
+- Moved tags. `truth`
+- `latest` images. `correctness`
+- Dev tools in the runtime image. `safety`
+- A container running as root. `safety`
+- Deploys that always restart. `correctness`
+- A manual-only release. `correctness`
+- Edited migrations. `correctness`
+- No health or version endpoint. `correctness`

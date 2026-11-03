@@ -81,11 +81,11 @@ home.
 - Write ADRs for decisions that are expensive to reverse or likely to be questioned. Skip them for the obvious.
 
 ## Audit signals
-- The same instruction in two docs.
-- Docs quoting config values.
-- Stale commands, ports or versions.
-- A README without install, run and test.
-- Knowledge found only in chat or on a server.
-- No record of rejected alternatives.
-- Mixed-language docs.
-- Broken links.
+- The same instruction in two docs. `changeability`
+- Docs quoting config values. `changeability`
+- Stale commands, ports or versions. `truth`
+- A README without install, run and test. `changeability`
+- Knowledge found only in chat or on a server. `changeability`
+- No record of rejected alternatives. `changeability`
+- Mixed-language docs. `changeability`
+- Broken links. `truth`

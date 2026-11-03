@@ -122,14 +122,14 @@ safety, the highest value.
 - An accepted risk is a written decision with its reason, never an omission.
 
 ## Audit signals
-- Keys in code, config or history.
-- A committed `.env`.
-- `0.0.0.0` bindings.
-- No CSP.
-- `innerHTML` with user text.
-- Broad permissions.
-- Tokens or PII in logs.
-- Sequential public ids.
-- HTTP URLs.
-- No audit task.
-- A privacy policy that disagrees with the analytics code.
+- Keys in code, config or history. `safety`
+- A committed `.env`. `safety`
+- `0.0.0.0` bindings. `safety`
+- No CSP. `correctness`
+- `innerHTML` with user text. `safety`
+- Broad permissions. `safety`
+- Tokens or PII in logs. `safety`
+- Sequential public ids. `safety`
+- HTTP URLs. `safety`
+- No audit task. `correctness`
+- A privacy policy that disagrees with the analytics code. `safety`

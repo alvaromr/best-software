@@ -91,12 +91,12 @@ could be published at any moment without leaking anything. This serves safety, t
   with no others and no publication, that value is not at stake, but a leaked secret still is.
 
 ## Audit signals
-- A cluttered root.
-- Tests that do not mirror the source.
-- Committed `build/`, IDE files or OS junk.
-- Untracked build config.
-- Absolute or personal paths.
-- A stale env template.
-- Duplicate agent instructions.
-- Stale branches.
-- A published package that links to a private repository: its "Repository" link is a 404 for the public.
+- A cluttered root. `changeability`
+- Tests that do not mirror the source. `changeability`
+- Committed `build/`, IDE files or OS junk. `simplicity`
+- Untracked build config. `correctness`
+- Absolute or personal paths. `correctness`
+- A stale env template. `truth`
+- Duplicate agent instructions. `changeability`
+- Stale branches. `simplicity`
+- A published package that links to a private repository: its "Repository" link is a 404 for the public. `truth`

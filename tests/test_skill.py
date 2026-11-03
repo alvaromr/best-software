@@ -12,6 +12,8 @@ JSON_BLOCK = re.compile(r"^```json\n(.*?)^```$", re.MULTILINE | re.DOTALL)
 REFERENCE_PATH = re.compile(r"references/([a-z-]+\.md)")
 INDEX_ROW = re.compile(r"^\|.*\| `([a-z-]+\.md)` \|$", re.MULTILINE)
 MAX_LINE_LENGTH = 120
+AUDIT_SIGNALS = re.compile(r"^## Audit signals\n(.*?)(?=^## |\Z)", re.MULTILINE | re.DOTALL)
+DEFAULT_VALUE = re.compile(r" `(safety|correctness|truth|changeability|simplicity|efficiency)`$")
 
 
 def markdown_files() -> list[Path]:
@@ -55,6 +57,16 @@ class SkillTest(unittest.TestCase):
                 if len(line) > MAX_LINE_LENGTH
             ]
         self.assertEqual(too_long, [])
+
+    def test_every_audit_signal_ends_with_its_default_value(self) -> None:
+        missing = [
+            f"{path.relative_to(ROOT)}: {line}"
+            for path in sorted(ROOT.glob("references/*.md"))
+            for section in AUDIT_SIGNALS.findall(path.read_text())
+            for line in section.splitlines()
+            if line.startswith("- ") and not DEFAULT_VALUE.search(line)
+        ]
+        self.assertEqual(missing, [])
 
     def test_claude_md_is_a_symlink_to_agents_md(self) -> None:
         link = ROOT / "CLAUDE.md"

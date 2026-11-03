@@ -134,13 +134,13 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 - Exploratory spikes are deleted, or re-done test-first before they land.
 
 ## Audit signals
-- No coverage threshold, or one below 100 with no reason.
-- More integration or e2e tests than unit tests, or tests that re-test rules at high level.
-- A unit suite that takes minutes; sleeps or real timers in tests.
-- Tests named after methods.
-- `isNotNull`-only assertions.
-- Network or wall-clock in unit tests.
-- Mocks of project classes.
-- No regression test next to a fix.
-- Skipped or retried tests.
-- No e2e smoke.
+- No coverage threshold, or one below 100 with no reason. `correctness`
+- More integration or e2e tests than unit tests, or tests that re-test rules at high level. `changeability`
+- A unit suite that takes minutes; sleeps or real timers in tests. `changeability`
+- Tests named after methods. `changeability`
+- `isNotNull`-only assertions. `correctness`
+- Network or wall-clock in unit tests. `correctness`
+- Mocks of project classes. `changeability`
+- No regression test next to a fix. `correctness`
+- Skipped or retried tests. `correctness`
+- No e2e smoke. `correctness`

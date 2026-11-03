@@ -1,8 +1,9 @@
 # Best software — score
 
 Measures how far a project is from the bar, as a global score and one score per section, without changing the project.
-The score is orientative: an agent assigns it, so two runs on the same commit can differ. *Why:* a number makes progress
-and regressions visible over time; the run record makes each number traceable to the signals behind it.
+The score is orientative: an agent assigns it, so two full assessments can differ; reusing and building on the last run
+keeps that variation small. *Why:* a number makes progress and regressions visible over time; the run record makes
+each number traceable to the signals behind it.
 
 ## Rules
 - **Read-only.** Change nothing in the project except the run record. Files the commands write as usual and git ignores
@@ -24,14 +25,16 @@ and regressions visible over time; the run record makes each number traceable to
   list keeps runs comparable.
 - **One section per piece of evidence.** Score each piece of evidence once, in the section whose reference states the
   practice it breaks. If several do, use the first of them in the order above.
-- **Severity is the value at stake in this instance.** Start from the value the practice protects: the one its *Why*
-  names, or else the harm it describes (harm to users, data, secrets or privacy is safety; a wrong or unnoticed result
-  is correctness; a stale or contradictory statement is truth; a costly or risky change is changeability; needless
-  code, dependencies or options are simplicity; wasted time or resources is efficiency). Then ask whether that value
-  is really at stake here (constitution, "How to decide", step 2), and lower it to the one that is. State why in the
-  signal's `reason`. *Why:* a practice's worst case, applied to a harmless instance, scores noise; an unused dev
-  dependency with a clean audit is a simplicity signal, not a safety one. A copied value or duplicated instruction is
-  changeability when you verify that it still matches its source, and truth when it does not.
+- **Severity is the value at stake in this instance.** Start from the default value that ends the audit signal in its
+  reference. For any other signal, start from the value the practice protects: the one its *Why* names, or else the
+  harm it describes (harm to users, data, secrets or privacy is safety; a wrong or unnoticed result is correctness; a
+  stale or contradictory statement is truth; a costly or risky change is changeability; needless code, dependencies or
+  options are simplicity; wasted time or resources is efficiency). Then ask whether that value is really at stake here
+  (constitution, "How to decide", step 2), and change it to the one that is. State why in the signal's `reason`.
+  *Why:* a written default makes every run weigh the same finding the same way, and a practice's worst case, applied
+  to a harmless instance, scores noise; an unused dev dependency with a clean audit is a simplicity signal, not a
+  safety one. A copied value or duplicated instruction is changeability when you verify that it still matches its
+  source, and truth when it does not.
 - **Count instances.** Each place where a signal occurs is one instance; at most 3 count per signal and section, and
   the evidence lists them. *Why:* ten problems weigh more than one, and the cap keeps one widespread pattern from
   burying every other signal, and runs comparable when agents split instances differently.
@@ -81,13 +84,23 @@ the problems, so one nit costs little and many add up; a mean alone would hide a
 
 ## Procedure
 1. **Profile the project** (Step 1).
-2. **Run the commands** and record each one's result.
-3. **Assess every section** under the rules above.
-4. **Compare with the previous score run**, if the run record has one. List each signal that appeared or
-   disappeared, and its cause: a new commit, a different `skill_commit`, or, when neither changed, the agent's
-   judgment.
-5. **Record the run** (`SKILL.md`, "Run record"), with the score fields below.
-6. **Report** in the format below. A leaked secret goes first, for rotation (Step 2b).
+2. **Reuse an identical run.** If the last score run has the same `commit` and `skill_commit`, all four trees were
+   clean then and are clean now, report that run again, record nothing, and stop. *Why:* the same inputs must give
+   the same score.
+3. **Run the commands** and record each one's result.
+4. **Assess every section** under the rules above, with one of these bases:
+   - **Incremental,** when the last score run has the same `skill_commit` and a clean skill tree: start from its
+     signals. Re-verify each one, and keep it or drop it with its cause. Then look for new signals in what changed
+     since its `commit`: `git diff <commit>`, which includes the uncommitted changes.
+   - **Full,** otherwise: assess every section from scratch, since a changed skill can change what counts.
+
+   A new signal on evidence that did not change since the last score run is marked `detected_now`. *Why:* starting
+   from the last verified list keeps the score stable between runs, a full pass on each skill version catches what
+   earlier runs missed, and the mark explains a score that moves on unchanged code.
+5. **Compare with the previous score run**, if the run record has one. List each signal that appeared or
+   disappeared, and its cause: a new commit, a different `skill_commit`, or `detected_now`.
+6. **Record the run** (`SKILL.md`, "Run record"), with the score fields below.
+7. **Report** in the format below. A leaked secret goes first, for rotation (Step 2b).
 
 ## Score fields
 A score run has `"procedure": "score"` and adds these fields to the common ones:
@@ -95,6 +108,7 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
 ```json
 {
   "profile": "<kind · stack · audience · constraints>",
+  "basis": "full",
   "commands": [
     { "command": "<command>", "result": "pass", "detail": "<coverage, mutation score, cached or not>" }
   ],
@@ -112,7 +126,8 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
           "evidence": "<file:line, commit or command; one per instance>",
           "instances": 2,
           "points": -4,
-          "verified": true
+          "verified": true,
+          "detected_now": false
         }
       ]
     },
@@ -122,9 +137,9 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
 }
 ```
 
-`result` is `pass`, `fail` or `not_run`. With no commands to run, `commands` is `[]` and `profile` says why. A section
-with no signals has `"worst_value": null`. Values are written as `safety`, `correctness`, `truth`, `changeability`,
-`simplicity` and `efficiency`.
+`basis` is `full` or `incremental`. `result` is `pass`, `fail` or `not_run`. With no commands to run, `commands` is
+`[]` and `profile` says why. A section with no signals has `"worst_value": null`. Values are written as `safety`,
+`correctness`, `truth`, `changeability`, `simplicity` and `efficiency`.
 
 ## Report format (in Spanish)
 The main signal of a section is the one that subtracts the most points. On a tie, the reference's audit signals come

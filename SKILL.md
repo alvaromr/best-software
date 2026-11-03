@@ -100,8 +100,8 @@ which do not shrink with project size:
 
 ## Run record (`.best-software.json`)
 Every procedure, scoring included, appends one run to `.best-software.json` at the repository root, as its last
-step before any report. *Why:* it marks that the skill was applied, with which procedure and which skill version, so
-a later run knows what changed since.
+step before any report; only a reused score appends none (`score.md`, "Procedure"). *Why:* it marks that the skill
+was applied, with which procedure and which skill version, so a later run knows what changed since.
 - **Private:** add `.best-software.json` to the file that `git rev-parse --git-path info/exclude` names, unless it is
   already there. The record stays uncommittable without touching the project's `.gitignore`.
 - **Not a git repo:** write it at the project root, with `commit` and `clean_tree` as `null`, and say that nothing
