@@ -94,7 +94,7 @@ Only user-facing copy uses the users' language, and one artifact never mixes lan
 that copy, such as a report format. *Why:* it is the shared language of tools, libraries and any future contributor.
 
 ## References — read before acting on the topic
-The detailed practices, each with its *Why*, live in `~/.agents/skills/best-software/references/`. When a task
+The detailed practices, each with its *Why*, live in the `references/` folder next to this file. When a task
 touches a topic, read its reference before acting on it, once per session. Read only the ones the task touches.
 
 | When the task involves… | Read |
