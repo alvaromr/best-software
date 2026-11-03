@@ -5,16 +5,16 @@ The score is orientative: an agent assigns it, so two runs on the same commit ca
 and regressions visible over time; the run record makes each number traceable to the signals behind it.
 
 ## Rules
-- **Read-only.** Change nothing in the project except the run record. Files the checks write as usual and git ignores
+- **Read-only.** Change nothing in the project except the run record. Files the commands write as usual and git ignores
   (coverage, caches, build output, mutation results) are fine. If the dependencies are missing, install them from the
-  lockfile alone, with the project's own package manager and no updates; if that is not possible, the checks are
+  lockfile alone, with the project's own package manager and no updates; if that is not possible, the commands are
   unverified.
-- **The checks:** the gate (`references/tooling.md`), plus the heavy checks the project runs before push or
-  integration (mutation, audits) and its documented build or package check. Never run checks against live or
+- **The commands:** the gate (`references/tooling.md`), plus the heavy checks the project runs before push or
+  integration (mutation, audits) and its documented build or package check. Never run them against live or
   production systems: they need real credentials and act on real data (safety).
 - **Cached results** count only when the tool invalidates them on every change that could alter them. Otherwise run
   the tool fresh, deleting its git-ignored output first; if a fresh run cannot finish, the result is unverified.
-- **One commit.** If HEAD moves during the run, rerun the checks on the final HEAD, score that commit and say so.
+- **One commit.** If HEAD moves during the run, rerun the commands on the final HEAD, score that commit and say so.
 - **Sections:** the references with audit signals, in this order: `architecture`, `code`, `testing`, `tooling`,
   `repository`, `docs`, `git`, `release`, `security`, `operability`, `ui`. `toolchains.md` is not scored, because a
   tool can be swapped for an equivalent.
@@ -43,8 +43,8 @@ and regressions visible over time; the run record makes each number traceable to
   with the absence of its subject. A section has no score only when none of its practices applies, such as `ui` in a
   library with no interface. *Why:* an agent scores, not a script, so that each practice is weighed against the
   project it meets.
-- **Unverified counts as present.** A signal that the repo, its history or the checks could show, but that could not
-  be checked this run (a check did not run, a tool was missing), counts as found and is marked unverified (hard
+- **Unverified counts as present.** A signal that the repo, its history or the commands could show, but that could not
+  be checked this run (a command did not run, a tool was missing), counts as found and is marked unverified (hard
   constraint 5; a missing gate is never a pass). A signal that no snapshot can show, such as knowledge kept only in
   chat, is skipped.
 - **Hard constraints in a snapshot:** a constraint counts as broken only on direct evidence of one of these: a secret or
@@ -75,7 +75,7 @@ score is at most 4.0. *Why:* a mean alone would hide a leaked secret among nines
 
 ## Procedure
 1. **Profile the project** (Step 1).
-2. **Run the checks** and record each command's result.
+2. **Run the commands** and record each one's result.
 3. **Assess every section** under the rules above.
 4. **Compare with the previous score run**, if the run record has one. List each signal that appeared or
    disappeared, and its cause: a new commit, a different `skill_commit`, or, when neither changed, the agent's
@@ -89,7 +89,7 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
 ```json
 {
   "profile": "<kind · stack · audience · constraints>",
-  "checks": [
+  "commands": [
     { "command": "<command>", "result": "pass", "detail": "<coverage, mutation score, cached or not>" }
   ],
   "global": 6.4,
@@ -114,7 +114,7 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
 }
 ```
 
-`result` is `pass`, `fail` or `not_run`. With no checks to run, `checks` is `[]` and `profile` says why. A section
+`result` is `pass`, `fail` or `not_run`. With no commands to run, `commands` is `[]` and `profile` says why. A section
 with no signals has `"worst_value": null`. Values are written as `safety`, `correctness`, `truth`, `changeability`,
 `simplicity` and `efficiency`.
 
