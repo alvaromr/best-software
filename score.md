@@ -19,10 +19,12 @@ each number traceable to the signals behind it.
 - **Sections:** the references with audit signals, in this order: `architecture`, `code`, `testing`, `tooling`,
   `repository`, `docs`, `git`, `release`, `security`, `operability`, `ui`. `toolchains.md` is not scored, because a
   tool can be swapped for an equivalent.
-- **Signals:** a section's signals are its reference's audit signals, plus any breach of a practice in the
-  "Never scales down" column of Step 1. A contradiction between any two artifacts is a `docs` signal, under that
-  column's coherence row, wherever it is found. Other gaps go to the report as observations, unscored. *Why:* a fixed
-  list keeps runs comparable.
+- **Signals:** a section's signals are the breaches of its reference's practices that the snapshot shows, plus any
+  breach of a practice in the "Never scales down" column of Step 1. A signal is named by its audit signal when one
+  matches, and otherwise by the practice it breaks. A contradiction between any two artifacts is a `docs` signal,
+  under that column's coherence row, wherever it is found. Gaps that no practice states go to the report as
+  observations, unscored. *Why:* the practices are the bar, so a separate list of signals always lags behind them;
+  naming each signal by its audit signal or practice keeps runs comparable.
 - **One section per piece of evidence.** Score each piece of evidence once, in the section whose reference states the
   practice it breaks. If several do, use the first of them in the order above.
 - **Severity is the value at stake in this instance.** Start from the default value that ends the audit signal in its
@@ -122,7 +124,7 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
       "worst_value": "truth",
       "signals": [
         {
-          "signal": "<audit signal>",
+          "signal": "<audit signal, or else the practice it breaks>",
           "value": "truth",
           "reason": "<why this value is at stake here>",
           "evidence": "<file:line, commit or command; one per instance>",

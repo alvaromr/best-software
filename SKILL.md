@@ -75,8 +75,8 @@ which do not shrink with project size:
    - Run the existing build and tests.
    - Record coverage, lint and type findings, the dependency audit and the outdated dependencies.
    - Note what is unknown.
-3. **Assess every topic** against its reference's audit signals. Rank the findings by the value order: safety first,
-   then correctness, truth, changeability, simplicity and efficiency.
+3. **Assess every topic** against its reference's practices, its audit signals first. Rank the findings by the value
+   order: safety first, then correctness, truth, changeability, simplicity and efficiency.
 4. **Fix directly, in this order.** Each step is its own atomic commit with the gate green. *Why:* the order builds the
    safety net before anything that could break.
    1. Safety net: characterization tests around anything you will touch.
