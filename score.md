@@ -84,19 +84,21 @@ the problems, so one nit costs little and many add up; a mean alone would hide a
 
 ## Procedure
 1. **Profile the project** (Step 1).
-2. **Reuse an identical run.** If the last score run has the same `commit` and `skill_commit`, all four trees were
-   clean then and are clean now, report that run again, record nothing, and stop. *Why:* the same inputs must give
-   the same score.
+2. **Reuse an identical run.** If the last score run has the same `commit`, `skill_commit` and `profile`, all four
+   trees were clean then and are clean now, report that run again, record nothing, and stop. *Why:* the same inputs
+   must give the same score.
 3. **Run the commands** and record each one's result.
 4. **Assess every section** under the rules above, with one of these bases:
-   - **Incremental,** when the last score run has the same `skill_commit` and a clean skill tree: start from its
-     signals. Re-verify each one, and keep it or drop it with its cause. Then look for new signals in what changed
-     since its `commit`: `git diff <commit>`, which includes the uncommitted changes.
-   - **Full,** otherwise: assess every section from scratch, since a changed skill can change what counts.
+   - **Incremental,** when the last score run has the same `skill_commit` and `profile`, and a clean skill tree:
+     start from its signals. Re-verify each one, and keep it or drop it with its cause. Then look for new signals in
+     what changed since its `commit` (`git diff <commit>`, which includes the uncommitted changes), and in what
+     those changes affect, such as a shared helper whose other user was deleted.
+   - **Full,** otherwise: assess every section from scratch, since a changed skill or profile can change what counts.
 
    A new signal on evidence that did not change since the last score run is marked `detected_now`. *Why:* starting
-   from the last verified list keeps the score stable between runs, a full pass on each skill version catches what
-   earlier runs missed, and the mark explains a score that moves on unchanged code.
+   from the last verified list keeps the score stable between runs, a full pass on each skill version or profile
+   catches what earlier runs missed, and the mark explains a score that moves on unchanged code. A profile change,
+   such as a private repo about to be published, changes who reads what and which practices apply.
 5. **Compare with the previous score run**, if the run record has one. List each signal that appeared or
    disappeared, and its cause: a new commit, a different `skill_commit`, or `detected_now`.
 6. **Record the run** (`SKILL.md`, "Run record"), with the score fields below.

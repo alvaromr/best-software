@@ -88,3 +88,4 @@ home.
 - Knowledge found only in chat or on a server. `changeability`
 - No record of rejected alternatives. `changeability`
 - Broken links. `truth`
+- A fact outside its reader's home in "Layers by reader", such as user help only in `AGENTS.md`. `changeability`

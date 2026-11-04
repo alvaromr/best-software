@@ -114,3 +114,4 @@ tested in isolation. This serves changeability and correctness.
 - An interface has one implementation and no test seam. `simplicity`
 - A boolean parameter changes behaviour. `changeability`
 - Values are hardcoded where configuration belongs. `changeability`
+- A helper away from the concept that owns it, such as in a shared folder with a single user. `changeability`
