@@ -106,9 +106,11 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
     is faithful to it, for example because of different configuration.
   - Writes never go to production. Destructive ones need the owner's permission.
   - Mark every datum they create with a fixed label, and at the end report what was left behind, and where.
+  - Never run them in the owner's running app, account or session; use a separate process, profile or test account.
 
-  *Why:* a check against an unfaithful environment proves nothing, a production read risks nothing, and unlabelled
-  leftovers become someone else's mystery data.
+  *Why:* a check against an unfaithful environment proves nothing, a production read risks nothing, unlabelled
+  leftovers become someone else's mystery data, and a check in the owner's own app interrupts their work and acts as
+  them.
 - **Keep a few end-to-end smoke tests on the real artifact,** plus a short manual plan for what automation cannot reach.
   *Why:* green units do not prove that the packaged thing starts.
 - **Automate UI behaviour checks:** a headless DOM when no browser is needed, config-change and process-death survival,
@@ -118,7 +120,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 
 ### After green
 - **Verify in the real runtime before declaring done:**
-  - Run the app or CLI.
+  - Run the app or CLI, isolated from the owner's as live checks are.
   - Exercise the failure path.
   - Check the affected variants.
   - Repeat flaky-prone checks.

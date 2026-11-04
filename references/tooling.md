@@ -99,10 +99,12 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
     printing the patch each environment used.
   - Build tools, package managers, installers and compilers: the exact version, always, through wrapper scripts,
     `packageManager` or a version file.
+  - No dev tool raises the oldest runtime or OS version the project supports.
 
   *Why:* "works on my machine" is usually a toolchain difference, so the gate runs what production runs. A library's
   users pick the patch, and the latest one carries the security fixes, so a frozen old patch keeps fixed bugs; the
-  printed patch makes a difference between machines visible instead of silent.
+  printed patch makes a difference between machines visible instead of silent. A supported version dropped for a dev
+  tool locks users out for nothing they use.
 
 ## Judgment
 - Tool choice follows the goal and stays open. `toolchains.md` lists today's defaults; verify their status before
