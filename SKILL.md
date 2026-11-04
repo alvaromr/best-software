@@ -66,7 +66,8 @@ which do not shrink with project size:
 ## Step 2b — Elevate an existing project
 1. **Prepare the branch:**
    - **If the project is a git repo:** check that the tree is clean. If it is dirty, stop and ask (hard constraint 7).
-     Then update the default branch and create a clean branch from it (`chore/engineering-baseline`, or one per topic).
+     Then update the default branch. If the project integrates through pull requests (`references/git.md`), create
+     a clean branch from it (`chore/engineering-baseline`, or one per topic).
    - **If the project is not a git repo:** ask whether to initialise one before changing anything. Otherwise, deliver
      the assessment only.
 2. **Measure the baseline.** *Why:* without a "before" there is no proof of improvement, and no way to spot a

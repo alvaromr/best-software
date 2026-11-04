@@ -39,8 +39,11 @@ server or a chat, is the single source of truth. This serves truth, correctness 
   authorship and accountability belong to the right identity of the person.
 
 ### Branches and integration
-- **Use short-lived branches cut from the up-to-date default branch,** and rebase before integration. History stays
-  linear, without merge commits. *Why:* linear history bisects cleanly, and long branches accumulate conflicts.
+- **Integrate the way the project already does.** If it integrates through pull requests, use a short-lived branch
+  cut from the up-to-date default branch, and rebase before integration. Otherwise, commit to the default branch
+  through the gate. History stays linear, without merge commits. *Why:* a branch exists for review and CI before
+  integration, and without them it only adds steps; linear history bisects cleanly, and long branches accumulate
+  conflicts.
 - **Never rewrite published history or force-push shared branches;** revert, or re-do properly. *Why:* others built on
   it, and rewriting breaks their clones silently.
 - **Before rewriting any history, even unpublished, look for references to the affected commit ids.** They can live
@@ -68,8 +71,6 @@ server or a chat, is the single source of truth. This serves truth, correctness 
   confidential context.
 
 ## Judgment
-- On a solo project, direct commits to `main` are acceptable only through the same gate. For changes worth reviewing,
-  branch and rebase.
 - A ticket prefix is required only where work is tracked; never invent one.
 
 ## Audit signals
