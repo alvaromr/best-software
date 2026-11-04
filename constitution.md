@@ -73,7 +73,8 @@ These show the reasoning; apply it, not just the outcome.
   extra layers go (simplicity).
 - **Latest stable vs supply-chain safety.** Track the latest stable versions, but wait the release-age delay, read the
   changelog and leave each major jump to the owner. A fresh release is the favourite vector of supply-chain attacks
-  (safety over freshness).
+  (safety over freshness). A fix for a known advisory can skip the wait after review, when the advisory weighs more
+  (`references/tooling.md`).
 - **Strictness vs surgical changes in legacy.** Introduce the strict gate as a ratchet: baseline what exists, enforce
   it on new code, and reformat untouched code only in its own commit. A big-bang cleanup mixed with features hides
   behaviour changes (correctness and truth).

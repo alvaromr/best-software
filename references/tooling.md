@@ -80,14 +80,19 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   Never revert a risky upgrade blindly. *Why:* staying current keeps security fixes cheap, and verification keeps
   upgrades safe.
 - **Harden the supply chain:**
-  - Wait a minimum release age before installing a new release.
+  - Wait a minimum release age before installing a new release. If the fix for an advisory that reaches the project
+    is younger than that age, weigh the advisory's severity and reachability against the risk of a fresh release.
+    When the fix cannot wait, review its release (publisher, provenance, install scripts, new dependencies,
+    changelog), exempt that exact version with the reason next to the exemption, and remove the exemption once the
+    age has passed.
   - Block install scripts, except an allow-list.
   - Use frozen-lockfile installs.
   - Refuse trust downgrades.
   - Run audits (dependencies, SAST, secrets) as tasks.
   - Read third-party code that touches private data before installing or updating it.
 
-  *Why:* compromised releases are usually caught within days, and install scripts run with your privileges.
+  *Why:* compromised releases are usually caught within days, and install scripts run with your privileges. The wait
+  guards against an unknown compromise, so it must not keep a known one.
 - **Pin the toolchain as exactly as the project kind requires:**
   - Services and apps: the exact runtime patch that production runs; for a container, the base image by digest.
   - Libraries and SDKs tested across a version matrix: each supported minor, tested on its latest patch, with the gate

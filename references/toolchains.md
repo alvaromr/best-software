@@ -33,7 +33,8 @@ Last reviewed: 2026-10-29.
 ## TypeScript / Node / Web
 - **Package manager:** pnpm, with hardening in `pnpm-workspace.yaml`: `minimumReleaseAge: 10080`, `trustPolicy:
   no-downgrade`, `verifyDepsBeforeRun: error`, `allowBuilds: {}`. Pin `packageManager`, use frozen-lockfile installs,
-  and pin the runtime (`.node-version`, `engines`).
+  and pin the runtime (`.node-version`, `engines`). Exempt a reviewed security fix from the release age with
+  `minimumReleaseAgeExclude: [<package>@<exact version>]` (pnpm ≥10.19), with a comment giving the reason.
 - **Types:** TypeScript `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `verbatimModuleSyntax`,
   `noUnusedLocals` and `noUnusedParameters`. Type plain JS with JSDoc and `checkJs`.
 - **Lint and format:** Biome, or ESLint (`typescript-eslint` strict-type-checked) with Prettier.
