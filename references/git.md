@@ -56,6 +56,11 @@ server or a chat, is the single source of truth. This serves truth, correctness 
   *Why:* a commit id is a pointer that other systems hold, and rewriting leaves every holder pointing at nothing.
 - **Tags are immutable and identify exactly the artifact built,** enforced by a hook. *Why:* a moved tag makes "version
   X" mean two different things.
+  - Locally, a `reference-transaction` hook guards them, but it cannot tell `git update-ref -d <tag> <value>` from
+    packing: `git pack-refs`, also run by `git gc`, deletes each loose tag that way once `packed-refs` holds it. So
+    the hook refuses `git tag -d`, `git tag -f` and `git update-ref -d` without a value, and lets that one form
+    through, since refusing it would break packing.
+  - On the remote, a `pre-push` hook refuses a push that moves or deletes a remote tag.
 - **Pin submodules to the last audited commit,** and move them deliberately. *Why:* a submodule is a dependency, and it
   gets reviewed like one.
 
