@@ -50,8 +50,11 @@ each number traceable to the signals behind it.
 - **Judge what applies.** Skip a signal when its practice's reason does not hold in this project (constitution, "How
   to decide", step 2), and give the reason; the burden of proof is on the skip. A deploy signal in a library, or a
   gate of types, tests and coverage in a repo with no executable code, is skipped; what that repo still needs, such as
-  coherent docs, is judged for what it is. A practice in the "Never scales down" column never shrinks with size, only
-  with the absence of its subject. A section has no score only when none of its practices applies, such as `ui` in a
+  coherent docs, is judged for what it is. A link or reporting channel at the project's own public home is skipped
+  before its first publication, while only its owner reads the project: no one is misled until then. A link to any
+  other address still counts. What publishing must still make true there, such as enabling the channel, goes to the
+  observations. A practice in the "Never scales down" column never shrinks with size, only with the absence of its
+  subject. A section has no score only when none of its practices applies, such as `ui` in a
   library with no interface. *Why:* an agent scores, not a script, so that each practice is weighed against the
   project it meets.
 - **Unverified counts as present.** A signal that the repo, its history or the commands could show, but that could not
