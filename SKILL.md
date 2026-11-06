@@ -7,7 +7,7 @@ description: Procedures to bootstrap a new software project at professional qual
 
 The values, hard constraints and decision rules are in `constitution.md`; read it first if this session has not. The
 detailed practices are in `references/` (index in the constitution). This skill adds only the end-to-end procedures.
-To score a project without changing it, follow `score.md`.
+To score a project, follow `score.md`.
 
 ## Step 1 — Profile the project
 Before changing anything, establish these facts and state them in one short block. *Why:* every judgment call below
