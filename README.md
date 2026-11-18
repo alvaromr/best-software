@@ -4,7 +4,13 @@ An agent skill that holds an engineering constitution (values, hard constraints,
 bootstrap a software project, raise an existing one, or score it against that constitution.
 
 ## Install
-Place this folder at `~/.agents/skills/best-software`. Agents that read skills from `~/.claude/skills` find it when
+Clone it to `~/.agents/skills/best-software`:
+
+```sh
+git clone https://github.com/alvaromr/best-software.git ~/.agents/skills/best-software
+```
+
+Agents that read skills from `~/.claude/skills` find it when
 that folder links to `~/.agents/skills`. Then tell the always-loaded agent instructions, such as `~/.claude/CLAUDE.md`,
 to read `constitution.md` once per session in any software task.
 

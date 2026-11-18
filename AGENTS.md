@@ -24,6 +24,8 @@ An agent skill: the engineering constitution and the procedures that apply it, f
 - One term per concept across all files — two names for one thing read as two things.
 - A change updates every file it affects in the same commit — the skill is loaded piecemeal, so any stale file
   misleads.
+- A change to what the skill asks of agents adds a line to `CHANGELOG.md` under its date — users learn what changed
+  for their agents without reading the history.
 
 ## Decisions
 Before changing a practice, read `docs/decisions/` (none yet).
