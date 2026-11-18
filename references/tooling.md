@@ -46,6 +46,8 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   violation is caught. *Why:* a rule set that silently fails to load produces a green build that proves nothing.
 - **Keep the analyzer and its rule sets current,** reading changelogs and enabling new applicable rules. *Why:* new
   rules encode new knowledge of bugs, for free.
+- **Turn a correction made twice into a check:** a lint rule or a test in the gate, when the tools can express it.
+  *Why:* a rule kept only in reviews holds while someone remembers it, while a check holds on every change at no cost.
 - **Take facts from tools** (build tasks, compiler, resolver), not from ad-hoc parsing scripts. *Why:* the tool knows
   the real configuration; a parser knows a guess.
 
