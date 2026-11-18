@@ -158,29 +158,29 @@ The report is in the owner's language (`SKILL.md`, "Report format").
 The main signal of a section is the one that subtracts the most points. On a tie, the reference's audit signals come
 first, in their list order, then the "Never scales down" rows, in table order; any tie left, pick one, since the run
 record keeps them all. The cap line appears whenever a hard constraint is broken, even if the mean is already below
-4.0. "Qué arreglar primero" lists every signal, ordered by the global points its fix recovers, highest first: the
+4.0. "Fix first" lists every signal, ordered by the global points its fix recovers, highest first: the
 section points it recovers, up to the section's 10, divided by the number of applicable sections. *Why:* the owner
 needs to know what to do next and what each fix is worth, more than the number itself.
 
 ```markdown
-## Nota: <global>/10
-<si hay restricción dura rota: «Tope de 4,0 por la restricción dura <n>: <evidencia>»>
+## Score: <global>/10
+<if a hard constraint is broken: "Capped at 4.0 by hard constraint <n>: <evidence>">
 
-## Perfil
-<tipo · stack · audiencia · restricciones>
+## Profile
+<kind · stack · audience · constraints>
 
-| Sección | Nota | Señal principal |
+| Section | Score | Main signal |
 |---|---|---|
-| <sección> | <nota o «n/a: motivo»> | <señal> — <evidencia> |
+| <section> | <score or "n/a: reason"> | <signal> — <evidence> |
 
-## Qué arreglar primero
-1. <señal> — <evidencia> — <arreglo en una línea> — +<puntos de la nota global>
+## Fix first
+1. <signal> — <evidence> — <one-line fix> — +<points of the global score>
 
-## Observaciones
-<huecos sin puntuar; omitir si no hay>
+## Observations
+<unscored gaps; omit if none>
 
-## Cambios respecto a la ejecución anterior
-<señales que aparecen o desaparecen; omitir si es la primera>
+## Changes since the previous run
+<signals that appear or disappear; omit on the first run>
 
-Nota orientativa: la asigna un agente y puede variar entre ejecuciones.
+Orientative score: an agent assigns it, and it can vary between runs.
 ```

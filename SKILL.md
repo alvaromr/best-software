@@ -158,22 +158,22 @@ Before changing a practice, read `docs/decisions/`.
 ```
 
 ## Report format (elevate mode)
-Every report is written in the owner's language. The templates here and in `score.md` are in Spanish; translate them
-for any other owner. *Why:* the owner reads the report to decide what to do next.
+Every report is written in the owner's language, translating the templates here and in `score.md`. *Why:* the owner
+reads the report to decide what to do next.
 
 ```markdown
-## Perfil
-<tipo · stack · audiencia · restricciones>
+## Profile
+<kind · stack · audience · constraints>
 
-## Punto de partida
-<estado del gate, cobertura, nº de hallazgos, auditorías — antes → después>
+## Baseline
+<gate state, coverage, number of findings, audits — before → after>
 
-## Hecho
-1. <asunto del commit> — <tema>
+## Done
+1. <commit subject> — <topic>
 
-## Aplazado
-1. <hallazgo> — <por qué se aplaza> — <arreglo propuesto>
+## Deferred
+1. <finding> — <why it is deferred> — <proposed fix>
 
-## Decisiones para el dueño
-1. <decisión> — <opciones> — <recomendación>
+## Decisions for the owner
+1. <decision> — <options> — <recommendation>
 ```

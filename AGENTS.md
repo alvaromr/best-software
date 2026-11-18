@@ -18,8 +18,7 @@ An agent skill: the engineering constitution and the procedures that apply it, f
 
 ## Non-negotiables
 - The constitution governs this repo too — the skill must meet the bar it sets.
-- English in every file except the Spanish report templates — they are a sample of user-facing copy, translated for
-  any other owner.
+- English in every file — the agent translates the report templates into the owner's language.
 - Each practice states its *Why* — agents apply it with judgment only when they know the reason.
 - Tools and their versions appear only in `references/toolchains.md` — tools change faster than practices.
 - One term per concept across all files — two names for one thing read as two things.
