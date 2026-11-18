@@ -92,6 +92,9 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   test keeps consuming the machine, and repeated runs exhaust it.
 - **Mock only system boundaries;** project code runs for real, and fakes beat mocks. A test needing many mocks sits at
   the wrong level. *Why:* mocking project code tests the mocks and freezes the implementation.
+- **Test a module through its interface,** not its internals: its private helpers, its constants or the text of its
+  source. *Why:* a test tied to the structure breaks on every refactor yet can pass on broken behaviour, so it checks
+  the shape of the code, not what it does.
 - **Never trigger real-world side effects from tests:** payments, real accounts, paid APIs, production writes. *Why:*
   tests run often and unattended.
 
@@ -143,6 +146,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 - `isNotNull`-only assertions. `correctness`
 - Network or wall-clock in unit tests. `correctness`
 - Mocks of project classes. `changeability`
+- Tests that assert private helpers, constants or the source text of the code under test. `changeability`
 - No regression test next to a fix. `correctness`
 - Skipped or retried tests. `correctness`
 - No e2e smoke. `correctness`

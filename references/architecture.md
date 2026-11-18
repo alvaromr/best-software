@@ -38,6 +38,9 @@ tested in isolation. This serves changeability and correctness.
 - **Extend by registration:** registries, listeners and providers. A new feature is a new module plus one registration
   line, and feature modules never import each other. *Why:* the core stays closed to modification (open–closed), and
   features stay independently removable.
+- **Prefer deep modules:** a small interface over a substantial implementation, with everything else internal by
+  default. *Why:* callers and tests depend only on the interface, so the inside can change without breaking them, and
+  a reader understands the module from its interface alone.
 - **Inject dependencies through the constructor,** non-nullable. When "nothing" is valid, use a Null Object. Break a
   dependency cycle with a lazy provider, never by tolerating it. *Why:* explicit dependencies are visible, testable and
   impossible to forget to initialise.
@@ -53,6 +56,10 @@ tested in isolation. This serves changeability and correctness.
 ### State and data flow
 - **Use unidirectional data flow:** state, event, effect. Handlers take the values they need from the event, never by
   reading state back. *Why:* reading state back creates hidden ordering bugs that tests rarely catch.
+- **Give each piece of shared state one owner:** a pure reducer that takes an event and returns the new state and the
+  effects to run. When the state moves through phases that accept different events, make the owner a state machine.
+  View-only state, such as a hover or an open menu, can stay in its component. *Why:* state changed from many places
+  has no single file that shows how it evolves, while a pure owner shows it in one place and is tested without a UI.
 - **Keep state immutable;** produce new values. *Why:* shared mutation makes behaviour depend on who touched what last.
 - **Keep loading out of constructors and `init` blocks.** Key each load by the entity it loads. *Why:* construction
   stays side-effect-free, and multiple instances do not collide.
@@ -79,7 +86,7 @@ tested in isolation. This serves changeability and correctness.
   untrusted specs are second-hand truth that drifts, and environments can run different code and configuration.
 
 ### Libraries and SDKs
-- **Expose a small explicit public surface:** internal by default, and explicit-API mode where available. *Why:*
+- **Keep the published surface small and explicit,** with explicit-API mode where available. *Why:*
   everything public is a promise you must keep, and an attack surface.
 - **Hide transport details from consumers.** A consumer never sees status codes, JSON or endpoints, only domain types
   and domain errors. *Why:* the transport can change without breaking consumers.
@@ -109,6 +116,8 @@ tested in isolation. This serves changeability and correctness.
 - Domain files import framework, HTTP, database or UI packages. `changeability`
 - Business rules appear in controllers, ViewModels, templates or entities. `changeability`
 - Two code paths read or write the same datum. `correctness`
+- The same shared state is changed from several components or handlers. `changeability`
+- A module exports its helpers and constants for its tests to reach. `changeability`
 - Adding a feature means editing a central `when`/`switch`. `changeability`
 - Vendor types appear in public signatures. `changeability`
 - An interface has one implementation and no test seam. `simplicity`
