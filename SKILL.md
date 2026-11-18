@@ -157,7 +157,9 @@ Before changing a practice, read `docs/decisions/`.
 <pointers: docs/, runbooks, env template, changelog>
 ```
 
-## Report format (elevate mode, in Spanish)
+## Report format (elevate mode)
+Every report is written in the owner's language. The templates here and in `score.md` are in Spanish; translate them
+for any other owner. *Why:* the owner reads the report to decide what to do next.
 
 ```markdown
 ## Perfil

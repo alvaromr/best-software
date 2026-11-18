@@ -152,7 +152,9 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
 `[]` and `profile` says why. A section with no signals has `"worst_value": null`. Values are written as `safety`,
 `correctness`, `truth`, `changeability`, `simplicity` and `efficiency`.
 
-## Report format (in Spanish)
+## Report format
+The report is in the owner's language (`SKILL.md`, "Report format").
+
 The main signal of a section is the one that subtracts the most points. On a tie, the reference's audit signals come
 first, in their list order, then the "Never scales down" rows, in table order; any tie left, pick one, since the run
 record keeps them all. The cap line appears whenever a hard constraint is broken, even if the mean is already below
