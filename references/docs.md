@@ -66,6 +66,9 @@ home.
   - no jargon for external readers
 
   *Why:* ambiguity in instructions becomes divergence in execution.
+- **In agent instructions, name a pattern by its established term,** such as error boundary or optimistic update,
+  rather than describing it. *Why:* the term packs the whole practice into a word the agent already knows and reuses
+  while it works, while a description is longer and followed more loosely.
 - **Fix the output format of checklists and reports.** *Why:* the same sections every run make runs comparable.
 - **Use diagrams as code.** *Why:* they are versioned, diffable and reviewable with the change.
 - **External documents leak nothing internal,** state only what the reader needs, and have every link checked. *Why:*
