@@ -99,7 +99,8 @@ that copy, such as a report format. *Why:* it is the shared language of tools, l
 
 ## References — read before acting on the topic
 The detailed practices, each with its *Why*, live in the `references/` folder next to this file. When a task
-touches a topic, read its reference before acting on it, once per session. Read only the ones the task touches.
+touches a topic, read its reference before the first change on it, once per session. Read only the ones the task
+touches. *Why:* this file says what to protect and only the references say how, so acting on it alone skips them.
 
 | When the task involves… | Read |
 |---|---|
