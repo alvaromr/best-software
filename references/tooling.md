@@ -15,6 +15,11 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
 
   Its exit code is the verdict, and the same command runs locally, in the hook and in CI. *Why:* one command means one
   definition of "done" that nobody can partially forget.
+- **Keep code where the gate checks it.** Code with logic (several statements, branches or loops) lives in its own
+  file, with its language's extension, and the gate lints every language the repo contains. A string is fine for a
+  one-line command, or when a check in the gate verifies that code, such as a test that runs the query or a tool that
+  validates it. *Why:* the gate checks only what its tools can parse. Code in a string escapes format, lint and
+  type-check, needs escaping, and editors show it as text, so its bugs surface only when it runs.
 - **Provide a `fix` companion** that formats, autofixes and re-runs the gate. *Why:* fixing mechanical findings by hand
   wastes attention.
 - **Version the hooks in the repo and install them automatically:**
@@ -111,9 +116,12 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   adopting.
 - On legacy code, introduce the gate in report-only mode, baseline the existing findings, then enforce it on new code at
   once.
+- Code kept in a string usually buys isolation, such as running against the installed package instead of the source.
+  A separate file, run with the interpreter's isolation option, buys the same and stays checked.
 
 ## Audit signals
 - No single gate. `correctness`
+- Code kept in strings or config, out of the gate's reach. `correctness`
 - Hooks that are manual or absent. `correctness`
 - No formatter config. `changeability`
 - Warnings allowed. `correctness`
