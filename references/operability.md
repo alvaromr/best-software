@@ -5,7 +5,8 @@ datum is exposed. Performance decisions rest on measurements, not guesses. This 
 efficiency.
 
 ## Observability
-- **Log through one project logger,** never `print` or `console.log`:
+- **Log through one project logger,** never `print` or `console.log`. A CLI's output to its user is not a log and
+  goes to stdout as such:
   - Configure it once and write to stdout: JSON in production, readable in development.
   - Use fixed `snake_case` event names and one canonical key per concept.
   - Use UTC ISO-8601 timestamps, and levels that state intent.
