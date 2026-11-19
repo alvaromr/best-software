@@ -87,7 +87,7 @@ home.
 - The same instruction in two docs. `changeability`
 - Docs quoting config values. `changeability`
 - Stale commands, ports or versions. `truth`
-- A README without install, run and test. `changeability`
+- A README that lacks install, run or test. `changeability`
 - Knowledge found only in chat or on a server. `changeability`
 - No record of rejected alternatives. `changeability`
 - Broken links. `truth`

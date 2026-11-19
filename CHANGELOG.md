@@ -3,6 +3,11 @@
 What changes for the agents that use this skill, newest first. The skill has no version numbers: each entry is
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
+## 2026-11-19
+### Changed
+- The docs signal for a README covers only a README that exists and lacks install, run or test; a missing README
+  is a `repository` signal, from its root-files table.
+
 ## 2026-11-18
 ### Added
 - Code with logic stays where the gate checks it, never inside a string that escapes format, lint and type-check.
