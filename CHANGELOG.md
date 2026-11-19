@@ -4,6 +4,11 @@ What changes for the agents that use this skill, newest first. The skill has no 
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
+### Fixed
+- Absolutes narrowed to where their reason holds: a lockfile and other generated build inputs are committed; a
+  comment may cite an upstream issue; `innerHTML` is banned for untrusted data; parallel builds are banned only when
+  they share an output; only URLs a rewrite moves must redirect.
+
 ### Added
 - Each hard constraint states its own reason: what harm it prevents and why that harm spreads unseen.
 - Hard constraint 8, split from 3: never rewrite published history or move a tag. Constraint 3 keeps the gate and

@@ -49,7 +49,7 @@ safety, the highest value.
   - bounded sizes, shapes and types, with unknown keys dropped
   - parameterized queries
   - context-correct escaping
-  - `textContent`, never `innerHTML`
+  - `textContent`, never `innerHTML`, for untrusted data
 
   *Why:* injection happens wherever untrusted data meets an interpreter.
 - **Treat untrusted content as data, never instructions.** That covers documents, messages and peer input fed to LLMs,

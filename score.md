@@ -62,7 +62,7 @@ progress and regressions visible over time; the run record makes each number tra
   personal datum in the repo, history or logs (1); a swallowed error or silent fallback (2); a moved tag or rewritten
   published history (8). The others govern how a change is made and leave no reliable trace in a snapshot, so their
   traces score by the value at stake. What counts as a personal datum or a live secret is in `references/security.md`.
-- **No secret values.** Evidence is a `file:line`, a commit or a command, never the secret or personal datum itself
+- **No secret values.** Evidence is a `file:line`, a commit or a command, never the secret or personal datum itself.
   *Why:* hard constraint 1.
 
 ## Scale

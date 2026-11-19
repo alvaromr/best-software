@@ -46,8 +46,9 @@ could be published at any moment without leaking anything. This serves safety, t
   rewrites at runtime. *Why:* noise in `git status` hides real changes, and runtime files cause endless churn.
 - **Track every config file the build needs,** such as `tsconfig`, wrappers, lint configs and the version catalog.
   *Why:* an untracked build input makes the build unreproducible.
-- **Never commit generated artifacts:** `dist/`, `build/`, installers, coverage, test output. *Why:* they are derived,
-  stale on the next change, and bloat history.
+- **Never commit build or test output:** `dist/`, `build/`, installers, coverage, test output. A generated file that
+  the build reads, such as a lockfile, is committed. *Why:* output is derived, stale on the next change, and bloats
+  history, while a generated input pins what the build uses.
 - **Keep the repo publishable at all times:**
   - No company or machine-specific data; personal data is hard constraint 1.
   - Cross-platform paths.
@@ -57,7 +58,8 @@ could be published at any moment without leaking anything. This serves safety, t
 - **Every versioned artifact is agnostic of the individual developer from the start.** It is never cleaned up before
   publishing. `AGENTS.md`, hooks, scripts, project skills and commit messages are part of the code. They describe how
   *anyone* works on this project.
-  - The developer's own setup and habits never enter the repo, not even as a gitignored `.local` file. That covers
+  - The developer's own setup and habits never enter the repo, not even as a gitignored `.local` file, unless the
+    owner relaxes this rule ("Judgment"). That covers
     personal tools, permissions, memories, workflow rules, handoff notes and process narration. They live in the
     developer's user-level configuration.
   - **Test each item:** would every contributor need it, and would it work the same for them? Would it tell a stranger

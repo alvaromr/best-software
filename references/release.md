@@ -45,8 +45,9 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
 - **Ship only what is needed:** explicit package includes, typed markers, consumer shrinker rules inside
   libraries. Update sample apps in the same procedure. *Why:* consumers should need no extra setup, and samples that lag
   mislead.
-- **Choose the artifact type by purpose** (store bundle vs QA package), and never run parallel builds of the same job.
-  *Why:* the wrong artifact gets rejected or shipped by mistake, and parallel builds race.
+- **Choose the artifact type by purpose** (store bundle vs QA package), and never run parallel builds of the same job
+  that share an output or cache. *Why:* the wrong artifact gets rejected or shipped by mistake, and builds that share
+  a destination race.
 
 ### Containers
 - **Use multi-stage builds,** so build tools never reach the runtime image, and add a `test` stage that runs the gate.
@@ -82,7 +83,7 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
   - Keep a cold bundle of the full history.
 
   *Why:* recovery is needed exactly when the people and tools that know it are unavailable.
-- **Redirect removed URLs;** never return a 404 for them. *Why:* links and search rankings outlive rewrites.
+- **Redirect the URLs a rewrite moves;** never leave them to 404. *Why:* links and search rankings outlive rewrites.
 - **Audit platform deadlines early,** in a recreatable document. *Why:* store and runtime deadlines do not move.
 
 ## Judgment

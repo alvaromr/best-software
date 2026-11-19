@@ -22,7 +22,8 @@ failure goes unnoticed. This serves changeability, correctness and truth.
 ### Readability
 - **Code explains itself; a comment is the exception.**
   - A comment explains a non-obvious *why*, such as an invariant that once cost a regression.
-  - It is generic (no ticket, person or incident), truthful, and never narrates the code.
+  - It is generic (no internal ticket, person or incident), truthful, and never narrates the code. An external
+    source it depends on, such as an upstream issue behind a workaround, is cited.
   - A rationale needed in several places is written once and referenced.
   - Remove commented-out code.
 
