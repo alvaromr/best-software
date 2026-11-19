@@ -16,8 +16,9 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
 - **Keep a changelog** (Keep a Changelog, with `[Unreleased]` updated per user-visible change). Write it in user terms;
   release notes come from it and span from the previous release tag. *Why:* users need to know what changed for them,
   not which files moved.
-- **Bump only when the build can no longer fail, and never deploy an untagged commit;** tags themselves follow
-  `git.md`. *Why:* a version must identify exactly one artifact, forever.
+- **Bump only when the build can no longer fail, and never deploy an untagged commit to production;** previews and
+  staging may run any commit, and tags themselves follow `git.md`. *Why:* a version must identify exactly one
+  artifact, forever, while a preview exists to try what is not released yet.
 
 ### Build
 - **Make builds reproducible:**

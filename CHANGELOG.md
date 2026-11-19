@@ -5,6 +5,7 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Changed
+- Only production deploys need a tagged commit; previews and staging may run any commit.
 - Elevating a project whose build or tests already fail records those failures as the baseline, so the first commit
   is possible; the gate then fails only on new failures.
 - A CLI's output to its user goes to stdout; only logging must go through the project logger.
