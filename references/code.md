@@ -16,8 +16,7 @@ failure goes unnoticed. This serves changeability, correctness and truth.
   *Why:* synonyms make readers wonder whether two things differ.
 - **Rename as soon as a name lies.** Rename in its own commit (`git mv`), sweep every leftover, and check that the
   target name is free first. *Why:* a lying name is a false statement read on every visit (truth).
-- **Write every professional artifact in English,** as the constitution's "Language of artifacts" states, with its
-  reason.
+- **Write every professional artifact in English.** *Why:* the constitution's "Language of artifacts".
 - **Key persisted data by stable identifiers,** never by display names. *Why:* display names change, and keys must not.
 
 ### Readability

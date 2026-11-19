@@ -55,14 +55,14 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 - The gate config and toolchain pin are required only where production code exists.
 - Each instruction and audit signal is stated in one file only, and the others point to it.
 - The user-level agent instructions point to the constitution instead of holding a copy of it.
-- mutmut 3.8.1 with pytest 9.2, with the sources cited.
+- The Python mutation tool moves to the release that runs on the current test runner, with the sources cited.
 
 ## 2026-10-30
 ### Added
 - A read-only scoring procedure, with a global score and one per section.
 - A private run record, `.best-software.json`, for every procedure.
 - Deviations from a practice are recorded in the project's `docs/decisions/`, with who decided them.
-- mutmut on macOS runs with `NO_PROXY=*`.
+- A workaround for the Python mutation tool's crash on macOS.
 
 ### Changed
 - The skill is renamed from `engineering-standards` to `best-software`.
