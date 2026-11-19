@@ -106,7 +106,6 @@ failure goes unnoticed. This serves changeability, correctness and truth.
 
 ## Judgment
 - Comment density follows the codebase's convention. A public library adds docstrings written for its consumer.
-- A one-off script still gets real names, typed signatures and no silent failures, because those protect correctness.
 - When a linter threshold blocks a good design, raise it once, with the reason in the config. Never raise it to hide
   debt.
 

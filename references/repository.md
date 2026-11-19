@@ -81,8 +81,7 @@ could be published at any moment without leaking anything. This serves safety, t
   deleting it. *Why:* stale branches hide which work is real.
 
 ## Judgment
-- A single-file tool still has README, AGENTS.md, gate config, `.gitignore` and a lockfile, because they protect
-  correctness and reproducibility at any size. Folder depth grows with the codebase, not ahead of it.
+- Folder depth grows with the codebase, not ahead of it.
 - Keep a personal-data repo local, without a remote, when its content must never leave the machine. Record the reason.
 - **Relaxing the developer-agnostic rule:** relax it only when the owner asks, and only for a repo that will never be
   published or shared. The repo may then hold the owner's own workflow and setup. Record the decision in

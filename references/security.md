@@ -117,8 +117,6 @@ safety, the highest value.
 - **Guard cost-bearing APIs,** excluded from tests by default. *Why:* a loop can spend real money.
 
 ## Judgment
-- A local single-user tool still needs secrets out of the repo, input validation and loopback binding. Web and
-  authorization hardening scale with exposure.
 - An accepted risk is a written decision with its reason, never an omission.
 
 ## Audit signals

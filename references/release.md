@@ -85,8 +85,6 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
 - **Audit platform deadlines early,** in a recreatable document. *Why:* store and runtime deadlines do not move.
 
 ## Judgment
-- A CLI or library still has a single version source, a changelog, a scripted release and a clean-environment install
-  test. Containers and deploy hooks exist only when the project runs as a service.
 - Choose the distribution channel by cost and requirements, and record the decision.
 
 ## Audit signals

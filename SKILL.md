@@ -27,12 +27,16 @@ which do not shrink with project size:
 | Scales with the profile | Never scales down |
 |---|---|
 | number of layers and modules; DI framework or plain constructors | pure core separated from I/O |
-| containers, deploy hooks, health endpoints (services only) | gate: format, lint, strict types, tests, 100 % coverage |
-| structured logging depth, metrics | mutation testing on the core |
-| web hardening (exposure-dependent) | no secrets in repo or history; validated input |
-| ADRs, runbooks, SECURITY/PRIVACY docs | README + AGENTS.md; docs single-sourced and coherent |
-| i18n resources once a second language is planned; assistive-tech verification depth | keyboard and contrast basics |
+| containers, deploy hooks, health endpoints (services only) | one source of truth; testable seams at the boundaries |
+| structured logging depth, metrics | gate: format, lint, strict types, tests, 100 % coverage |
+| web and authorization hardening (exposure-dependent) | mutation testing on the core |
+| ADRs, runbooks, SECURITY/PRIVACY docs | no secrets in repo or history; validated input; loopback binding when local |
+| i18n resources once a second language is planned | real names, typed signatures, no silent failures |
+| assistive-tech verification depth | keyboard and contrast basics |
+| comment density; docstrings in a public library | README + AGENTS.md, `.gitignore`, lockfile |
+| folder depth | docs single-sourced and coherent |
 | release channel and packaging | single version source, changelog, immutable tags |
+| | scripted release, clean-environment install test |
 
 ## Step 2a — Bootstrap a new project
 1. **Agree on the profile and the shape of the core:** the domain modules and the adapters at the edges.

@@ -109,7 +109,6 @@ tested in isolation. This serves changeability and correctness.
 ## Judgment
 - Scale the number of layers to the problem. A 300-line CLI needs one pure core module and a thin entry point, not a
   DI framework.
-- Some rules never relax at any size: core free of I/O, one source of truth, testable seams at external boundaries.
 - Inside frozen legacy that will not evolve, make surgical changes only, and record the exception.
 
 ## Audit signals

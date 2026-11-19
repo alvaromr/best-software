@@ -72,7 +72,6 @@ safety for their data.
 
 ## Judgment
 - A CLI's UI is its output and `--help`: clear errors, exit codes, `--json` for machines, colour off when not a TTY.
-- Internal tools still meet keyboard and contrast basics. Full assistive-technology verification scales with audience.
 
 ## Audit signals
 - Unlabeled controls. `correctness`
