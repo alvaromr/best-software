@@ -65,10 +65,11 @@ which do not shrink with project size:
      a clean branch from it (`chore/engineering-baseline`, or one per topic).
    - **If the project is not a git repo:** ask whether to initialise one before changing anything. Otherwise, deliver
      the score only.
-2. **Score the project** (`score.md`). That run is the "before", and its signals are the findings to fix, ranked by
-   what each fix recovers. Record each failure the existing build or tests already have as the baseline: until it
-   is fixed, the gate fails only on new failures (hard constraint 3). A failing test stays as written: whether the
-   test or the code is right is an owner decision, and characterization tests pin only what no test already states.
+2. **Score the project** (`score.md`), recording its own score run. That run is the "before", and its signals are
+   the findings to fix, ranked by what each fix recovers. Record each failure the existing build or tests already
+   have as the baseline: until it is fixed, the gate fails only on new failures (hard constraint 3). A failing test
+   stays as written: whether the test or the code is right is an owner decision, and characterization tests pin only
+   what no test already states.
    *Why:* without a "before" there is no proof of improvement, and one assessment, in one place, keeps elevate and
    scoring from judging the same project differently; a failing test may be the only record of what the code was
    meant to do.
@@ -91,7 +92,7 @@ which do not shrink with project size:
    1. Run the full gate.
    2. Run the app, CLI or package as a user would.
    3. Run the coherence review over the whole repo, and fix whatever disagrees.
-   4. Score the project again. Its comparison with the first score run is the "after".
+   4. Score the project again, recording a second score run. Its comparison with the first is the "after".
 6. **Record the run** (below).
 7. **Report** in the format below.
 
