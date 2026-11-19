@@ -37,6 +37,8 @@ could be published at any moment without leaking anything. This serves safety, t
 | `CHANGELOG.md` | versioned or released | users learn what changed |
 | `LICENSE` | public or shared code; ask the owner which | without it, nobody may legally use the code |
 | security policy | as `security.md`, "Reporting channel" says | how to report issues |
+| `CONTRIBUTING.md`, a pointer to `AGENTS.md` | public repo | contributors look there first; the guide stays one |
+| code of conduct, issue and PR templates | public repo taking outside contributions | rules and reports set early |
 | `PRIVACY.md` | software handling user data | what happens to data |
 | `docs/` | beyond small tools | decisions, operations, limitations |
 

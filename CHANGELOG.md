@@ -4,6 +4,13 @@ What changes for the agents that use this skill, newest first. The skill has no 
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
+### Added
+- A public repo has a `CONTRIBUTING.md` that points to `AGENTS.md`; one that takes outside contributions also has a
+  code of conduct and issue and pull-request templates.
+- Each hard constraint states its own reason: what harm it prevents and why that harm spreads unseen.
+- Hard constraint 8, split from 3: never rewrite published history or move a tag. Constraint 3 keeps the gate and
+  the hooks, and scoring's direct evidence names 1, 2 and 8.
+
 ### Changed
 - The Python mutation task fails on any surviving mutant, because the tool itself exits with success, and its
   config uses the option name that is not deprecated.
@@ -14,23 +21,6 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   right is left to the owner.
 - Elevate scores the project before its first change and after its last, instead of assessing it on its own; its
   report shows the global score before and after. Scoring is read-only again: it no longer fixes anything.
-
-### Fixed
-- Absolutes narrowed to where their reason holds: a generated file the build reads but does not regenerate, such as
-  a lockfile, is committed; ticket references in comments follow the repo's existing convention, and an upstream
-  issue behind a workaround is cited; `innerHTML` is banned for untrusted data; parallel builds are banned only when
-  they share an output; only URLs a rewrite moves must redirect.
-
-### Added
-- Each hard constraint states its own reason: what harm it prevents and why that harm spreads unseen.
-- Hard constraint 8, split from 3: never rewrite published history or move a tag. Constraint 3 keeps the gate and
-  the hooks, and scoring's direct evidence names 1, 2 and 8.
-
-### Removed
-- How to test screen sizes without touching the user's window: it governs how an agent works with its owner, which
-  the constitution leaves to the owner's own instructions.
-
-### Changed
 - Only production deploys need a tagged commit; previews and staging may run any commit.
 - Elevating a project whose build or tests already fail records those failures as the baseline, so the first commit
   is possible; the gate then fails only on new failures.
@@ -52,6 +42,16 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   timeout of about 10 to 20 times one test run.
 - The docs signal for a README covers only a README that exists and lacks install, run or test; a missing README
   is a `repository` signal, from its root-files table.
+
+### Fixed
+- Absolutes narrowed to where their reason holds: a generated file the build reads but does not regenerate, such as
+  a lockfile, is committed; ticket references in comments follow the repo's existing convention, and an upstream
+  issue behind a workaround is cited; `innerHTML` is banned for untrusted data; parallel builds are banned only when
+  they share an output; only URLs a rewrite moves must redirect.
+
+### Removed
+- How to test screen sizes without touching the user's window: it governs how an agent works with its owner, which
+  the constitution leaves to the owner's own instructions.
 
 ## 2026-11-18
 ### Added
