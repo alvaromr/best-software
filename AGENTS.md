@@ -22,6 +22,8 @@ An agent skill: the engineering constitution and the procedures that apply it, f
 - The constitution governs this repo too — the skill must meet the bar it sets.
 - English in every file, report templates included — the constitution's "Language of artifacts".
 - Each practice states its *Why* — agents apply it with judgment only when they know the reason.
+- "Never" and "always" only where no exception holds, with a *Why* that says why none does (the gate checks it) —
+  an absolute without its reason is applied where it no longer fits, or dropped as arbitrary.
 - Tools and their versions appear only in `references/toolchains.md` — tools change faster than practices.
 - One term per concept across all files — two names for one thing read as two things.
 - A change updates every file it affects in the same commit — the skill is loaded piecemeal, so any stale file
