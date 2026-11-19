@@ -4,6 +4,10 @@ What changes for the agents that use this skill, newest first. The skill has no 
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
+### Removed
+- How to test screen sizes without touching the user's window: it governs how an agent works with its owner, which
+  the constitution leaves to the owner's own instructions.
+
 ### Changed
 - Only production deploys need a tagged commit; previews and staging may run any commit.
 - Elevating a project whose build or tests already fail records those failures as the baseline, so the first commit

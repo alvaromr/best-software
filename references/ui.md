@@ -64,8 +64,7 @@ safety for their data.
 
 ### Verification
 - **Verify UI changes in the real app or browser,** at target sizes, with before and after captures, across every
-  variant that reaches the screen. Test sizes with your own window, an iframe or DevTools, never by resizing the user's
-  window. *Why:* rendering is where reading the code stops being reliable.
+  variant that reaches the screen. *Why:* rendering is where reading the code stops being reliable.
 - **Do not polish screens about to be replaced.** *Why:* effort is better spent on what users will see.
 
 ## Judgment
