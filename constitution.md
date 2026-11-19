@@ -63,30 +63,26 @@ that as the signal to stop and ask the owner.
 ## Tensions, resolved
 These show the reasoning; apply it, not just the outcome.
 
-- **DRY vs coupling.** Two identical snippets in unrelated modules that change for different reasons stay duplicated.
-  Merging them would couple modules that evolve apart (changeability over the letter of DRY). Merge when they are the
-  same *knowledge*: the same rule, constant or format.
-- **100 % coverage vs trivial glue.** Coverage is evidence of correctness. An unreachable defensive branch is deleted,
-  not excluded, because its existence is the lie (truth). A thin platform entry point covered by the e2e smoke may be
-  excluded, with the reason recorded next to the exclusion.
-- **Simplicity vs layering in a small tool.** The pure-core and adapter split stays even in a 300-line CLI, because it
-  is what makes the core testable (correctness and changeability). The DI framework, the interfaces and the
-  extra layers go (simplicity).
-- **Latest stable vs supply-chain safety.** Track the latest stable versions, but wait the release-age delay, read the
-  changelog and leave each major jump to the owner. A fresh release is the favourite vector of supply-chain attacks
-  (safety over freshness). A fix for a known advisory can skip the wait after review, when the advisory weighs more
-  (`references/tooling.md`).
-- **Strictness vs surgical changes in legacy.** Introduce the strict gate as a ratchet: baseline what exists, enforce
-  it on new code, and reformat untouched code only in its own commit. A big-bang cleanup mixed with features hides
-  behaviour changes (correctness and truth).
-- **Fail loudly vs degrade gracefully.** A broken invariant fails loudly (correctness). A missing *optional*
-  capability degrades with a message saying why and how to fix it (safety and usability). The test: would continuing
-  produce a wrong result, or only a smaller one?
-- **Fast tests vs realism.** Prove the rules with fast unit tests on the pure core, and check realism with a few
-  integration and contract tests at the adapters. Realism bought with slow suites stops people running them, and an
-  unrun test proves nothing.
-- **Self-explanatory code vs comments.** Prefer a better name to a comment. Keep a comment where the code cannot say
-  *why*, such as an invariant that once cost a regression (truth over the letter of "no comments").
+- **DRY vs coupling.** Merging look-alike snippets that change for different reasons would couple modules that evolve
+  apart, so changeability wins over the letter of DRY (`references/code.md`, "Simplicity and dead weight").
+- **100 % coverage vs trivial glue.** Coverage is evidence of correctness, so an unreachable branch is deleted rather
+  than excluded: its existence is the lie (truth). The exclusions that remain are in `references/testing.md`.
+- **Simplicity vs layering in a small tool.** The pure core stays even in a small CLI, because it makes the core
+  testable (correctness and changeability), while the extra layers go (simplicity; `references/architecture.md`,
+  "Judgment").
+- **Latest stable vs supply-chain safety.** A fresh release is the favourite vector of supply-chain attacks, so the
+  release-age wait wins over freshness (safety), unless a known advisory weighs more (`references/tooling.md`,
+  "Dependencies").
+- **Strictness vs surgical changes in legacy.** A big-bang cleanup mixed with features hides behaviour changes, so the
+  strict gate comes in as a ratchet (correctness and truth; `references/tooling.md`).
+- **Fail loudly vs degrade gracefully.** The test: would continuing produce a wrong result, or only a smaller one? A
+  wrong one fails loudly (correctness); a smaller one degrades with a message (`references/architecture.md`, "Change
+  safety").
+- **Fast tests vs realism.** Realism bought with slow suites stops people running them, and an unrun test proves
+  nothing, so fast unit tests prove the rules and a few adapter tests check realism (`references/testing.md`,
+  "Levels").
+- **Self-explanatory code vs comments.** A better name beats a comment, but a comment stays where the code cannot say
+  *why* (truth over the letter of "no comments"; `references/code.md`, "Readability").
 - **Thoroughness vs an endless review loop.** A review can always find one more edge case, so an empty review is not
   the goal. Fix a finding when a failing test reproduces it, or its realistic path is explained, and its worst case
   outweighs the cost of the fix. Dismiss any other with its reason stated, and stop reviewing when a pass brings
