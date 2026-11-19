@@ -6,7 +6,8 @@ An agent skill: the engineering constitution and the procedures that apply it, f
   supported version. Adding a test: `references/testing.md`.
 - Hooks: the pre-commit hook runs the gate on the staged files, the commit-msg hook checks the subject
   (`references/git.md`), and the gate's first run in a clone installs both.
-- The gate cannot judge meaning. A change to a procedure is verified by running it on a real project.
+- The gate cannot judge meaning. A change to a procedure is verified by running it on a real project, and a change
+  to scoring also by the eval in `evals/score/README.md`.
 
 ## Architecture
 - `SKILL.md`: the entry point and the bootstrap and elevate procedures.
@@ -14,6 +15,7 @@ An agent skill: the engineering constitution and the procedures that apply it, f
 - `score.md`: the scoring procedure.
 - `references/`: one practice file per topic, each practice with its *Why*; `toolchains.md` holds the concrete tools.
 - `tests/test_skill.py`: the mechanical tests.
+- `evals/score/`: an example project with known flaws, and what scoring it must find.
 - The installed skill is this working tree, so uncommitted edits are live for every agent at once.
 
 ## Non-negotiables
