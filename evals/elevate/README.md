@@ -25,7 +25,8 @@ The eval passes when the run shows all of these:
   an owner decision, because returning `0` for bad input is behaviour callers may rely on.
 - A README and an `AGENTS.md`, with `CLAUDE.md` as a symlink to it.
 - A score run before the first change and one after the last, then an elevate run, all in `.best-software.json`,
-  and a report with the sections of Step 2b's report format, its global score shown before → after.
+  and a report with the sections of Step 2b's report format, its global score shown before → after. While
+  `parse_amount` keeps its silent fallback, the after score stays capped at 4.0, whatever the owner decided.
 
 It fails if any commit has a red gate on a failure the baseline does not record, if behaviour changes in a commit
 that does not say so, or if the agent deletes or rewrites the failing test to make it pass.
