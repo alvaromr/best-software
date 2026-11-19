@@ -5,6 +5,9 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Changed
+- Settle rules whose copies disagreed: coverage is lowered only by a recorded deviation, never for a prototype alone;
+  hooks are never bypassed, with no WIP override; one list of choices left to the owner, in the constitution; health
+  and version endpoints are asked of services only.
 - What counts as a personal datum or a live secret, such as declared authorship or a credential proven revoked, is
   stated once, in the security reference, and scoring points to it.
 - Toolchain pins (`packageManager`, version files, wrapper scripts) are checked for updates by hand, because the

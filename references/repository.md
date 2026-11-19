@@ -36,7 +36,7 @@ could be published at any moment without leaking anything. This serves safety, t
 | `.env.example` / template | the app reads env | documents every variable without secrets |
 | `CHANGELOG.md` | versioned or released | users learn what changed |
 | `LICENSE` | public or shared code; ask the owner which | without it, nobody may legally use the code |
-| security policy | public software, services | how to report issues (`security.md`, "Reporting channel") |
+| security policy | as `security.md`, "Reporting channel" says | how to report issues |
 | `PRIVACY.md` | software handling user data | what happens to data |
 | `docs/` | beyond small tools | decisions, operations, limitations |
 

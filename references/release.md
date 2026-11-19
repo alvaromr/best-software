@@ -21,8 +21,7 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
 
 ### Build
 - **Make builds reproducible:**
-  - lockfiles
-  - pinned toolchain
+  - lockfiles and the toolchain pin (`tooling.md`, "Dependencies")
   - base images pinned by digest
   - deterministic outputs
   - build from a clean tree at the tip of the release branch
@@ -74,8 +73,8 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
   *Why:* an edited migration diverges from what production actually ran.
 - **Verify the deploy actually landed:** the new version is served or installed, and the old credential or cache is
   gone. *Why:* a green pipeline can still serve the old artifact.
-- **Expose version and health endpoints, and provide a smoke task.** *Why:* "which version is running, and is it OK?"
-  must have a one-command answer.
+- **Expose a version endpoint in a service, beside its health endpoint (`operability.md`, "Observability"), and
+  provide a smoke task.** *Why:* "which version is running, and is it OK?" must have a one-command answer.
 - **Document disaster recovery:**
   - Rebuild from scratch.
   - Back up secrets outside the repo.
@@ -99,4 +98,4 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
 - Deploys that always restart. `correctness`
 - A manual-only release. `correctness`
 - Edited migrations. `correctness`
-- No health or version endpoint. `correctness`
+- A service with no version endpoint. `correctness`

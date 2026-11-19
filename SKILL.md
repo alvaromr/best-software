@@ -42,17 +42,9 @@ which do not shrink with project size:
    - `.gitignore`, `.editorconfig`
    - toolchain pin and lockfile
    - env template if needed
-3. **Install the gate before any feature** (`references/tooling.md`, `references/toolchains.md`):
-   - formatter
-   - strict linter
-   - strict type checker
-   - test runner with the 100 % threshold
-   - mutation config
-   - architecture rule
-   - automatically installed hooks
-   - one `check` task
-
-   *Why:* quality added later means fixing a backlog; installed first, it means never creating one.
+3. **Install the gate, its hooks and the mutation config before any feature** (`references/tooling.md`, "The
+   gate"; `references/testing.md`; `references/toolchains.md`). *Why:* quality added later means fixing a backlog;
+   installed first, it means never creating one.
 4. **Write a walking skeleton:** one end-to-end path through core and adapter, with its tests, and the gate green.
    *Why:* it proves the architecture and the gate before features depend on them.
 5. **Write the project guide** (template below) and the README.
@@ -92,7 +84,7 @@ which do not shrink with project size:
    - **If the fix is safe:** fix it in its own `fix:` commit with a reproducing test.
    - **Otherwise:** report it.
 
-   Ask before any change that alters public API, data, or the deploy.
+   Ask before any change the constitution's "How to decide" leaves to the owner.
 6. **Verify:**
    1. Run the full gate.
    2. Run the app, CLI or package as a user would.

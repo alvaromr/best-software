@@ -29,9 +29,8 @@ safety, the highest value.
   nowhere yet. A personal address gets harvested by bots, while an alias can be replaced.
 
 ### Secrets
-- **Secrets never live in the repo, history, images, argv, logs or tool output.** They come from env, a secret manager
-  or user-level config. *Why:* each of those places is readable by more people or processes than intended, and history
-  is forever. Hard constraint 1.
+- **Secrets come from env, a secret manager or user-level config,** never from a place hard constraint 1 names.
+  *Why:* each of those places is readable by more people or processes than intended, and history is forever.
 - **Commit a template, abort startup when a secret is missing, and ship no default credentials.** *Why:* a default
   credential is a public credential.
 - **Protect key files:**

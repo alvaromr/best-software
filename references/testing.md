@@ -23,7 +23,6 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 ### Coverage and mutation
 - **Gate on 100 % line and branch coverage,** plus functions in JS/TS, measured on the full suite.
   - A new branch ships with its test.
-  - Never lower the threshold.
 
   *Why:* below 100 % nobody can tell which uncovered lines matter. At 100 %, any new gap is visible and blocks.
 - **Keep exclusions explicit, rare and justified** in the coverage config:
@@ -137,8 +136,8 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   everyone to ignore red.
 
 ## Judgment
-- 100 % coverage and mutation testing are the default bar. Lower them only by a recorded decision, for example UI glue
-  proven by e2e, or a prototype explicitly marked throwaway.
+- 100 % coverage and mutation testing are the default bar. Lower them only by a recorded deviation (constitution, "How
+  to decide"), such as UI glue proven by e2e.
 - Scale mutation runs to cost: run them per module or incrementally on large codebases.
 - Exploratory spikes are deleted, or re-done test-first before they land.
 

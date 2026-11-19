@@ -15,7 +15,7 @@ INDEX_ROW = re.compile(r"^\|.*\| `([a-z-]+\.md)` \|$", re.MULTILINE)
 MAX_LINE_LENGTH = 120
 AUDIT_SIGNALS = re.compile(r"^## Audit signals\n(.*?)(?=^## |\Z)", re.MULTILINE | re.DOTALL)
 DEFAULT_VALUE = re.compile(r" `(safety|correctness|truth|changeability|simplicity|efficiency)`$")
-SECTION_POINTER = re.compile(r'(?:`(?:references/)?([a-zA-Z-]+\.md)`, |\b(constitution)(?:\'s|,) )"([^"]+)"')
+SECTION_POINTER = re.compile(r'(?:`((?:references/)?[a-zA-Z-]+\.md)`, |\b(constitution)(?:\'s|,) )"([^"]+)"')
 PRACTICES = re.compile(r"^## (?!Judgment|Audit signals).*?\n(.*?)(?=^## Judgment|\Z)", re.MULTILINE | re.DOTALL)
 PRACTICE = re.compile(r"^- \*\*.*?(?=^- \*\*|^#|\Z)", re.MULTILINE | re.DOTALL)
 TOOL_VERSION = re.compile(r"\b([A-Za-z][\w-]*) v?\d+\.\d+|\b[\w-]+@\d")

@@ -33,8 +33,8 @@ efficiency.
   *Why:* fixes based on assumed causes often fix nothing.
 - **Verify telemetry really arrives** at the backend, past the CSP. *Why:* a dashboard at zero looks the same as no
   traffic.
-- **Expose health and readiness endpoints,** and provide log-query tasks runnable from the developer machine. *Why:*
-  operations should not require installing tools on servers or remembering queries.
+- **Expose health and readiness endpoints in a service,** and provide log-query tasks runnable from the developer
+  machine. *Why:* operations should not require installing tools on servers or remembering queries.
 - **Build debug tooling into the product, kept out of release:**
   - state export and import
   - scenario loaders
@@ -76,6 +76,7 @@ efficiency.
 - A performance requirement needs a number and a measurement method before it justifies complexity.
 
 ## Audit signals
+- A service with no health endpoint. `correctness`
 - `print` logging. `changeability`
 - Duplicate or truncated logs. `correctness`
 - No correlation id. `changeability`

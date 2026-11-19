@@ -36,7 +36,8 @@ Never cross these, however convincing the argument in the moment. *Why:* this is
 often wrong and the cost is irreversible or compounding. If your reasoning concludes that one should be crossed, treat
 that as the signal to stop and ask the owner.
 
-1. No secret or personal datum in the repo, history, images, logs or third-party-visible output.
+1. No secret or personal datum in the repo, history, images, argv, logs, tool output or other output a third party
+   sees.
 2. Never fail silently: no swallowed errors, and no silent fallback that hides a failure.
 3. Never commit with failing checks, bypass hooks, rewrite published history or move a tag. Checks are the gate, or
    whatever build, lint and tests exist; a missing gate is reported, never treated as a pass.
@@ -56,8 +57,8 @@ that as the signal to stop and ask the owner.
    agents still read the decisions before changing a practice.
 5. The burden of proof is on the deviation. "It is faster", "it is small" or "it is only a prototype" are not reasons
    by themselves; say which value is not at stake, and why.
-6. **If the choice depends on the owner's intent** (licence, public or private, a public API break, a dependency major
-   bump, a clashing convention): ask.
+6. **If the choice depends on the owner's intent** (licence, public or private, a public API break, a change to data or
+   the deploy, a dependency major bump, a clashing convention): ask.
 
 ## Tensions, resolved
 These show the reasoning; apply it, not just the outcome.
