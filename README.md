@@ -24,5 +24,5 @@ down" column in `SKILL.md`, Step 1. Scores are orientative (`score.md`).
 ## License
 MIT, in `LICENSE`.
 
-## Next
+## Contributing
 Working on the skill itself: `AGENTS.md`.
