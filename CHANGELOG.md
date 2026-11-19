@@ -5,6 +5,9 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Changed
+- Toolchain pins (`packageManager`, version files, wrapper scripts) are checked for updates by hand, because the
+  package manager's outdated report skips them; a dependency or pin behind its latest stable past the release-age
+  wait, without a reason, is a `tooling` signal.
 - Mutation runs are bounded so the machine stays usable: at most half the cores, lower priority, and a per-mutant
   timeout of about 10 to 20 times one test run.
 - The docs signal for a README covers only a README that exists and lacks install, run or test; a missing README

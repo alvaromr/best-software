@@ -78,7 +78,9 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   LTS. *Why:* LTS gets security fixes for years without forced upgrades, and plain stable releases of
   a runtime expire within months. The agent working on the project finds what is outdated with the package manager's
   own report and updates it; no update bot. *Why:* a bot needs a hosted remote, and many repos live on one machine
-  only. For each update:
+  only. That report lists only the declared dependencies, so the agent checks each toolchain pin (`packageManager`,
+  version files, wrapper scripts) against its latest stable by hand. *Why:* an exact pin that no report lists stays
+  behind silently, release after release. For each update:
   1. Read the changelog from the current version to the target.
   2. List the impact.
   3. Flag every major jump to the owner.
@@ -133,3 +135,4 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
 - Unused dependencies. `simplicity`
 - No audit task. `correctness`
 - A toolchain pinned less exactly than its project kind requires. `correctness`
+- A dependency or toolchain pin behind its latest stable past the release-age wait, without a reason. `changeability`
