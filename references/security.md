@@ -40,8 +40,8 @@ safety, the highest value.
 
   *Why:* local tools and other users are also readers.
 - **Rotate with overlap,** then prove that the old credential fails and the new one works. Deliver secrets through a
-  vetted channel. *Why:* rotation that breaks consumers gets postponed, and an unproven revocation may not have
-  happened.
+  vetted channel. A leaked credential stops being a secret once `docs/decisions/` records which one, when, and that
+  proof. *Why:* rotation that breaks consumers gets postponed, and an unproven revocation may not have happened.
 - **Give each variant its own restricted keys,** and none for features it does not use. *Why:* a leak of one variant's
   key then stays contained.
 
@@ -108,8 +108,9 @@ safety, the highest value.
 - **Minimize data.** Analytics are opt-in, off in development, as easy to revoke as to grant, and switchable per
   variant, with the privacy policy matching reality. *Why:* data you never collect can never leak, and a policy that
   disagrees with the code is a legal liability.
-- **Keep PII out of repo, fixtures and logs;** use realistic dummies case by case. *Why:* test data gets copied
-  everywhere.
+- **Keep PII out of repo, fixtures and logs;** use realistic dummies case by case. Authorship the project declares on
+  purpose, such as commit identity or package author metadata, is not a leak. *Why:* test data gets copied
+  everywhere, while declared authorship is the project's own choice.
 - **Respect data residency, verified at startup,** and define retention, including on account deletion. *Why:* these
   are contractual and legal obligations, not preferences.
 - **Leak no internals** in client errors or third-party-visible notes. *Why:* stack traces and internal names are a map

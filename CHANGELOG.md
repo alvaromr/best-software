@@ -5,6 +5,8 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Changed
+- What counts as a personal datum or a live secret, such as declared authorship or a credential proven revoked, is
+  stated once, in the security reference, and scoring points to it.
 - Toolchain pins (`packageManager`, version files, wrapper scripts) are checked for updates by hand, because the
   package manager's outdated report skips them; a dependency or pin behind its latest stable past the release-age
   wait, without a reason, is a `tooling` signal.

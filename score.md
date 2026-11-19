@@ -48,15 +48,13 @@ progress and regressions visible over time; the run record makes each number tra
   other entry, such as an agent's unapproved one, still counts, and so does a gap listed only as pending elsewhere,
   such as a plan or TODO. *Why:* a deviation is the owner's call; an agent cannot excuse its own gaps.
 - **Judge what applies.** Skip a signal when its practice's reason does not hold in this project (constitution, "How
-  to decide", step 2), and give the reason; the burden of proof is on the skip. A deploy signal in a library, or a
-  gate of types, tests and coverage in a repo with no executable code, is skipped; what that repo still needs, such as
-  coherent docs, is judged for what it is. A link or reporting channel at the project's own public home is skipped
-  before its first publication, while only its owner reads the project: no one is misled until then. A link to any
-  other address still counts. What publishing must still make true there, such as enabling the channel, goes to the
-  observations. A practice in the "Never scales down" column never shrinks with size, only with the absence of its
-  subject. A section has no score only when none of its practices applies, such as `ui` in a
-  library with no interface. *Why:* an agent scores, not a script, so that each practice is weighed against the
-  project it meets.
+  to decide", step 2), and give the reason; the burden of proof is on the skip. A deploy signal in a library, a gate
+  of types, tests and coverage in a repo with no executable code, or a link to the project's own public home before
+  its first publication, which no one follows yet, is skipped. What that repo still needs, such as coherent docs, is
+  judged for what it is, and what publishing must make true goes to the observations. A practice in the "Never scales
+  down" column never shrinks with size, only with the absence of its subject. A section has no score only when none
+  of its practices applies, such as `ui` in a library with no interface. *Why:* an agent scores, not a script, so
+  that each practice is weighed against the project it meets.
 - **Unverified counts as present.** A signal that the repo, its history or the commands could show, but that could not
   be checked this run (a command did not run, a tool was missing), counts as found and is marked unverified (hard
   constraint 5; a missing gate is never a pass). A signal that no snapshot can show, such as knowledge kept only in
@@ -64,11 +62,7 @@ progress and regressions visible over time; the run record makes each number tra
 - **Hard constraints in a snapshot:** a constraint counts as broken only on direct evidence of one of these: a secret or
   personal datum in the repo, history or logs (1); a swallowed error or silent fallback (2); a moved tag or rewritten
   published history (3). The others govern how a change is made and leave no reliable trace in a snapshot, so their
-  traces score by the value at stake. Authorship the project declares on purpose (commit identity, package author
-  metadata) is neither a personal datum for constraint 1 nor a signal; the rule against a main personal address
-  applies only to the security contact. Test data that identifies no real person is not a personal datum either. A
-  leaked credential is no longer a secret once the deviations record it as revoked: which one, when, and how the old
-  one was proven to fail (`references/security.md`, rotation).
+  traces score by the value at stake. What counts as a personal datum or a live secret is in `references/security.md`.
 - **No secret values.** Evidence is a `file:line`, a commit or a command, never the secret or personal datum itself
   (hard constraint 1).
 
