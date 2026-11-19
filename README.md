@@ -21,6 +21,7 @@ In a project, call the skill with the operation you want:
 |---|---|
 | `/best-software score` | Scores the project out of 10, per section, and lists what to fix first. Changes nothing. |
 | `/best-software elevate` | Scores it, fixes it in small commits with the checks green, and scores it again. |
+| `/best-software publish` | Elevates it for publication, then releases and publishes it after your yes. |
 | `/best-software bootstrap` | Starts a new project with the gate, hooks and a first working path before any feature. |
 
 The slash form is Claude Code's; in other agents, ask in words, such as "score this project with the best-software

@@ -57,6 +57,10 @@ number traceable to the signals behind it.
   down" column never shrinks with size, only with the absence of its subject. A section has no score only when none
   of its practices applies, such as `ui` in a library with no interface. *Why:* an agent scores, not a script, so
   that each practice is weighed against the project it meets.
+- **To be published.** When the profile says the project is to be published or shared (`SKILL.md`, "Profile the
+  project"), every practice a public repo needs counts as if it were public already, and what publishing must make
+  true goes to the "Publishable" verdict as a blocker, not to the observations. *Why:* the score must show what the
+  public will see before they see it, and a gap noted only as an observation would not stop the publication.
 - **Unverified counts as present.** A signal that the repo, its history or the commands could show, but that could not
   be checked this run (a command did not run, a tool was missing), counts as found and is marked unverified (hard
   constraints 3 and 5). A signal that no snapshot can show, such as knowledge kept only in
@@ -94,7 +98,8 @@ the problems, so one nit costs little and many add up; a mean alone would hide a
      start from its signals. Re-verify each one, and keep it or drop it with its cause. Then look for new signals in
      what changed since its `commit` (`git diff <commit>`, which includes the uncommitted changes), and in what
      those changes affect, such as a shared helper whose other user was deleted.
-   - **Full,** otherwise: assess every section from scratch, since a changed skill or profile can change what counts.
+   - **Full,** otherwise, and always when the project is to be published: assess every section from scratch, since a
+     changed skill or profile can change what counts, and a publication cannot rest on a list an earlier run missed.
 
    A new signal on evidence that did not change since the last score run is marked `detected_now`. *Why:* starting
    from the last verified list keeps the score stable between runs, a full pass on each skill version or profile
@@ -136,11 +141,18 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
     },
     "ui": { "score": null, "not_applicable": "<reason>" }
   },
-  "observations": ["<unscored gap> — <evidence>"]
+  "observations": ["<unscored gap> — <evidence>"],
+  "publishable": {
+    "verdict": "not_ready",
+    "blockers": ["<signal or gap that stops publication> — <evidence>"],
+    "pending_decisions": ["<owner decision still open>"]
+  }
 }
 ```
 
-`basis` is `full` or `incremental`. `result` is `pass`, `fail` or `not_run`. With no commands to run, `commands` is
+`publishable` appears only when the project is to be published; its `verdict` is `ready` or `not_ready`, and it is
+`ready` only with no blockers, no pending decisions and no broken hard constraint. `basis` is `full` or
+`incremental`. `result` is `pass`, `fail` or `not_run`. With no commands to run, `commands` is
 `[]` and `profile` says why. A section with no signals has `"worst_value": null`. Values are written as `safety`,
 `correctness`, `truth`, `changeability`, `simplicity` and `efficiency`.
 
@@ -173,6 +185,10 @@ needs to know what to do next and what each fix is worth, more than the number i
 
 ## Changes since the previous run
 <signals that appear or disappear; omit on the first run>
+
+## Publishable
+<only when the project is to be published: "ready" or "not ready", each blocker with its evidence, and the owner's
+pending decisions>
 
 Orientative score: an agent assigns it, and it can vary between runs.
 ```

@@ -13,6 +13,11 @@ Last reviewed: 2026-10-29.
 - **Diagrams:** Mermaid.
 - **Private vulnerability reporting:** GitHub Private Vulnerability Reporting, or the hosting platform's equivalent.
 - **Editor settings:** `.editorconfig`.
+- **Hosting platform settings:** on GitHub, the `gh` CLI. Create and push with `gh repo create <owner>/<name> --public
+  --source . --push --description "<one line>"`; set topics and drop an unused wiki with `gh repo edit --add-topic
+  <topic> --enable-wiki=false`; enable private vulnerability reporting with `gh api -X PUT
+  repos/<owner>/<name>/private-vulnerability-reporting`. Read them back with `gh repo view --json
+  visibility,repositoryTopics,hasWikiEnabled` and `gh api repos/<owner>/<name>/private-vulnerability-reporting`.
 
 ## Kotlin / Android / JVM
 - **Build:** Gradle Kotlin DSL, the version catalog (`gradle/libs.versions.toml`) and convention plugins in an included

@@ -5,6 +5,12 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Added
+- A `publish` operation (`publish.md`): elevate with the profile set to be published, then the release when an
+  artifact is distributed, a "Publishable" verdict, every outward action listed for the owner's yes, run with the
+  project's release script, and a fresh copy from the remote verified afterwards.
+- The profile asks whether the project is to be published or shared, and where; if so, the owner's publish decisions
+  and private names come in one question at the start. Scoring then runs in full, counts public-repo practices as if
+  public, and ends in the "Publishable" verdict.
 - A public repo has a `CONTRIBUTING.md` that points to `AGENTS.md`; one that takes outside contributions also has a
   code of conduct and issue and pull-request templates.
 - Each hard constraint states its own reason: what harm it prevents and why that harm spreads unseen.

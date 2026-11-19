@@ -16,14 +16,22 @@ Called with an argument, the skill runs that operation; with none, the agent pic
 | `bootstrap` | `bootstrap.md`: start a new project |
 | `score` | `score.md`: measure a project, changing nothing |
 | `elevate` | `elevate.md`: score, fix, and score again |
+| `publish` | `publish.md`: elevate for publication, release, and publish after the owner's yes |
 
-Read only the file of the operation you run. *Why:* the skill is loaded piecemeal, and one name per entry point keeps
-every run on the same procedure.
+Each operation contains the one before it: elevate starts and ends with a score, and publish is elevate with the
+profile set to be published. Read only the files of the operation you run. *Why:* the skill is loaded piecemeal, and
+one name per entry point keeps every run on the same procedure.
 
 ## Profile the project
 Before changing anything, establish these facts and state them in one short block. *Why:* every judgment call below
 depends on them.
-- **Purpose and audience:** who runs it, who reads the code, and whether it is public.
+- **Purpose and audience:** who runs it, who reads the code, whether it is public, and whether it is to be published
+  or shared, and where.
+- **If it is to be published or shared:** ask the owner once, before any other step, for the publish decisions
+  (licence, name, visibility, whether to rewrite or squash the history, initial version) and for the names linked to
+  them to search for (company, clients, people, ticket keys, domains). Keep those names in the owner's user-level
+  configuration, never in the repo. *Why:* these choices are the owner's and block publication, so one question
+  avoids a run that stops at each; the names are private by definition, and only the owner knows them.
 - **Kind:** script or CLI, library or SDK, service or backend, app (web, mobile, desktop, extension), game or
   simulation, data or ML.
 - **Stack and runtime versions.** For an existing project, also read its current gate, tests, coverage and conventions.
@@ -68,7 +76,7 @@ was applied, with which procedure and which skill version, so a later run knows 
   "runs": [
     {
       "date": "<ISO 8601, UTC>",
-      "procedure": "bootstrap | elevate | score",
+      "procedure": "bootstrap | elevate | publish | score",
       "commit": "<project HEAD sha>",
       "clean_tree": true,
       "skill_date": "<the skill's HEAD commit date, ISO 8601>",
