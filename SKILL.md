@@ -67,7 +67,8 @@ which do not shrink with project size:
      the assessment only.
 2. **Measure the baseline.** *Why:* without a "before" there is no proof of improvement, and no way to spot a
    regression.
-   - Run the existing build and tests.
+   - Run the existing build and tests. Record each failure they already have as the baseline: until it is fixed,
+     the gate fails only on new failures (hard constraint 3).
    - Record coverage, lint and type findings, the dependency audit, and the outdated dependencies and
      toolchain pins.
    - Note what is unknown.

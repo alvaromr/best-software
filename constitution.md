@@ -40,7 +40,8 @@ that as the signal to stop and ask the owner.
    sees.
 2. Never fail silently: no swallowed errors, and no silent fallback that hides a failure.
 3. Never commit with failing checks, bypass hooks, rewrite published history or move a tag. Checks are the gate, or
-   whatever build, lint and tests exist; a missing gate is reported, never treated as a pass.
+   whatever build, lint and tests exist; a missing gate is reported, never treated as a pass. A failure recorded in a
+   legacy baseline (`SKILL.md`, "Step 2b") fails a check only when a change adds to it.
 4. Never leave the project incoherent. A change updates everything it affects, in the same commit, and a rename sweeps
    every mention.
 5. Never present an unverified claim as fact. Verify against code, runs and authoritative sources, or label it a

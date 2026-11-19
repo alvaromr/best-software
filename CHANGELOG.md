@@ -5,6 +5,8 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Changed
+- Elevating a project whose build or tests already fail records those failures as the baseline, so the first commit
+  is possible; the gate then fails only on new failures.
 - A CLI's output to its user goes to stdout; only logging must go through the project logger.
 - A defect outside the project, in a dependency or the platform, may get a workaround that cites its source and
   when it can go.
