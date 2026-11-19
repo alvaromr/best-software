@@ -5,6 +5,8 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Changed
+- The Python mutation task fails on any surviving mutant, because the tool itself exits with success, and its
+  config uses the option name that is not deprecated.
 - Raising the oldest runtime or OS version a project supports is a choice left to the owner, like a public API break.
 - A recorded decision never excuses a broken hard constraint when scoring: the evidence still caps the score at 4.0,
   and the owner's decision goes to the report.
