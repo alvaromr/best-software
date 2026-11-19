@@ -22,6 +22,8 @@ TOOL_VERSION = re.compile(r"\b([A-Za-z][\w-]*) v?\d+\.\d+|\b[\w-]+@\d")
 NOT_A_TOOL = {"at", "most", "below", "WCAG"}
 SPANISH = re.compile(r"[áéíóúñü¿¡ÁÉÍÓÚÑÜ]")
 DATED_HEADING = re.compile(r"^## (.*)$", re.MULTILINE)
+DATED_ENTRY = re.compile(r"^## (.*?)$(.*?)(?=^## |\Z)", re.MULTILINE | re.DOTALL)
+CHANGE_KIND = re.compile(r"^### (.*)$", re.MULTILINE)
 CODE_BLOCK = re.compile(r"^```.*?^```$", re.MULTILINE | re.DOTALL)
 RULE = re.compile(r"^(?:- |\d+\. ).*?(?=^- |^\d+\. |^#|^\||\Z)", re.MULTILINE | re.DOTALL)
 ABSOLUTE = re.compile(r"\b(never|always)\b", re.IGNORECASE)
@@ -150,6 +152,12 @@ class SkillTest(unittest.TestCase):
         for heading in headings:
             date.fromisoformat(heading)
         self.assertEqual(headings, sorted(set(headings), reverse=True))
+
+    def test_each_changelog_date_lists_each_kind_of_change_once(self) -> None:
+        changelog = (ROOT / "CHANGELOG.md").read_text()
+        entries = [(day, CHANGE_KIND.findall(body)) for day, body in DATED_ENTRY.findall(changelog)]
+        repeated = [f"{day}: {kind}" for day, kinds in entries for kind in sorted(set(kinds)) if kinds.count(kind) > 1]
+        self.assertEqual(repeated, [])
 
     def test_claude_md_is_a_symlink_to_agents_md(self) -> None:
         link = ROOT / "CLAUDE.md"
