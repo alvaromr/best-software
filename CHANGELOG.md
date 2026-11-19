@@ -8,6 +8,9 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 - Settle rules whose copies disagreed: coverage is lowered only by a recorded deviation, never for a prototype alone;
   hooks are never bypassed, with no WIP override; one list of choices left to the owner, in the constitution; health
   and version endpoints are asked of services only.
+- Each rule is stated once, in the reference that owns its topic, and other files point to it: what never scales down
+  lives only in the `SKILL.md` table, the constitution's tensions keep their reasoning, and toolchain lines name only
+  tools.
 - What counts as a personal datum or a live secret, such as declared authorship or a credential proven revoked, is
   stated once, in the security reference, and scoring points to it.
 - Toolchain pins (`packageManager`, version files, wrapper scripts) are checked for updates by hand, because the

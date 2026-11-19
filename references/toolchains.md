@@ -2,8 +2,7 @@
 
 These are means, not goals. Each line names the outcome first, then today's best-known tool. Replace a tool when a
 better one reaches the same outcome. Before adopting a tool, check its current version and status with the docs MCP
-(context7) or the registry. This file is the only one in the skill that names tools or their versions; the others
-name only standards, such as SemVer or WCAG.
+(context7) or the registry.
 
 Last reviewed: 2026-10-29.
 
@@ -23,7 +22,7 @@ Last reviewed: 2026-10-29.
   `allWarningsAsErrors` and `extraWarnings`.
 - **Library surface:** `explicitApi()` and binary-compatibility-validator.
 - **Dependency hygiene:** dependency-analysis plugin, and `implementation` over `api`.
-- **Tests:** JUnit 5 or kotest, MockK only at boundaries, Turbine for flows, `kotlinx-coroutines-test` with injected
+- **Tests:** JUnit 5 or kotest, MockK, Turbine for flows, `kotlinx-coroutines-test` with injected
   dispatchers, Robolectric for JVM Android tests, Compose UI tests, and Roborazzi or Paparazzi for screenshots.
 - **Coverage:** Kover with verification rules (line and branch), or JaCoCo.
 - **Mutation:** PIT (pitest) with the Kotlin plugin, or Arcmutate.
@@ -34,7 +33,7 @@ Last reviewed: 2026-10-29.
 - **Package manager:** pnpm, with hardening in `pnpm-workspace.yaml`: `minimumReleaseAge: 10080`, `trustPolicy:
   no-downgrade`, `verifyDepsBeforeRun: error`, `allowBuilds: {}`. Pin `packageManager`, use frozen-lockfile installs,
   and pin the runtime (`.node-version`, `engines`). Exempt a reviewed security fix from the release age with
-  `minimumReleaseAgeExclude: [<package>@<exact version>]` (pnpm ≥10.19), with a comment giving the reason.
+  `minimumReleaseAgeExclude: [<package>@<exact version>]` (pnpm ≥10.19).
 - **Types:** TypeScript `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `verbatimModuleSyntax`,
   `noUnusedLocals` and `noUnusedParameters`. Type plain JS with JSDoc and `checkJs`.
 - **Lint and format:** Biome, or ESLint (`typescript-eslint` strict-type-checked) with Prettier.
@@ -84,8 +83,8 @@ Last reviewed: 2026-10-29.
 - **Architecture rules:** import-linter.
 - **Security:** ruff's `S` rules, which reimplement bandit's checks inside the gate, so bandit itself is not needed.
   Use pip-audit for vulnerable dependencies.
-- **Schema:** Alembic migrations as the only schema owner.
+- **Schema migrations:** Alembic.
 
 ## Containers / services
-- Use a multi-stage Dockerfile, base images pinned by digest, a non-root user and a `HEALTHCHECK`. Compose with layered
-  env files and `${VAR:?}` guards. Put a reverse proxy (Caddy or nginx) in front, serving static files.
+- **Images and orchestration:** Dockerfile and Compose, with layered env files.
+- **Reverse proxy:** Caddy or nginx.

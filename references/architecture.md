@@ -89,8 +89,8 @@ tested in isolation. This serves changeability and correctness.
   everything public is a promise you must keep, and an attack surface.
 - **Hide transport details from consumers.** A consumer never sees status codes, JSON or endpoints, only domain types
   and domain errors. *Why:* the transport can change without breaking consumers.
-- **Evolve compatibly:** add defaults, deprecate before you remove, and mark breaking changes. Check that independently
-  published modules still work. *Why:* consumers upgrade on their schedule, not yours.
+- **Evolve compatibly:** add defaults, and deprecate before you remove (`release.md`, "Versioning"). Check that
+  independently published modules still work. *Why:* consumers upgrade on their schedule, not yours.
 - **A wrapper stays a wrapper;** application logic belongs to the consumer. *Why:* YAGNI, and logic in a wrapper is
   imposed on every consumer.
 

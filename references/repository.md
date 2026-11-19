@@ -49,7 +49,7 @@ could be published at any moment without leaking anything. This serves safety, t
 - **Never commit generated artifacts:** `dist/`, `build/`, installers, coverage, test output. *Why:* they are derived,
   stale on the next change, and bloat history.
 - **Keep the repo publishable at all times:**
-  - No personal, company or machine-specific data.
+  - No company or machine-specific data; personal data is hard constraint 1.
   - Cross-platform paths.
   - Everything user-specific is configuration.
 

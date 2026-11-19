@@ -127,8 +127,8 @@ was applied, with which procedure and which skill version, so a later run knows 
 ```
 
 ## Project guide template (`AGENTS.md`, with `CLAUDE.md` as a symlink)
-The guide is part of the code. It is self-contained, so teammates without this skill can follow it, and agnostic of
-the individual developer, so it works the same for everyone (`references/repository.md`). It holds only what tooling
+The guide is part of the code, agnostic of the individual developer (`references/repository.md`). It is
+self-contained, so teammates without this skill can follow it. It holds only what tooling
 cannot express, and points to files instead of copying them. Non-negotiables carry their reason in one line, so
 contributors can apply them with judgment.
 
