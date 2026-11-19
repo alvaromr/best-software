@@ -22,12 +22,15 @@ failure goes unnoticed. This serves changeability, correctness and truth.
 ### Readability
 - **Code explains itself; a comment is the exception.**
   - A comment explains a non-obvious *why*, such as an invariant that once cost a regression.
-  - It is generic (no internal ticket, person or incident), truthful, and never narrates the code. An external
-    source it depends on, such as an upstream issue behind a workaround, is cited.
+  - It is truthful, never narrates the code, and names no person or incident. Ticket references follow the
+    convention the repo's comments already have, as commit prefixes do (`git.md`); an upstream issue behind a
+    workaround is always cited.
   - A rationale needed in several places is written once and referenced.
   - Remove commented-out code.
 
-  *Why:* comments that restate code rot into lies, and the ones that survive should carry what code cannot say.
+  *Why:* comments that restate code rot into lies, and the ones that survive should carry what code cannot say. A
+  person or an incident ties the comment to one team's memory, while a ticket the team tracks, or the upstream issue a
+  workaround waits on, is where the rest of the story lives.
 - **Template comments use the template engine's syntax.** *Why:* HTML comments reach the client and leak internals.
 - **Keep functions small and cohesive:** guard clauses, flat flow. Complexity thresholds flag smells; cohesion decides.
   Never game a size rule; extract properly. *Why:* one level of abstraction per function keeps it readable, while hacks

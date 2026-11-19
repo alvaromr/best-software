@@ -47,8 +47,8 @@ could be published at any moment without leaking anything. This serves safety, t
 - **Track every config file the build needs,** such as `tsconfig`, wrappers, lint configs and the version catalog.
   *Why:* an untracked build input makes the build unreproducible.
 - **Never commit build or test output:** `dist/`, `build/`, installers, coverage, test output. A generated file that
-  the build reads, such as a lockfile, is committed. *Why:* output is derived, stale on the next change, and bloats
-  history, while a generated input pins what the build uses.
+  the build reads but does not regenerate, such as a lockfile or a migration, is committed. *Why:* output is derived,
+  stale on the next change, and bloats history, while a generated input pins what the build uses.
 - **Keep the repo publishable at all times:**
   - No company or machine-specific data; personal data is hard constraint 1.
   - Cross-platform paths.

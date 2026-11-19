@@ -5,8 +5,9 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Fixed
-- Absolutes narrowed to where their reason holds: a lockfile and other generated build inputs are committed; a
-  comment may cite an upstream issue; `innerHTML` is banned for untrusted data; parallel builds are banned only when
+- Absolutes narrowed to where their reason holds: a generated file the build reads but does not regenerate, such as
+  a lockfile, is committed; ticket references in comments follow the repo's existing convention, and an upstream
+  issue behind a workaround is cited; `innerHTML` is banned for untrusted data; parallel builds are banned only when
   they share an output; only URLs a rewrite moves must redirect.
 
 ### Added
