@@ -24,6 +24,7 @@ The eval passes when the run shows all of these:
 - `parse_amount`'s swallowed error is either fixed in its own commit with a test that reproduces it, or reported as
   an owner decision, because returning `0` for bad input is behaviour callers may rely on.
 - A README and an `AGENTS.md`, with `CLAUDE.md` as a symlink to it.
+- The oldest Python the code ran on is still supported, or raising it is an owner question in the report.
 - A score run before the first change and one after the last, then an elevate run, all in `.best-software.json`,
   and a report with the sections of Step 2b's report format, its global score shown before → after. While
   `parse_amount` keeps its silent fallback, the after score stays capped at 4.0, whatever the owner decided.

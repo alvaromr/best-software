@@ -65,7 +65,8 @@ that as the signal to stop and ask the owner.
 5. The burden of proof is on the deviation. "It is faster", "it is small" or "it is only a prototype" are not reasons
    by themselves; say which value is not at stake, and why.
 6. **If the choice depends on the owner's intent** (licence, public or private, a public API break, a change to data or
-   the deploy, a dependency major bump, a clashing convention): ask.
+   the deploy, a dependency major bump, raising the oldest runtime or OS version the project supports, a clashing
+   convention): ask.
 
 ## Tensions, resolved
 These show the reasoning; apply it, not just the outcome.
