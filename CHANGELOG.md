@@ -11,6 +11,13 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 - The profile asks whether the project is to be published or shared, and where; if so, the owner's publish decisions
   and private names come in one question at the start. Scoring then runs in full, counts public-repo practices as if
   public, and ends in the "Publishable" verdict.
+- New signals for publication: a name the owner listed as private in a file or the history; copied code whose
+  licence clashes; a third party's mark presented as the project's own; a security policy naming a channel that is
+  not enabled. The history audit searches diffs and commit messages with the secret scanner and the owner's names,
+  and checks author emails; commit times are flagged to the owner before the first publication.
+- The agent classifies each personal datum it finds (test data, declared identity, or someone else's) instead of
+  handing the owner a list; a project that drives another platform records that its terms were accepted; the release
+  script runs dry before the first tag.
 - A public repo has a `CONTRIBUTING.md` that points to `AGENTS.md`; one that takes outside contributions also has a
   code of conduct and issue and pull-request templates.
 - Each hard constraint states its own reason: what harm it prevents and why that harm spreads unseen.

@@ -52,11 +52,16 @@ could be published at any moment without leaking anything. This serves safety, t
   the build reads but does not regenerate, such as a lockfile or a migration, is committed. *Why:* output is derived,
   stale on the next change, and bloats history, while a generated input pins what the build uses.
 - **Keep the repo publishable at all times:**
-  - No company or machine-specific data; personal data is hard constraint 1.
+  - No company or machine-specific data, such as the names the owner listed as private (`SKILL.md`, "Profile the
+    project"); personal data is hard constraint 1.
   - Cross-platform paths.
   - Everything user-specific is configuration.
 
   *Why:* repos get shared or published sooner than planned, and history keeps whatever leaked.
+- **Third-party material keeps its terms.** Copied code is used only under a licence compatible with the repo's, with
+  its notice kept, and no third party's name, logo or mark is presented as the project's own. *Why:* the repo's
+  licence claims rights over everything in it, so material it has no right to makes that claim false, and a borrowed
+  mark misleads users about who stands behind the project.
 - **Every versioned artifact is agnostic of the individual developer from the start.** It is never cleaned up before
   publishing. `AGENTS.md`, hooks, scripts, project skills and commit messages are part of the code. They describe how
   *anyone* works on this project.
@@ -104,3 +109,6 @@ could be published at any moment without leaking anything. This serves safety, t
 - Duplicate agent instructions. `changeability`
 - Stale branches. `simplicity`
 - A published package that links to a private repository: its "Repository" link is a 404 for the public. `truth`
+- A name the owner listed as private (company, client, person, ticket key) in a file or the history. `safety`
+- Copied code whose licence clashes with the repo's, or lacks its notice. `truth`
+- A third party's name, logo or mark presented as the project's own. `truth`

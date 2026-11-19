@@ -71,14 +71,18 @@ server or a chat, is the single source of truth. This serves truth, correctness 
 - **When a secret leaks into history, rotate it first, then purge it** (`security.md`, "Secrets"). *Why:* deleting
   the file does not delete the commit, and only rotation makes the leak harmless.
 - **Before publishing, audit the full history** for secrets, personal data, third-party material and anything tied to
-  one developer, which should never have entered (criterion in `repository.md`). Squash when the history is unfit to
-  publish. *Why:* publishing exposes every past commit, not just the tree.
+  one developer, which should never have entered (criterion in `repository.md`). Search with the secret scanner
+  (`toolchains.md`) and with the names the owner listed as private, over every diff and every commit message, and
+  check each author and committer email. Squash when the history is unfit to publish, as the owner decides. *Why:*
+  publishing exposes every past commit, not just the tree, and a name in a message escapes a scan of the files.
 - **Deliver code to clients as a snapshot commit, without internal history or trailers.** *Why:* internal history is
   confidential context.
 
 ## Judgment
 - A ticket prefix is required only where work is tracked; never invent one. *Why:* an invented key points to no
   ticket and reads as tracked work.
+- Commit times show when the author works. Say so to the owner before the first publication; rewriting the dates
+  or squashing is their call. *Why:* working hours are personal, and published history cannot be recalled.
 
 ## Audit signals
 - Vague subjects such as "fix", "wip" or "changes". `changeability`

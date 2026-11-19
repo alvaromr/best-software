@@ -12,9 +12,9 @@ point of no return, so the steps before that point stay in one place.
 2. **Elevate the project** (`elevate.md`). Its scores count every public-repo practice and end in the "Publishable"
    verdict (`score.md`, "Rules"). Apply the owner's decisions as elevate's fixes, such as the licence file or a
    history squash, each in its own commit.
-3. **Prepare the release** when the project distributes an artifact (`references/release.md`, "Versioning" and
-   "Build"): one version source, the changelog entry, and the scripted release, run dry before the first tag.
-   *Why:* a release script that has never run fails at its first real step, after the tag is out.
+3. **Prepare the release** when the project distributes an artifact: the version, the changelog entry and the
+   scripted release with its dry run, as `references/release.md` asks in "Versioning" and "Build". *Why:* the
+   release is part of what goes out, so it is ready before the verdict that lets anything out.
 4. **State the verdict.** If it is "not ready", report the blockers and stop. *Why:* a publication cannot be undone,
    so it starts only from a verdict with no blockers.
 5. **List every outward action** and wait for the owner's yes over the whole list: create or reconfigure the

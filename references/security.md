@@ -25,8 +25,9 @@ safety, the highest value.
   - a `security.txt` (RFC 9116) on your own domain, pointing to one of these
 
   When none exists, state that in the policy, and record it in `docs/decisions/`. Never invent
-  a channel, and never publish a main personal address. *Why:* reporters need to know where to go, or that there is
-  nowhere yet. A personal address gets harvested by bots, while an alias can be replaced.
+  a channel, and never publish a main personal address. A channel the policy names is enabled before it is
+  published. *Why:* reporters need to know where to go, or that there is nowhere yet. A personal address gets
+  harvested by bots, while an alias can be replaced, and a channel that is not enabled turns every report away.
 
 ### Secrets
 - **Secrets come from env, a secret manager or user-level config,** never from a place hard constraint 1 names.
@@ -98,6 +99,9 @@ safety, the highest value.
 
   *Why:* these are the most common mobile vulnerability classes.
 - **Make anti-tamper checks unhookable and quiet.** *Why:* visible checks show the attacker where to patch.
+- **A project that drives another platform** (a bot, a client of its API, an automation of its site) records in
+  `docs/decisions/` that the owner accepted that platform's terms, and how the project keeps to them. *Why:* a tool
+  that breaks a platform's terms exposes its owner and every user to a ban, and only a record shows it was weighed.
 
 ### Supply chain
 - **Block telemetry a dependency does not need;** auditing it before install is in `tooling.md`, "Dependencies".
@@ -110,6 +114,9 @@ safety, the highest value.
 - **Keep PII out of repo, fixtures and logs;** use realistic dummies case by case. Authorship the project declares on
   purpose, such as commit identity or package author metadata, is not a leak. *Why:* test data gets copied
   everywhere, while declared authorship is the project's own choice.
+- **Classify each personal datum you find yourself,** as test data, the project's declared identity, or someone
+  else's datum, and treat only the last as a leak (hard constraint 1). *Why:* the agent already holds the evidence,
+  and a raw list handed to the owner moves the judgment to whoever has the least time for it.
 - **Respect data residency, verified at startup,** and define retention, including on account deletion. *Why:* these
   are contractual and legal obligations, not preferences.
 - **Leak no internals** in client errors or third-party-visible notes. *Why:* stack traces and internal names are a map
@@ -131,3 +138,4 @@ safety, the highest value.
 - Sequential public ids. `safety`
 - HTTP URLs. `safety`
 - A privacy policy that disagrees with the analytics code. `safety`
+- A security policy that names a private channel not enabled on the platform. `safety`

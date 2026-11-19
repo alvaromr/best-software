@@ -37,8 +37,9 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
   6. Publish.
   7. Tag.
 
-  Stop at the first failure, and never print credentials. *Why:* manual releases skip steps under pressure, and
-  testing the installed artifact catches packaging errors that dev installs hide.
+  Stop at the first failure, and never print credentials. Run the script dry, with nothing published, before the
+  first tag. *Why:* manual releases skip steps under pressure, testing the installed artifact catches packaging errors
+  that dev installs hide, and a script that has never run fails at its first real step, after the tag is out.
 - **Verify the release build specifically:** minification and shrinking, signing, artifact contents. Compile debug
   tooling out of release. *Why:* release-only transformations break things debug builds never show, and debug tooling
   in release is an attack surface.
