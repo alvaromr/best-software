@@ -61,9 +61,10 @@ failure goes unnoticed. This serves changeability, correctness and truth.
 - **Delete dead code in the same change that kills it:** functions, parameters, imports, resources, flags. An
   unreachable branch is deleted, never excused from coverage. *Why:* dead code misleads readers about
   what the system does (truth).
-- **Find the root cause; never ship a workaround or a defensive fix made blind.** *Why:* a workaround leaves the
-  defect in place and adds a second thing to understand, and a guard without understanding moves the failure
-  somewhere harder to see.
+- **Find the root cause; never ship a workaround or a defensive fix made blind.** A defect outside the project, in a
+  dependency or the platform, may get a workaround, with a comment citing its source and when it can go. *Why:* a
+  workaround leaves the defect in place and adds a second thing to understand, and a guard without understanding
+  moves the failure somewhere harder to see; a cited one is removed once its source is fixed.
 
 ### Types
 - **Use the strictest type checking from day one,** with warnings as errors.
