@@ -37,8 +37,10 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   check seen catching a real violation has already shown it works, and a check that cannot run fails loudly.
 - **Add mutation testing on the core,** or on everything when it is cheap:
   - Run it outside the pre-commit hook.
-  - Its command runs only the unit suite. Prefer a runner that executes only the tests covering each mutant, and set
-    low concurrency and a timeout close to the suite's real time as safety limits.
+  - Its command runs only the unit suite. Prefer a runner that executes only the tests covering each mutant.
+  - Bound the run so the machine stays usable: at most half the cores in parallel, fewer when one test run is a
+    heavy process, at lower scheduling priority, and a per-mutant timeout of about 10 to 20 times the measured time
+    of one test run.
   - Start small, with one module or a sample, before the full run.
   - Triage every survivor: a real hole gets a test, an equivalent mutant gets a recorded reason.
   - Improve the tests before touching production code.
@@ -46,7 +48,9 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 
   *Why:* coverage proves the code ran, while mutation proves the tests would notice if it were wrong. Mutation runs
   the tests once per mutant, so it multiplies their cost and side effects by hundreds. Only fast, in-process unit
-  tests stay safe at that scale.
+  tests stay safe at that scale. A run that takes every core, or more memory than the machine has, leaves it
+  unusable for the owner until it ends. A timeout far above the real time lets each hung mutant hold its slot for
+  minutes, and one too close to it counts mutants slowed by the load as killed.
 
 ### Test design
 - **Write tests as specification.**

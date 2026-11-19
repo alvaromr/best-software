@@ -5,6 +5,8 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Changed
+- Mutation runs are bounded so the machine stays usable: at most half the cores, lower priority, and a per-mutant
+  timeout of about 10 to 20 times one test run.
 - The docs signal for a README covers only a README that exists and lacks install, run or test; a missing README
   is a `repository` signal, from its root-files table.
 
