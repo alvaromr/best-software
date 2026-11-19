@@ -25,6 +25,8 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   the hooks, and scoring's direct evidence names 1, 2 and 8.
 
 ### Changed
+- A project that declares no oldest supported version gets the oldest one its code runs on, tested there; raising it
+  is left to the owner.
 - Each operation has its own file (`bootstrap.md`, `score.md`, `elevate.md`), named by an argument in `SKILL.md`'s
   operations table; `SKILL.md` keeps only what they share: the profile, the run record, reports and the guide
   template.

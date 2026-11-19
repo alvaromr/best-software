@@ -105,11 +105,14 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   - Build tools, package managers, installers and compilers: the exact version, always, through wrapper scripts,
     `packageManager` or a version file.
   - No dev tool raises the oldest runtime or OS version the project supports.
+  - A project that declares no oldest supported version gets the oldest one its code runs on, checked by running the
+    tests there; raising it is the owner's choice (constitution, "How to decide").
 
   *Why:* "works on my machine" is usually a toolchain difference, so the gate runs what production runs. A library's
   users pick the patch, and the latest one carries the security fixes, so a frozen old patch keeps fixed bugs; the
   printed patch makes a difference between machines visible instead of silent. A supported version dropped for a dev
-  tool locks users out for nothing they use.
+  tool locks users out for nothing they use, and an undeclared floor already includes every version the code runs on,
+  so declaring a higher one drops users silently.
 
 ## Judgment
 - On legacy code, introduce the gate in report-only mode, baseline the existing findings, then enforce it on new code at
