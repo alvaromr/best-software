@@ -4,6 +4,9 @@ What changes for the agents that use this skill, newest first. The skill has no 
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
+### Added
+- Each hard constraint states its own reason: what harm it prevents and why that harm spreads unseen.
+
 ### Removed
 - How to test screen sizes without touching the user's window: it governs how an agent works with its owner, which
   the constitution leaves to the owner's own instructions.

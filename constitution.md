@@ -37,17 +37,22 @@ often wrong and the cost is irreversible or compounding. If your reasoning concl
 that as the signal to stop and ask the owner.
 
 1. No secret or personal datum in the repo, history, images, argv, logs, tool output or other output a third party
-   sees.
-2. Never fail silently: no swallowed errors, and no silent fallback that hides a failure.
+   sees. *Why:* once published, a secret or datum cannot be recalled: history, caches and clones keep it.
+2. Never fail silently: no swallowed errors, and no silent fallback that hides a failure. *Why:* a silent failure
+   becomes wrong data that people act on, and nobody knows to look for it.
 3. Never commit with failing checks, bypass hooks, rewrite published history or move a tag. Checks are the gate, or
    whatever build, lint and tests exist; a missing gate is reported, never treated as a pass. A failure recorded in a
-   legacy baseline (`SKILL.md`, "Step 2b") fails a check only when a change adds to it.
+   legacy baseline (`SKILL.md`, "Step 2b") fails a check only when a change adds to it. *Why:* others build on every
+   commit and tag, so a red commit or a moved tag breaks what they rely on without telling them.
 4. Never leave the project incoherent. A change updates everything it affects, in the same commit, and a rename sweeps
-   every mention.
+   every mention. *Why:* the next change, often an agent's with no memory but the files, is planned from what the
+   artifacts say, so each stale statement misleads every step after it.
 5. Never present an unverified claim as fact. Verify against code, runs and authoritative sources, or label it a
-   hypothesis.
+   hypothesis. *Why:* a claim stated as fact is acted on unchecked, so its error reaches everyone downstream as truth.
 6. Never change behaviour silently. Behaviour changes are explicit, tested and committed apart from refactors.
-7. Never destroy the owner's work (a dirty tree, untracked files, local branches) without confirmation.
+   *Why:* a behaviour change hidden in a refactor escapes review, and surfaces later as a regression nobody can trace.
+7. Never destroy the owner's work (a dirty tree, untracked files, local branches) without confirmation. *Why:*
+   uncommitted work cannot be recovered, and only the owner knows what it was worth.
 
 ## How to decide when a practice seems not to fit
 1. Name the value the practice protects. Each practice states it in its *Why*.
@@ -88,7 +93,7 @@ These show the reasoning; apply it, not just the outcome.
   the goal. Fix a finding when a failing test reproduces it, or its realistic path is explained, and its worst case
   outweighs the cost of the fix. Dismiss any other with its reason stated, and stop reviewing when a pass brings
   nothing that clears this bar (simplicity, where correctness is not really at stake). Safety findings are never
-  dismissed for cost, because attackers search edge cases too (`references/security.md`).
+  dismissed for cost (`references/security.md`). *Why:* attackers search edge cases too.
 
 ## Language of artifacts
 Every professional artifact is in English: identifiers, comments, docs, commits, config comments, agent instructions.

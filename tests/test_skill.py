@@ -114,8 +114,8 @@ class SkillTest(unittest.TestCase):
         self.assertEqual(missing, [])
 
     def test_every_never_or_always_states_its_why(self) -> None:
-        # The constitution's hard constraints share one reason, stated above them; audit signals carry a value.
-        paths = [ROOT / "SKILL.md", ROOT / "score.md", *sorted(ROOT.glob("references/*.md"))]
+        # Audit signals carry a value instead of a reason.
+        paths = [ROOT / "SKILL.md", ROOT / "constitution.md", ROOT / "score.md", *sorted(ROOT.glob("references/*.md"))]
         missing = [
             f"{path.relative_to(ROOT)}: {' '.join(rule.split())[:60]}"
             for path in paths
