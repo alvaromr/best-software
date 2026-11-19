@@ -104,7 +104,8 @@ was applied, with which procedure and which skill version, so a later run knows 
   already there. The record stays uncommittable without touching the project's `.gitignore`.
 - **Not a git repo:** write it at the project root, with `commit` and `clean_tree` as `null`, and say that nothing
   excludes it.
-- **History:** append each run to `runs`, newest last; never rewrite earlier runs.
+- **History:** append each run to `runs`, newest last; never rewrite earlier runs. *Why:* later runs compare against
+  them, so a rewritten run hides what changed.
 - **Skill version:** the date and sha of the skill's HEAD commit, and whether its tree was clean. *Why:* the skill
   changes continuously, so a date reads at a glance where a version number would need a release process.
 

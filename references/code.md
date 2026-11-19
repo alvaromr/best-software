@@ -104,7 +104,8 @@ failure goes unnoticed. This serves changeability, correctness and truth.
 ## Judgment
 - Comment density follows the codebase's convention. A public library adds docstrings written for its consumer.
 - When a linter threshold blocks a good design, raise it once, with the reason in the config. Never raise it to hide
-  debt.
+  debt. *Why:* a raised threshold silences the check for all code, so only a reason that holds for all of it may
+  raise it.
 
 ## Audit signals
 - Vague names. `changeability`

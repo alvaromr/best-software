@@ -77,7 +77,8 @@ server or a chat, is the single source of truth. This serves truth, correctness 
   confidential context.
 
 ## Judgment
-- A ticket prefix is required only where work is tracked; never invent one.
+- A ticket prefix is required only where work is tracked; never invent one. *Why:* an invented key points to no
+  ticket and reads as tracked work.
 
 ## Audit signals
 - Vague subjects such as "fix", "wip" or "changes". `changeability`

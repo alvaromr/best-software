@@ -117,7 +117,8 @@ safety, the highest value.
 - **Guard cost-bearing APIs.** *Why:* a loop can spend real money.
 
 ## Judgment
-- An accepted risk is a written decision with its reason, never an omission.
+- An accepted risk is a written decision with its reason, never an omission. *Why:* an omitted risk looks unseen, so
+  the next reader cannot tell whether anyone weighed it.
 
 ## Audit signals
 - Keys in code, config or history. `safety`

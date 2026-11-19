@@ -12,7 +12,7 @@ progress and regressions visible over time; the run record makes each number tra
   possible, the commands are unverified.
 - **The commands:** the gate (`references/tooling.md`), plus the heavy checks the project runs before push or
   integration (mutation, audits) and its documented build or package check. Never run them against live or
-  production systems: they need real credentials and act on real data (safety).
+  production systems. *Why:* they need real credentials and act on real data (safety).
 - **Cached results** count only when the tool invalidates them on every change that could alter them. Otherwise run
   the tool fresh, deleting its git-ignored output first; if a fresh run cannot finish, the result is unverified.
 - **One commit.** If HEAD moves during the run, rerun the commands on the final HEAD, score that commit and say so.
@@ -63,7 +63,7 @@ progress and regressions visible over time; the run record makes each number tra
   published history (3). The others govern how a change is made and leave no reliable trace in a snapshot, so their
   traces score by the value at stake. What counts as a personal datum or a live secret is in `references/security.md`.
 - **No secret values.** Evidence is a `file:line`, a commit or a command, never the secret or personal datum itself
-  (hard constraint 1).
+  *Why:* hard constraint 1.
 
 ## Scale
 A section starts at 10, and each counted instance subtracts by the value at stake:

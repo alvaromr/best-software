@@ -22,6 +22,9 @@ TOOL_VERSION = re.compile(r"\b([A-Za-z][\w-]*) v?\d+\.\d+|\b[\w-]+@\d")
 NOT_A_TOOL = {"at", "most", "below", "WCAG"}
 SPANISH = re.compile(r"[áéíóúñü¿¡ÁÉÍÓÚÑÜ]")
 DATED_HEADING = re.compile(r"^## (.*)$", re.MULTILINE)
+CODE_BLOCK = re.compile(r"^```.*?^```$", re.MULTILINE | re.DOTALL)
+RULE = re.compile(r"^(?:- |\d+\. ).*?(?=^- |^\d+\. |^#|^\||\Z)", re.MULTILINE | re.DOTALL)
+ABSOLUTE = re.compile(r"\b(never|always)\b", re.IGNORECASE)
 
 
 def markdown_files() -> list[Path]:
@@ -107,6 +110,18 @@ class SkillTest(unittest.TestCase):
             for body in PRACTICES.findall(path.read_text())
             for practice in PRACTICE.findall(body)
             if "*Why:*" not in practice
+        ]
+        self.assertEqual(missing, [])
+
+    def test_every_never_or_always_states_its_why(self) -> None:
+        # The constitution's hard constraints share one reason, stated above them; audit signals carry a value.
+        paths = [ROOT / "SKILL.md", ROOT / "score.md", *sorted(ROOT.glob("references/*.md"))]
+        missing = [
+            f"{path.relative_to(ROOT)}: {' '.join(rule.split())[:60]}"
+            for path in paths
+            if path.name != "toolchains.md"
+            for rule in RULE.findall(CODE_BLOCK.sub("", path.read_text()))
+            if ABSOLUTE.search(rule) and "*Why:*" not in rule and not DEFAULT_VALUE.search(rule.rstrip())
         ]
         self.assertEqual(missing, [])
 
