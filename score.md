@@ -1,7 +1,7 @@
 # Best software — score
 
 Measures how far a project is from the bar, as a global score and one score per section. Measuring changes nothing;
-fixing is the elevate procedure (`SKILL.md`, "Step 2b"), which starts and ends with a score. The score is
+fixing is the elevate procedure (`elevate.md`), which starts and ends with a score. The score is
 orientative: an agent assigns it, so two full assessments can differ; reusing and building on the last run keeps
 that variation small. *Why:* a number makes progress and regressions visible over time; the run record makes each
 number traceable to the signals behind it.
@@ -21,11 +21,11 @@ number traceable to the signals behind it.
   `repository`, `docs`, `git`, `release`, `security`, `operability`, `ui`. `toolchains.md` is not scored, because a
   tool can be swapped for an equivalent.
 - **Signals:** a section's signals are the breaches of its reference's practices that the snapshot shows, plus any
-  breach of a practice in the "Never scales down" column of Step 1. A signal is named by its audit signal when one
-  matches, and otherwise by the practice it breaks. A contradiction between any two artifacts is a `docs` signal,
-  under that column's coherence row, wherever it is found. Gaps that no practice states go to the report as
-  observations, unscored. *Why:* the practices are the bar, so a separate list of signals always lags behind them;
-  naming each signal by its audit signal or practice keeps runs comparable.
+  breach of a practice in the "Never scales down" column (`SKILL.md`, "Profile the project"). A signal is named by
+  its audit signal when one matches, and otherwise by the practice it breaks. A contradiction between any two
+  artifacts is a `docs` signal, under that column's coherence row, wherever it is found. Gaps that no practice states
+  go to the report as observations, unscored. *Why:* the practices are the bar, so a separate list of signals always
+  lags behind them; naming each signal by its audit signal or practice keeps runs comparable.
 - **One section per piece of evidence.** Score each piece of evidence once, in the section whose reference states the
   practice it breaks. If several do, use the first of them in the order above.
 - **Severity is the value at stake in this instance.** Start from the default value that ends the audit signal in its
@@ -84,7 +84,7 @@ constraint is broken, the global score is at most 4.0. *Why:* the score falls wi
 the problems, so one nit costs little and many add up; a mean alone would hide a leaked secret among nines.
 
 ## Procedure
-1. **Profile the project** (Step 1).
+1. **Profile the project** (`SKILL.md`, "Profile the project").
 2. **Reuse an identical run.** If the last score run has the same `commit`, `skill_commit` and `profile`, all four
    trees were clean then and are clean now, report that run again, record nothing, and stop. *Why:* the same inputs
    must give the same score.
@@ -103,7 +103,7 @@ the problems, so one nit costs little and many add up; a mean alone would hide a
 5. **Compare with the previous score run**, if the run record has one. List each signal that appeared or
    disappeared, and its cause: a new commit, a different `skill_commit`, or `detected_now`.
 6. **Record the run** (`SKILL.md`, "Run record"), with the score fields below.
-7. **Report** in the format below. A leaked secret goes first, for rotation (Step 2b).
+7. **Report** in the format below. A leaked secret goes first, for rotation (`elevate.md`, "Procedure").
 
 ## Score fields
 A score run has `"procedure": "score"` and adds these fields to the common ones:
@@ -145,7 +145,7 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
 `correctness`, `truth`, `changeability`, `simplicity` and `efficiency`.
 
 ## Report format
-The report is in the owner's language (`SKILL.md`, "Report format").
+The report is in the owner's language (`SKILL.md`, "Reports").
 
 The main signal of a section is the one that subtracts the most points. On a tie, the reference's audit signals come
 first, in their list order, then the "Never scales down" rows, in table order; any tie left, pick one, since the run

@@ -10,9 +10,9 @@ An agent skill: the engineering constitution and the procedures that apply it, f
   evals in `evals/`, each when its README says it applies.
 
 ## Architecture
-- `SKILL.md`: the entry point and the bootstrap and elevate procedures.
+- `SKILL.md`: the entry point: the operations, and what they share (profile, run record, reports, guide template).
+- `bootstrap.md`, `score.md`, `elevate.md`: one file per operation.
 - `constitution.md`: values, hard constraints, decision rules and the index of references.
-- `score.md`: the scoring procedure.
 - `references/`: one practice file per topic, each practice with its *Why*; `toolchains.md` holds the concrete tools.
 - `tests/test_skill.py`: the mechanical tests.
 - `evals/`: one folder per procedure (`bootstrap`, `elevate`, `score`), each with its example project where it needs

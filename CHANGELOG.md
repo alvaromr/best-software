@@ -12,6 +12,9 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   the hooks, and scoring's direct evidence names 1, 2 and 8.
 
 ### Changed
+- Each operation has its own file (`bootstrap.md`, `score.md`, `elevate.md`), named by an argument in `SKILL.md`'s
+  operations table; `SKILL.md` keeps only what they share: the profile, the run record, reports and the guide
+  template.
 - The Python mutation task fails on any surviving mutant, because the tool itself exits with success, and its
   config uses the option name that is not deprecated.
 - Raising the oldest runtime or OS version a project supports is a choice left to the owner, like a public API break.

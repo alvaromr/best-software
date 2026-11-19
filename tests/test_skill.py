@@ -24,6 +24,8 @@ SPANISH = re.compile(r"[áéíóúñü¿¡ÁÉÍÓÚÑÜ]")
 DATED_HEADING = re.compile(r"^## (.*)$", re.MULTILINE)
 DATED_ENTRY = re.compile(r"^## (.*?)$(.*?)(?=^## |\Z)", re.MULTILINE | re.DOTALL)
 CHANGE_KIND = re.compile(r"^### (.*)$", re.MULTILINE)
+# The repository's own docs; every other root Markdown file is part of the skill.
+REPO_DOCS = {"README.md", "AGENTS.md", "CLAUDE.md", "CHANGELOG.md", "CONTRIBUTING.md", "SECURITY.md"}
 CODE_BLOCK = re.compile(r"^```.*?^```$", re.MULTILINE | re.DOTALL)
 RULE = re.compile(r"^(?:- |\d+\. ).*?(?=^- |^\d+\. |^#|^\||\Z)", re.MULTILINE | re.DOTALL)
 ABSOLUTE = re.compile(r"\b(never|always)\b", re.IGNORECASE)
@@ -117,7 +119,8 @@ class SkillTest(unittest.TestCase):
 
     def test_every_never_or_always_states_its_why(self) -> None:
         # Audit signals carry a value instead of a reason.
-        paths = [ROOT / "SKILL.md", ROOT / "constitution.md", ROOT / "score.md", *sorted(ROOT.glob("references/*.md"))]
+        procedures = [path for path in sorted(ROOT.glob("*.md")) if path.name not in REPO_DOCS]
+        paths = [*procedures, *sorted(ROOT.glob("references/*.md"))]
         missing = [
             f"{path.relative_to(ROOT)}: {' '.join(rule.split())[:60]}"
             for path in paths

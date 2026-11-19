@@ -7,9 +7,20 @@ description: Procedures to bootstrap a new software project at professional qual
 
 The values, hard constraints and decision rules are in `constitution.md`; read it first if this session has not. The
 detailed practices are in `references/` (index in the constitution). This skill adds only the end-to-end procedures.
-To score a project, follow `score.md`.
 
-## Step 1 — Profile the project
+## Operations
+Called with an argument, the skill runs that operation; with none, the agent picks the one the request names.
+
+| Argument | Procedure |
+|---|---|
+| `bootstrap` | `bootstrap.md`: start a new project |
+| `score` | `score.md`: measure a project, changing nothing |
+| `elevate` | `elevate.md`: score, fix, and score again |
+
+Read only the file of the operation you run. *Why:* the skill is loaded piecemeal, and one name per entry point keeps
+every run on the same procedure.
+
+## Profile the project
 Before changing anything, establish these facts and state them in one short block. *Why:* every judgment call below
 depends on them.
 - **Purpose and audience:** who runs it, who reads the code, and whether it is public.
@@ -37,64 +48,6 @@ which do not shrink with project size:
 | folder depth | docs single-sourced and coherent |
 | release channel and packaging | single version source, changelog, immutable tags |
 | | scripted release, clean-environment install test |
-
-## Step 2a — Bootstrap a new project
-1. **Agree on the profile and the shape of the core:** the domain modules and the adapters at the edges.
-2. **Scaffold the repository** (`references/repository.md`):
-   - layout
-   - root files
-   - `.gitignore`, `.editorconfig`
-   - toolchain pin and lockfile
-   - env template if needed
-3. **Install the gate, its hooks and the mutation config before any feature** (`references/tooling.md`, "The
-   gate"; `references/testing.md`; `references/toolchains.md`). *Why:* quality added later means fixing a backlog;
-   installed first, it means never creating one.
-4. **Write a walking skeleton:** one end-to-end path through core and adapter, with its tests, and the gate green.
-   *Why:* it proves the architecture and the gate before features depend on them.
-5. **Write the project guide** (template below) and the README.
-6. **Make the first commit:** the skeleton, green, in the agreed convention.
-7. **Build every feature test-first** (`references/testing.md`), one atomic commit per step (`references/git.md`).
-   Each commit passes the coherence review (`references/docs.md`, "Content rules").
-8. **Add release artifacts** (`references/release.md`) once something is distributable.
-9. **Record the run** (Run record, below).
-
-## Step 2b — Elevate an existing project
-1. **Prepare the branch:**
-   - **If the project is a git repo:** check that the tree is clean. If it is dirty, stop and ask (hard constraint 7).
-     Then update the default branch. If the project integrates through pull requests (`references/git.md`), create
-     a clean branch from it (`chore/engineering-baseline`, or one per topic).
-   - **If the project is not a git repo:** ask whether to initialise one before changing anything. Otherwise, deliver
-     the score only.
-2. **Score the project** (`score.md`), recording its own score run. That run is the "before", and its signals are
-   the findings to fix, ranked by what each fix recovers. Record each failure the existing build or tests already
-   have as the baseline: until it is fixed, the gate fails only on new failures (hard constraint 3). A failing test
-   stays as written: whether the test or the code is right is an owner decision, and characterization tests pin only
-   what no test already states.
-   *Why:* without a "before" there is no proof of improvement, and one assessment, in one place, keeps elevate and
-   scoring from judging the same project differently; a failing test may be the only record of what the code was
-   meant to do.
-3. **Fix directly, in this order.** Each step is its own atomic commit with the gate green. *Why:* the order builds the
-   safety net before anything that could break.
-   1. Safety net: characterization tests around anything you will touch.
-   2. Gate and hooks, as a ratchet on legacy code (`references/tooling.md`).
-   3. Secrets and security fixes. A leaked secret is reported to the owner at once, for rotation.
-   4. Repository hygiene and toolchain pin.
-   5. Structure and code refactors, under tests, with no behaviour change.
-   6. Tests up to the coverage and mutation targets.
-   7. Docs and the project guide.
-   8. Release artifacts.
-4. **Behaviour is frozen during the pass** (hard constraint 6). When you find a real bug:
-   - **If the fix is safe:** fix it in its own `fix:` commit with a reproducing test.
-   - **Otherwise:** report it.
-
-   Ask before any change the constitution's "How to decide" leaves to the owner.
-5. **Verify:**
-   1. Run the full gate.
-   2. Run the app, CLI or package as a user would.
-   3. Run the coherence review over the whole repo, and fix whatever disagrees.
-   4. Score the project again, recording a second score run. Its comparison with the first is the "after".
-6. **Record the run** (below).
-7. **Report** in the format below.
 
 ## Run record (`.best-software.json`)
 Every procedure, scoring included, appends one run to `.best-software.json` at the repository root, as its last
@@ -128,6 +81,10 @@ was applied, with which procedure and which skill version, so a later run knows 
 }
 ```
 
+## Reports
+Every report is written in the owner's language, translating the template of its procedure. *Why:* the owner reads
+the report to decide what to do next.
+
 ## Project guide template (`AGENTS.md`, with `CLAUDE.md` as a symlink)
 The guide is part of the code, agnostic of the individual developer (`references/repository.md`). It is
 self-contained, so teammates without this skill can follow it. It holds only what tooling
@@ -153,25 +110,4 @@ Before changing a practice, read `docs/decisions/`.
 
 ## Where things live
 <pointers: docs/, runbooks, env template, changelog>
-```
-
-## Report format (elevate mode)
-Every report is written in the owner's language, translating the templates here and in `score.md`. *Why:* the owner
-reads the report to decide what to do next.
-
-```markdown
-## Profile
-<kind · stack · audience · constraints>
-
-## Baseline
-<global score, gate state, coverage, number of signals — before → after>
-
-## Done
-1. <commit subject> — <topic>
-
-## Deferred
-1. <finding> — <why it is deferred> — <proposed fix>
-
-## Decisions for the owner
-1. <decision> — <options> — <recommendation>
 ```

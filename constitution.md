@@ -41,8 +41,9 @@ that as the signal to stop and ask the owner.
 2. Never fail silently: no swallowed errors, and no silent fallback that hides a failure. *Why:* a silent failure
    becomes wrong data that people act on, and nobody knows to look for it.
 3. Never commit with failing checks or bypass hooks. Checks are the gate, or whatever build, lint and tests exist; a
-   missing gate is reported, never treated as a pass. A failure recorded in a legacy baseline (`SKILL.md`, "Step 2b")
-   fails a check only when a change adds to it. *Why:* a red commit breaks bisect and every branch cut from it.
+   missing gate is reported, never treated as a pass. A failure recorded in a legacy baseline
+   (`elevate.md`, "Procedure") fails a check only when a change adds to it. *Why:* a red commit breaks bisect and
+   every branch cut from it.
 4. Never leave the project incoherent. A change updates everything it affects, in the same commit, and a rename sweeps
    every mention. *Why:* the next change, often an agent's with no memory but the files, is planned from what the
    artifacts say, so each stale statement misleads every step after it.

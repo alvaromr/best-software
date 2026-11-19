@@ -1,9 +1,9 @@
 # Bootstrap eval
 
-This eval checks that the bootstrap procedure (`SKILL.md`, "Step 2a") starts a project with the gate before any
-feature. There is no example project: the agent starts from an empty directory. Run it by hand after a change to
-Step 2a, to the project guide template, or to the gate's practices in `references/tooling.md`. *Why:* the order of
-bootstrap is its whole point, and only the commits an agent makes show whether it kept that order.
+This eval checks that the bootstrap procedure (`bootstrap.md`) starts a project with the gate before any feature.
+There is no example project: the agent starts from an empty directory. Run it by hand after a change to
+`bootstrap.md`, to the project guide template, or to the gate's practices in `references/tooling.md`. *Why:* the
+order of bootstrap is its whole point, and only the commits an agent makes show whether it kept that order.
 
 ## Run
 1. Create a new empty directory outside this repo.
