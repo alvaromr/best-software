@@ -5,6 +5,8 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
 ### Changed
+- Elevate keeps a test that already fails as written, recorded in the baseline; whether the test or the code is
+  right is left to the owner.
 - Elevate scores the project before its first change and after its last, instead of assessing it on its own; its
   report shows the global score before and after. Scoring is read-only again: it no longer fixes anything.
 

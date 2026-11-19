@@ -67,9 +67,11 @@ which do not shrink with project size:
      the score only.
 2. **Score the project** (`score.md`). That run is the "before", and its signals are the findings to fix, ranked by
    what each fix recovers. Record each failure the existing build or tests already have as the baseline: until it
-   is fixed, the gate fails only on new failures (hard constraint 3). *Why:* without a "before" there is no proof of
-   improvement, and one assessment, in one place, keeps elevate and scoring from judging the same project
-   differently.
+   is fixed, the gate fails only on new failures (hard constraint 3). A failing test stays as written: whether the
+   test or the code is right is an owner decision, and characterization tests pin only what no test already states.
+   *Why:* without a "before" there is no proof of improvement, and one assessment, in one place, keeps elevate and
+   scoring from judging the same project differently; a failing test may be the only record of what the code was
+   meant to do.
 3. **Fix directly, in this order.** Each step is its own atomic commit with the gate green. *Why:* the order builds the
    safety net before anything that could break.
    1. Safety net: characterization tests around anything you will touch.
