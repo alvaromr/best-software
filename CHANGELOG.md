@@ -4,6 +4,10 @@ What changes for the agents that use this skill, newest first. The skill has no 
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-19
+### Changed
+- Elevate scores the project before its first change and after its last, instead of assessing it on its own; its
+  report shows the global score before and after. Scoring is read-only again: it no longer fixes anything.
+
 ### Fixed
 - Absolutes narrowed to where their reason holds: a generated file the build reads but does not regenerate, such as
   a lockfile, is committed; ticket references in comments follow the repo's existing convention, and an upstream

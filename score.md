@@ -1,12 +1,13 @@
 # Best software — score
 
 Measures how far a project is from the bar, as a global score and one score per section. Measuring changes nothing;
-step 7 then fixes what needs no owner decision. The score is orientative: an agent assigns it, so two full
-assessments can differ; reusing and building on the last run keeps that variation small. *Why:* a number makes
-progress and regressions visible over time; the run record makes each number traceable to the signals behind it.
+fixing is the elevate procedure (`SKILL.md`, "Step 2b"), which starts and ends with a score. The score is
+orientative: an agent assigns it, so two full assessments can differ; reusing and building on the last run keeps
+that variation small. *Why:* a number makes progress and regressions visible over time; the run record makes each
+number traceable to the signals behind it.
 
 ## Rules
-- **Read-only until step 7.** Change nothing in the project except the run record. Files the commands write as usual
+- **Read-only.** Change nothing in the project except the run record. Files the commands write as usual
   and git ignores (coverage, caches, build output, mutation results) are fine. If the dependencies are missing,
   install them from the lockfile alone, with the project's own package manager and no updates; if that is not
   possible, the commands are unverified.
@@ -100,11 +101,7 @@ the problems, so one nit costs little and many add up; a mean alone would hide a
 5. **Compare with the previous score run**, if the run record has one. List each signal that appeared or
    disappeared, and its cause: a new commit, a different `skill_commit`, or `detected_now`.
 6. **Record the run** (`SKILL.md`, "Run record"), with the score fields below.
-7. **Fix what needs no owner decision.** If the session works in this project, fix each signal whose fix needs no
-   owner decision (constitution, "How to decide", step 6, and what Step 2b asks before), with Step 2b's branch,
-   commits and gate. Then score again from step 1 and report that run; its comparison shows what the fixes removed.
-   *Why:* a fix the agent can make alone, left in a list, costs the owner a decision that was never theirs.
-8. **Report** in the format below. A leaked secret goes first, for rotation (Step 2b).
+7. **Report** in the format below. A leaked secret goes first, for rotation (Step 2b).
 
 ## Score fields
 A score run has `"procedure": "score"` and adds these fields to the common ones:
