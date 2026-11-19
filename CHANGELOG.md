@@ -6,6 +6,8 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 ## 2026-11-19
 ### Added
 - Each hard constraint states its own reason: what harm it prevents and why that harm spreads unseen.
+- Hard constraint 8, split from 3: never rewrite published history or move a tag. Constraint 3 keeps the gate and
+  the hooks, and scoring's direct evidence names 1, 2 and 8.
 
 ### Removed
 - How to test screen sizes without touching the user's window: it governs how an agent works with its owner, which

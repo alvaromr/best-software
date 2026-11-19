@@ -40,10 +40,9 @@ that as the signal to stop and ask the owner.
    sees. *Why:* once published, a secret or datum cannot be recalled: history, caches and clones keep it.
 2. Never fail silently: no swallowed errors, and no silent fallback that hides a failure. *Why:* a silent failure
    becomes wrong data that people act on, and nobody knows to look for it.
-3. Never commit with failing checks, bypass hooks, rewrite published history or move a tag. Checks are the gate, or
-   whatever build, lint and tests exist; a missing gate is reported, never treated as a pass. A failure recorded in a
-   legacy baseline (`SKILL.md`, "Step 2b") fails a check only when a change adds to it. *Why:* others build on every
-   commit and tag, so a red commit or a moved tag breaks what they rely on without telling them.
+3. Never commit with failing checks or bypass hooks. Checks are the gate, or whatever build, lint and tests exist; a
+   missing gate is reported, never treated as a pass. A failure recorded in a legacy baseline (`SKILL.md`, "Step 2b")
+   fails a check only when a change adds to it. *Why:* a red commit breaks bisect and every branch cut from it.
 4. Never leave the project incoherent. A change updates everything it affects, in the same commit, and a rename sweeps
    every mention. *Why:* the next change, often an agent's with no memory but the files, is planned from what the
    artifacts say, so each stale statement misleads every step after it.
@@ -53,6 +52,8 @@ that as the signal to stop and ask the owner.
    *Why:* a behaviour change hidden in a refactor escapes review, and surfaces later as a regression nobody can trace.
 7. Never destroy the owner's work (a dirty tree, untracked files, local branches) without confirmation. *Why:*
    uncommitted work cannot be recovered, and only the owner knows what it was worth.
+8. Never rewrite published history or move a tag. *Why:* others have cloned or released it, and a rewrite breaks
+   their copies without telling them.
 
 ## How to decide when a practice seems not to fit
 1. Name the value the practice protects. Each practice states it in its *Why*.

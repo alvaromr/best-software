@@ -17,8 +17,8 @@ server or a chat, is the single source of truth. This serves truth, correctness 
 - **Commit a checkpoint before a risky or large change.** *Why:* the way back must exist before you need it.
 - **Stage explicit paths,** and check the result with `git status` and `git log -1`. *Why:* blind staging commits
   secrets and scratch files, and exit codes do not show what was committed.
-- **Hard constraint 3 holds on every commit, a local one included.** *Why:* a red commit breaks bisect and every
-  branch cut from it.
+- **Hard constraint 3 holds on every commit, a local one included.** *Why:* a local commit gets pushed or branched
+  from later, and its red spreads with it.
 - **Squash WIP checkpoints before integration,** with a pre-push guard against `WIP` commits. *Why:* the integrated
   history should explain the change, not replay the process.
 
@@ -45,8 +45,8 @@ server or a chat, is the single source of truth. This serves truth, correctness 
   through the gate. History stays linear, without merge commits. *Why:* a branch exists for review and CI before
   integration, and without them it only adds steps; linear history bisects cleanly, and long branches accumulate
   conflicts.
-- **Never rewrite published history or force-push shared branches;** revert, or re-do properly. *Why:* others built on
-  it, and rewriting breaks their clones silently.
+- **Undo published work with a revert, or re-do it properly,** and never force-push a shared branch (hard
+  constraint 8). *Why:* a force-push rewrites history that others pull.
 - **Before rewriting any history, even unpublished, look for references to the affected commit ids.** They can live
   in tool and plugin registries, deploy configs, docs, notes and caches.
   - Rewrite only when every reference can be updated.
