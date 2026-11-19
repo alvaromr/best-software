@@ -15,8 +15,8 @@ An agent skill: the engineering constitution and the procedures that apply it, f
 - `constitution.md`: values, hard constraints, decision rules and the index of references.
 - `references/`: one practice file per topic, each practice with its *Why*; `toolchains.md` holds the concrete tools.
 - `tests/test_skill.py`: the mechanical tests.
-- `evals/`: one folder per procedure (`bootstrap`, `elevate`, `score`), each with its example project where it needs
-  one, and what running the procedure must produce.
+- `evals/`: one folder per operation (`bootstrap`, `elevate`, `publish`, `score`), each with its example project where
+  it needs one, and what running the procedure must produce.
 - The installed skill is this working tree, so uncommitted edits are live for every agent at once.
 
 ## Non-negotiables
