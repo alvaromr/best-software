@@ -5,7 +5,7 @@ datum is exposed. Performance decisions rest on measurements, not guesses. This 
 efficiency.
 
 ## Observability
-- **Log through one project logger:**
+- **Log through one project logger,** never `print` or `console.log`:
   - Configure it once and write to stdout: JSON in production, readable in development.
   - Use fixed `snake_case` event names and one canonical key per concept.
   - Use UTC ISO-8601 timestamps, and levels that state intent.
@@ -20,8 +20,7 @@ efficiency.
 - **A library logs only on its own named logger.** It never adds handlers to, or changes the level of, loggers it
   does not own, its dependencies' included. *Why:* logging configuration belongs to the application, and a library that
   touches it silently changes the logging of the code around it.
-- **Surface failures to the user or operator with their cause;** never fail silently. *Why:* hard constraint 2. An
-  invisible failure cannot be fixed.
+- **Surface failures to the user or operator with their cause.** *Why:* an invisible failure cannot be fixed.
 - **Report crashes with breadcrumbs, and triage every issue:**
   1. Download the complete data, paginated.
   2. Assign ownership with evidence.
@@ -35,7 +34,7 @@ efficiency.
   traffic.
 - **Expose health and readiness endpoints in a service,** and provide log-query tasks runnable from the developer
   machine. *Why:* operations should not require installing tools on servers or remembering queries.
-- **Build debug tooling into the product, kept out of release:**
+- **Build debug tooling into the product** (the release build drops it: `release.md`, "Build"):
   - state export and import
   - scenario loaders
   - overlays that explain decisions
@@ -49,7 +48,6 @@ efficiency.
   and revert what does not pay off. *Why:* efficiency ranks below simplicity unless measurement proves it matters.
 - **Bound the work per frame or per request,** with the cheapest check first. *Why:* one pathological case must not
   freeze everything.
-- **Never block the event loop or main thread, and cancel stale work.** *Why:* one blocking call stalls every user.
 - **Kill N+1 queries,** and push filtering and sorting to the datastore. *Why:* per-item queries scale with the data,
   which is how they explode.
 - **Compute derived data once and cache it,** keyed by version or mtime, with explicit invalidation. *Why:* a cache

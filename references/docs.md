@@ -45,21 +45,16 @@ only in a chat or in someone's head. This serves truth and coherence, and the ch
 home.
 
 ### Content rules
-- **Docs are part of the change:** update them in the same commit, and review them before every commit. *Why:* "update
-  the docs later" means never (coherence).
-- **Write only verified facts.** Cite external facts with source and date, and label hypotheses. *Why:* readers act on
-  docs, and a confident falsehood does more harm than a gap.
+- **Cite external facts with their source and date.** *Why:* readers act on docs, and a confident falsehood does more
+  harm than a gap.
 - **Record negative results and dead ends:** what was tried, why it failed, the numbers. Put a short summary at the top.
   *Why:* nobody repeats the analysis, and nobody retries the approach that already failed.
-- **Record non-obvious invariants** next to the code. *Why:* each one cost a regression once, and an
-  unrecorded one will cost it again.
 - **Record known limitations and deferred ideas** in the repo. *Why:* chat history is not a project memory.
 - **Generalize:** write the rule a case reveals, folded into the existing structure, without dated anecdotes, ticket
   names or tool names in agent-agnostic docs. *Why:* a rule teaches every future case, while an anecdote teaches one.
 - **Keep docs short and telegraphic** without losing information. Leave out what a thing does not do. *Why:* long docs
   are skimmed, and the important line gets missed.
-- **Use plain language:**
-  - one term per concept
+- **Use plain language,** with one term per concept (`code.md`, "Naming and language"):
   - condition first
   - imperative steps with an explicit actor
   - exact values and absolute dates
@@ -73,10 +68,8 @@ home.
 - **Use diagrams as code.** *Why:* they are versioned, diffable and reviewable with the change.
 - **External documents leak nothing internal,** state only what the reader needs, and have every link checked. *Why:*
   internal details are a security and confidentiality risk, and noise for the reader.
-- **Explain domain jargon in the UI** for non-experts, with help kept in sync with the features. *Why:* help that the
-  UI contradicts is worse than none.
-- **Before a commit or release, review coherence:** does anything lie, contradict another part, or describe what no
-  longer exists? *Why:* hard constraint 4. Incoherence compounds silently.
+- **Before a commit or release, review coherence,** docs included: does anything lie, contradict another part, or
+  describe what no longer exists? *Why:* "update the docs later" means never, and incoherence compounds silently.
 
 ## Judgment
 - A small tool may need only README and AGENTS.md. Add `docs/` when there is a decision, an operation or a limitation

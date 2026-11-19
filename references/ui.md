@@ -35,8 +35,8 @@ safety for their data.
 ### Design system
 - **Keep design tokens in one place;** restyle by editing tokens only. *Why:* one source of truth for visual decisions
   keeps screens coherent.
-- **Wrap UI libraries in themed components;** feature code never imports raw widgets (forbidden-import rule). *Why:*
-  consistency by construction, and a library swap in one place.
+- **Make the wrappers of UI libraries themed components** (`architecture.md`, "Boundaries"). *Why:* consistency by
+  construction.
 - **Pass behaviour through composition slots or explicit parameters,** not hidden global context. *Why:* implicit
   context makes components unpredictable and hard to test.
 - **Reusable components take a `modifier`/`className` applied to the root,** follow the platform's parameter order, and
@@ -44,10 +44,9 @@ safety for their data.
 
 ### Content and i18n
 - **Keep user-visible strings in resources once a second language is supported or planned,** translated into every
-  supported language and formatted through one helper. Until then:
+  supported language, and format them through one helper. Until then:
   - keep each module's strings together
   - never build sentences from fragments
-  - format through one helper
 
   *Why:* resource files for a single language are speculative indirection. Keeping the strings together and whole
   makes a later extraction mechanical, and that removes the costly retrofit the rule exists to avoid.
@@ -67,8 +66,7 @@ safety for their data.
 - **Verify UI changes in the real app or browser,** at target sizes, with before and after captures, across every
   variant that reaches the screen. Test sizes with your own window, an iframe or DevTools, never by resizing the user's
   window. *Why:* rendering is where reading the code stops being reliable.
-- **Ship no speculative UI infrastructure,** and do not polish screens about to be replaced. *Why:* simplicity, and
-  effort is better spent on what users will see.
+- **Do not polish screens about to be replaced.** *Why:* effort is better spent on what users will see.
 
 ## Judgment
 - A CLI's UI is its output and `--help`: clear errors, exit codes, `--json` for machines, colour off when not a TTY.

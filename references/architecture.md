@@ -60,7 +60,6 @@ tested in isolation. This serves changeability and correctness.
   effects to run. When the state moves through phases that accept different events, make the owner a state machine.
   View-only state, such as a hover or an open menu, can stay in its component. *Why:* state changed from many places
   has no single file that shows how it evolves, while a pure owner shows it in one place and is tested without a UI.
-- **Keep state immutable;** produce new values. *Why:* shared mutation makes behaviour depend on who touched what last.
 - **Keep loading out of constructors and `init` blocks.** Key each load by the entity it loads. *Why:* construction
   stays side-effect-free, and multiple instances do not collide.
 - **Keep render and pure paths free of side effects.** Do the work outside them and re-render on completion. *Why:*
@@ -96,8 +95,8 @@ tested in isolation. This serves changeability and correctness.
   imposed on every consumer.
 
 ### Change safety
-- **Put a new behaviour that alters existing UX behind a flag.** `false` must be identical to the old behaviour. Prune
-  flags that are constant everywhere. *Why:* rollout becomes reversible, while dead flags are pure complexity.
+- **Put a new behaviour that alters existing UX behind a flag.** `false` must be identical to the old behaviour; a
+  flag constant everywhere is dead code (`code.md`, "Simplicity and dead weight"). *Why:* rollout becomes reversible.
 - **Fail loudly on broken invariants.** Degrade gracefully only when an *optional* capability is missing, saying why
   and how to fix it. *Why:* continuing past a broken invariant produces wrong results; a missing extra only produces
   fewer.

@@ -34,8 +34,8 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   coverage target, mutation run or tests of their own. A new check proves itself by failing once on a known violation.
   They run on the toolchain production code pins and need no pin of their own. *Why:* testing the tests never ends, a
   check seen catching a real violation has already shown it works, and a check that cannot run fails loudly.
-- **Add mutation testing on the core,** or on everything when it is cheap:
-  - Run it outside the pre-commit hook.
+- **Add mutation testing on the core,** or on everything when it is cheap, run where `tooling.md`, "The gate" puts
+  heavy checks:
   - Its command runs only the unit suite. Prefer a runner that executes only the tests covering each mutant.
   - Bound the run so the machine stays usable: at most half the cores in parallel, fewer when one test run is a
     heavy process, at lower scheduling priority, and a per-mutant timeout of about 10 to 20 times the measured time
@@ -103,7 +103,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 
 ### Levels
 - **Integration tests are few.** They cover only the adapters (database, HTTP, filesystem, platform) against real or
-  contract-faithful dependencies, and never re-test business rules. They run outside the pre-commit hook. *Why:* they
+  contract-faithful dependencies, and never re-test business rules. *Why:* they
   catch wiring and contract errors, which units cannot see, but they are slow.
 - **Contract tests guard fragile third parties** and come before infrastructure migrations. *Why:* they pin the
   behaviour you depend on, so an upgrade fails loudly.

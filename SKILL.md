@@ -54,8 +54,7 @@ which do not shrink with project size:
 5. **Write the project guide** (template below) and the README.
 6. **Make the first commit:** the skeleton, green, in the agreed convention.
 7. **Build every feature test-first** (`references/testing.md`), one atomic commit per step (`references/git.md`).
-   Each commit passes the coherence review: does anything here lie, contradict another part, or describe what no
-   longer exists?
+   Each commit passes the coherence review (`references/docs.md`, "Content rules").
 8. **Add release artifacts** (`references/release.md`) once something is distributable.
 9. **Record the run** (Run record, below).
 
@@ -72,12 +71,12 @@ which do not shrink with project size:
    - Record coverage, lint and type findings, the dependency audit, and the outdated dependencies and
      toolchain pins.
    - Note what is unknown.
-3. **Assess every topic** against its reference's practices, its audit signals first. Rank the findings by the value
-   order: safety first, then correctness, truth, changeability, simplicity and efficiency.
+3. **Assess every topic** against its reference's practices, its audit signals first. Rank the findings by the
+   constitution's value order.
 4. **Fix directly, in this order.** Each step is its own atomic commit with the gate green. *Why:* the order builds the
    safety net before anything that could break.
    1. Safety net: characterization tests around anything you will touch.
-   2. Gate and hooks. On legacy code, baseline the findings as a ratchet.
+   2. Gate and hooks, as a ratchet on legacy code (`references/tooling.md`).
    3. Secrets and security fixes. A leaked secret is reported to the owner at once, for rotation.
    4. Repository hygiene and toolchain pin.
    5. Structure and code refactors, under tests, with no behaviour change.
@@ -92,7 +91,7 @@ which do not shrink with project size:
 6. **Verify:**
    1. Run the full gate.
    2. Run the app, CLI or package as a user would.
-   3. Review coherence across every part of the repo, and fix whatever disagrees.
+   3. Run the coherence review over the whole repo, and fix whatever disagrees.
 7. **Record the run** (below).
 8. **Report** in the format below.
 

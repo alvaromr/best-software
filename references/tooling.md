@@ -24,15 +24,14 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   wastes attention.
 - **Version the hooks in the repo and install them automatically:**
   - The pre-commit hook is fast, runs on staged files, and is skipped when no relevant file is staged.
-  - Heavy checks (full matrix, mutation, audits) run before push or integration.
+  - Heavy checks (full matrix, mutation, integration tests, audits) run before push or integration.
 
   *Why:* manual installation means some clones run no hooks, and a slow hook gets bypassed.
 - **Expose every routine action as a named, described task:** run, test, gate, fix, coverage, mutation, audit, build,
   release, logs, smoke. *Why:* nobody should have to remember a command, and a forgotten step is a skipped step.
 
 ### Static analysis
-- **Commit the formatter config and an `.editorconfig`;** docs point to them and never restate their values. *Why:*
-  style decided by a machine ends style debates, and restated values drift (truth).
+- **Commit the formatter config and an `.editorconfig`.** *Why:* style decided by a machine ends style debates.
 - **Run the linter strict, with warnings as errors;** its config is the single source of truth for style. *Why:* a
   warning that does not fail is ignored forever.
 - **Treat baselines as a ratchet:**
@@ -47,8 +46,6 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   rules encode new knowledge of bugs, for free.
 - **Turn a correction made twice into a check:** a lint rule or a test in the gate, when the tools can express it.
   *Why:* a rule kept only in reviews holds while someone remembers it, while a check holds on every change at no cost.
-- **Take facts from tools** (build tasks, compiler, resolver), not from ad-hoc parsing scripts. *Why:* the tool knows
-  the real configuration; a parser knows a guess.
 
 ### Dependencies
 - **Keep dependencies minimal by default:** stdlib and platform first. Review every new dependency for:
@@ -59,9 +56,9 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   - whether it reaches production
 
   *Why:* each dependency is code you run but did not write, review or control.
-- **Prefer a small own implementation over a large framework for a narrow need,** but never hand-roll crypto, complex
-  standard formats or security primitives. *Why:* a small own module removes a trust and upgrade burden, while
-  security code needs the scrutiny only mature libraries get.
+- **Prefer a small own implementation over a large framework for a narrow need,** but never hand-roll complex standard
+  formats, nor crypto (`security.md`, "AuthN, AuthZ, transport"). *Why:* a small own module removes a trust and
+  upgrade burden, while security code needs the scrutiny only mature libraries get.
 - **Pin reproducibly:**
   - Commit the lockfile, and keep one place for versions.
   - Use exact versions for tools and applications, and compatible ranges for a library's runtime dependencies.
@@ -115,8 +112,6 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   tool locks users out for nothing they use.
 
 ## Judgment
-- Tool choice follows the goal and stays open. `toolchains.md` lists today's defaults; verify their status before
-  adopting.
 - On legacy code, introduce the gate in report-only mode, baseline the existing findings, then enforce it on new code at
   once.
 - Code kept in a string usually buys isolation, such as running against the installed package instead of the source.

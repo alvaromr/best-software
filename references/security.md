@@ -31,8 +31,8 @@ safety, the highest value.
 ### Secrets
 - **Secrets come from env, a secret manager or user-level config,** never from a place hard constraint 1 names.
   *Why:* each of those places is readable by more people or processes than intended, and history is forever.
-- **Commit a template, abort startup when a secret is missing, and ship no default credentials.** *Why:* a default
-  credential is a public credential.
+- **Commit a template and ship no default credentials;** a missing secret fails startup (`code.md`, "Errors"). *Why:*
+  a default credential is a public credential.
 - **Protect key files:**
   - `0600` in a `0700` directory, with symlinks refused.
   - Deny agent and tool read access to env files.
@@ -100,8 +100,8 @@ safety, the highest value.
 - **Make anti-tamper checks unhookable and quiet.** *Why:* visible checks show the attacker where to patch.
 
 ### Supply chain
-- See `tooling.md`. **Audit third-party code that touches private data before each install or update,** and block
-  telemetry it does not need. *Why:* a dependency runs with your privileges and sees your users' data.
+- **Block telemetry a dependency does not need;** auditing it before install is in `tooling.md`, "Dependencies".
+  *Why:* a dependency runs with your privileges and sees your users' data.
 
 ### Privacy
 - **Minimize data.** Analytics are opt-in, off in development, as easy to revoke as to grant, and switchable per
@@ -114,7 +114,7 @@ safety, the highest value.
   are contractual and legal obligations, not preferences.
 - **Leak no internals** in client errors or third-party-visible notes. *Why:* stack traces and internal names are a map
   for attackers.
-- **Guard cost-bearing APIs,** excluded from tests by default. *Why:* a loop can spend real money.
+- **Guard cost-bearing APIs.** *Why:* a loop can spend real money.
 
 ## Judgment
 - An accepted risk is a written decision with its reason, never an omission.

@@ -17,7 +17,8 @@ server or a chat, is the single source of truth. This serves truth, correctness 
 - **Commit a checkpoint before a risky or large change.** *Why:* the way back must exist before you need it.
 - **Stage explicit paths,** and check the result with `git status` and `git log -1`. *Why:* blind staging commits
   secrets and scratch files, and exit codes do not show what was committed.
-- **Never commit with the gate red or bypass hooks.** *Why:* a red commit breaks bisect and every branch cut from it.
+- **Hard constraint 3 holds on every commit, a local one included.** *Why:* a red commit breaks bisect and every
+  branch cut from it.
 - **Squash WIP checkpoints before integration,** with a pre-push guard against `WIP` commits. *Why:* the integrated
   history should explain the change, not replay the process.
 
