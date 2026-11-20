@@ -19,13 +19,15 @@ SECTION_POINTER = re.compile(r'(?:`((?:references/)?[a-zA-Z-]+\.md)`, |\b(consti
 PRACTICES = re.compile(r"^## (?!Judgment|Audit signals).*?\n(.*?)(?=^## Judgment|\Z)", re.MULTILINE | re.DOTALL)
 PRACTICE = re.compile(r"^- \*\*.*?(?=^- \*\*|^#|\Z)", re.MULTILINE | re.DOTALL)
 TOOL_VERSION = re.compile(r"\b([A-Za-z][\w-]*) v?\d+\.\d+|\b[\w-]+@\d")
-NOT_A_TOOL = {"at", "most", "below", "WCAG"}
+NOT_A_TOOL = {"at", "most", "below", "version", "WCAG"}
 SPANISH = re.compile(r"[áéíóúñü¿¡ÁÉÍÓÚÑÜ]")
 DATED_HEADING = re.compile(r"^## (.*)$", re.MULTILINE)
 DATED_ENTRY = re.compile(r"^## (.*?)$(.*?)(?=^## |\Z)", re.MULTILINE | re.DOTALL)
 CHANGE_KIND = re.compile(r"^### (.*)$", re.MULTILINE)
 # The repository's own docs; every other root Markdown file is part of the skill.
-REPO_DOCS = {"README.md", "AGENTS.md", "CLAUDE.md", "CHANGELOG.md", "CONTRIBUTING.md", "SECURITY.md"}
+REPO_DOCS = {
+    "README.md", "AGENTS.md", "CLAUDE.md", "CHANGELOG.md", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md", "SECURITY.md",
+}
 CODE_BLOCK = re.compile(r"^```.*?^```$", re.MULTILINE | re.DOTALL)
 RULE = re.compile(r"^(?:- |\d+\. ).*?(?=^- |^\d+\. |^#|^\||\Z)", re.MULTILINE | re.DOTALL)
 ABSOLUTE = re.compile(r"\b(never|always)\b", re.IGNORECASE)
