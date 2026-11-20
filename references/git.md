@@ -29,13 +29,16 @@ server or a chat, is the single source of truth. This serves truth, correctness 
 - **Use one convention per repo:**
   - New repos default to Conventional Commits (`feat(scope): …`, `fix`, `refactor`, `test`, `docs`, `perf`,
     `chore(release): vX.Y.Z`), with a ticket key when work is tracked.
-  - Existing repos keep their established prefix (ticket key, scope). The subject style above applies to their new
-    commits.
+  - Existing repos keep the convention their history establishes, in every part: type, ticket key, scope. A history
+    without scopes gets none, so its release commit is `chore: vX.Y.Z`, not `chore(release): vX.Y.Z`. The subject
+    style above applies to their new commits.
   - Past commits are never rewritten to match a convention.
-  - A `commit-msg` hook validates it.
+  - Every script, hook and template that writes or checks messages (release script, `commit-msg` hook, changelog and
+    release-note tooling) writes and accepts only that convention, and a `commit-msg` hook validates it.
 
-  *Why:* a consistent convention enables changelog generation and scanning. Rewriting old messages buys only
-  cosmetics, at the price of breaking every clone and every reference to those commits.
+  *Why:* a consistent convention enables changelog generation and scanning, and one tool that writes or accepts
+  another format breaks it on every run. Rewriting old messages buys only cosmetics, at the price of breaking every
+  clone and every reference to those commits.
 - **Set a per-repo author identity when it differs from the global one** (for example, personal vs work email). *Why:*
   authorship and accountability belong to the right identity of the person.
 

@@ -8,6 +8,10 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 - When a project builds a package, the agent checks that the private run record is not in it, because build tools
   may pack files git does not track.
 
+### Changed
+- New commits follow the repo's established convention in every part, scope included: a history without scopes gets
+  none. Release scripts, `commit-msg` hooks and changelog tooling write and accept only that convention.
+
 ## 2026-11-19
 ### Added
 - A `publish` operation (`publish.md`): elevate with the profile set to be published, then the release when an
