@@ -1,7 +1,7 @@
 # best-software
 
 An agent skill that holds an engineering constitution (values, hard constraints, decision rules) and the procedures to
-bootstrap a software project, raise an existing one, or score it against that constitution.
+bootstrap a software project, score an existing one against that constitution, raise it, or publish it.
 
 ## Install
 Clone it to `~/.agents/skills/best-software`:

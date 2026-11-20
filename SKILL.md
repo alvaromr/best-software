@@ -1,6 +1,6 @@
 ---
 name: best-software
-description: Procedures to bootstrap a new software project at professional quality, to audit and raise an existing one, or to score one (architecture, tests with TDD/100 % coverage/mutation, tooling, repo, docs, git, release, security, UI). Use when asked to start a project, make it professional or publishable, review or score its quality, or apply best practices. Not for CI/CD pipeline design.
+description: Procedures to bootstrap a new software project at professional quality, to audit and raise an existing one, to score one, or to publish one (architecture, tests with TDD/100 % coverage/mutation, tooling, repo, docs, git, release, security, UI). Use when asked to start a project, make it professional or publishable, review or score its quality, or apply best practices. Not for CI/CD pipeline design.
 ---
 
 # Best software — procedures
