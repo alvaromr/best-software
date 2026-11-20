@@ -3,6 +3,11 @@
 What changes for the agents that use this skill, newest first. The skill has no version numbers: each entry is
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
+## 2026-11-20
+### Added
+- When a project builds a package, the agent checks that the private run record is not in it, because build tools
+  may pack files git does not track.
+
 ## 2026-11-19
 ### Added
 - A `publish` operation (`publish.md`): elevate with the profile set to be published, then the release when an

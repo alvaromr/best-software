@@ -62,7 +62,9 @@ Every procedure, scoring included, appends one run to `.best-software.json` at t
 step before any report; only a reused score appends none (`score.md`, "Procedure"). *Why:* it marks that the skill
 was applied, with which procedure and which skill version, so a later run knows what changed since.
 - **Private:** add `.best-software.json` to the file that `git rev-parse --git-path info/exclude` names, unless it is
-  already there. The record stays uncommittable without touching the project's `.gitignore`.
+  already there. The record stays uncommittable without touching the project's `.gitignore`. When the project
+  builds a package, check that the record is not in it. *Why:* a build tool may pack files git does not track, so
+  an exclusion from git does not keep the record out of what is distributed.
 - **Not a git repo:** write it at the project root, with `commit` and `clean_tree` as `null`, and say that nothing
   excludes it.
 - **History:** append each run to `runs`, newest last; never rewrite earlier runs. *Why:* later runs compare against
