@@ -30,8 +30,8 @@ hooks, CI config files). Designing pipelines and workflows is out of scope.
   *Why:* only a reproducible build can be trusted, debugged and rebuilt after a disaster.
 - **Script the release and make it fail-fast:**
   1. Bump.
-  2. Run the gate on every supported version. A release is not a reason for a full mutation run (`testing.md`,
-     "Coverage and mutation").
+  2. Run the gate on every supported version. Once a mutation result exists, a release is not a reason to
+     run the full set again (`testing.md`, "Coverage and mutation").
   3. Build.
   4. Publish to a test index or staging.
   5. Install it as a user would, in a clean environment, and smoke it.

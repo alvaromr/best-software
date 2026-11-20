@@ -43,7 +43,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   - Start small, with one module or a sample, before the full run.
   - Triage every survivor: a real hole gets a test, an equivalent mutant gets a recorded reason.
   - Improve the tests before touching production code.
-  - Target zero unexplained survivors in the core.
+  - End every run with zero unexplained survivors in what it mutated.
 
   *Why:* coverage proves the code ran, while mutation proves the tests would notice if it were wrong. Mutation runs
   the tests once per mutant, so it multiplies their cost and side effects by hundreds. Only fast, in-process unit
@@ -56,7 +56,8 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   - no previous result exists yet;
   - something every mutant depends on changed: shared test helpers, the test or mutation config, the dependencies.
 
-  A score, an elevate pass, a release or a commit is not a reason by itself.
+  Once a result exists, a score, an elevate pass, a release or a commit is not a reason to run the full set again;
+  with no previous result, any of them may run it.
   *Why:* a full run costs the suite's time once per mutant, from tens of minutes to hours, with half the machine
   held all along. The bounds keep one run tolerable, but nothing stops several sessions from running full sets at
   once. Mutants in code and tests a change did not touch, with nothing they depend on changed, give the result they
@@ -152,6 +153,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 ## Audit signals
 - No coverage threshold, or one below 100 with no reason. `correctness`
 - A mutation task, hook or script that runs the full set by default. `efficiency`
+- No mutation result, or an old one: production code or tests changed since the commit it ran on. `correctness`
 - More integration or e2e tests than unit tests, or tests that re-test rules at high level. `changeability`
 - A unit suite that takes minutes; sleeps or real timers in tests. `changeability`
 - Tests named after methods. `changeability`
