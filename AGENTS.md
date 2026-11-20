@@ -33,7 +33,7 @@ An agent skill: the engineering constitution and the procedures that apply it, f
   for their agents without reading the history.
 
 ## Decisions
-Before changing a practice, read `docs/decisions/` (none yet).
+Before changing a practice, read `docs/decisions/`.
 
 ## Where things live
 - Install and use: `README.md`.
