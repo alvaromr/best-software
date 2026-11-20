@@ -11,6 +11,10 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 ### Changed
 - New commits follow the repo's established convention in every part, scope included: a history without scopes gets
   none. Release scripts, `commit-msg` hooks and changelog tooling write and accept only that convention.
+- Mutation runs only on the code and tests a change touches. A full run needs the owner's request or a stated
+  reason, such as no previous result or a change to shared test helpers, the mutation config or the dependencies;
+  a score, an elevate pass, a release or a commit is not one. Scoring reports the last mutation result, scoped or
+  full, instead of re-running it, and a task or script that runs the full set by default is an `efficiency` signal.
 
 ## 2026-11-19
 ### Added

@@ -12,8 +12,11 @@ number traceable to the signals behind it.
   install them from the lockfile alone, with the project's own package manager and no updates; if that is not
   possible, the commands are unverified.
 - **The commands:** the gate (`references/tooling.md`), plus the heavy checks the project runs before push or
-  integration (mutation, audits) and its documented build or package check. Never run them against live or
+  integration (audits) and its documented build or package check. Never run them against live or
   production systems. *Why:* they need real credentials and act on real data (safety).
+- **Mutation is reported, not re-run:** record the project's last mutation result, with its commit and whether it
+  was scoped or full, or `not_run` when there is none. A score is not a reason for a full run
+  (`references/testing.md`, "Coverage and mutation").
 - **Cached results** count only when the tool invalidates them on every change that could alter them. Otherwise run
   the tool fresh, deleting its git-ignored output first; if a fresh run cannot finish, the result is unverified.
 - **One commit.** If HEAD moves during the run, rerun the commands on the final HEAD, score that commit and say so.
@@ -118,7 +121,7 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
   "profile": "<kind · stack · audience · constraints>",
   "basis": "full",
   "commands": [
-    { "command": "<command>", "result": "pass", "detail": "<coverage, mutation score, cached or not>" }
+    { "command": "<command>", "result": "pass", "detail": "<coverage, mutation score and scope, cached or not>" }
   ],
   "global": 6.4,
   "hard_constraints_broken": [{ "constraint": 1, "evidence": "<file:line, commit or command>" }],

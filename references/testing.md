@@ -35,11 +35,11 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   They run on the toolchain production code pins and need no pin of their own. *Why:* testing the tests never ends, a
   check seen catching a real violation has already shown it works, and a check that cannot run fails loudly.
 - **Add mutation testing on the core,** or on everything when it is cheap, run where `tooling.md`, "The gate" puts
-  heavy checks:
+  heavy checks, and only on what a change touches (next practice):
   - Its command runs only the unit suite. Prefer a runner that executes only the tests covering each mutant.
-  - Bound the run so the machine stays usable: at most half the cores in parallel, fewer when one test run is a
-    heavy process, at lower scheduling priority, and a per-mutant timeout of about 10 to 20 times the measured time
-    of one test run.
+  - Bound every run, scoped or full, so the machine stays usable: at most half the cores in parallel, fewer when
+    one test run is a heavy process, at lower scheduling priority, and a per-mutant timeout of about 10 to 20 times
+    the measured time of one test run.
   - Start small, with one module or a sample, before the full run.
   - Triage every survivor: a real hole gets a test, an equivalent mutant gets a recorded reason.
   - Improve the tests before touching production code.
@@ -50,6 +50,17 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   tests stay safe at that scale. A run that takes every core, or more memory than the machine has, leaves it
   unusable for the owner until it ends. A timeout far above the real time lets each hung mutant hold its slot for
   minutes, and one too close to it counts mutants slowed by the load as killed.
+- **Run mutation scoped; run the full set only when asked, or for a stated reason.** A scoped run covers the code and
+  tests a change touches, incrementally or limited to the affected module, and the default mutation task runs
+  scoped. A full run happens only when the owner asks for one, or for a reason stated with it, such as:
+  - no previous result exists yet;
+  - something every mutant depends on changed: shared test helpers, the test or mutation config, the dependencies.
+
+  A score, an elevate pass, a release or a commit is not a reason by itself.
+  *Why:* a full run costs the suite's time once per mutant, from tens of minutes to hours, with half the machine
+  held all along. The bounds keep one run tolerable, but nothing stops several sessions from running full sets at
+  once. Mutants in code and tests a change did not touch, with nothing they depend on changed, give the result they
+  gave last time, so re-running them buys no evidence.
 
 ### Test design
 - **Write tests as specification.**
@@ -136,11 +147,11 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   everyone to ignore red.
 
 ## Judgment
-- Scale mutation runs to cost: run them per module or incrementally on large codebases.
 - Exploratory spikes are deleted, or re-done test-first before they land.
 
 ## Audit signals
 - No coverage threshold, or one below 100 with no reason. `correctness`
+- A mutation task, hook or script that runs the full set by default. `efficiency`
 - More integration or e2e tests than unit tests, or tests that re-test rules at high level. `changeability`
 - A unit suite that takes minutes; sleeps or real timers in tests. `changeability`
 - Tests named after methods. `changeability`

@@ -24,7 +24,8 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   wastes attention.
 - **Version the hooks in the repo and install them automatically:**
   - The pre-commit hook is fast, runs on staged files, and is skipped when no relevant file is staged.
-  - Heavy checks (full matrix, mutation, integration tests, audits) run before push or integration.
+  - Heavy checks (full matrix, mutation scoped as `testing.md` says, integration tests, audits) run before push or
+    integration.
 
   *Why:* manual installation means some clones run no hooks, and a slow hook gets bypassed.
 - **Expose every routine action as a named, described task:** run, test, gate, fix, coverage, mutation, audit, build,

@@ -56,7 +56,7 @@ Last reviewed: 2026-10-29.
   for `node --test`) reports no coverage and re-runs its whole command per mutant. With it, point
   `commandRunner.command` at the unit test files only, and keep `concurrency` low. Add
   `@stryker-mutator/typescript-checker` to discard mutants that do not compile before running tests, and run with
-  `--incremental` so each run re-tests only what changed.
+  `--incremental` so each run re-tests only what changed; `--force` makes it a full run.
 - **Audit:** `pnpm audit`.
 
 ## Python
