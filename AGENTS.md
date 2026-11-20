@@ -37,3 +37,4 @@ Before changing a practice, read `docs/decisions/`.
 
 ## Where things live
 - Install and use: `README.md`.
+- Issue and pull-request templates: `.github/`.
