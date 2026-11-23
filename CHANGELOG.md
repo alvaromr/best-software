@@ -40,9 +40,6 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   issue tracker or the owner's task list, a lasting decision to `docs/decisions/`, a repeatable procedure to its one
   home, as added above. Known limitations cover only what the project cannot do and deferred ideas. Scoring flags a
   plan, pending step or one-off owner decision in the docs, `AGENTS.md` and `README.md` included, as a `truth` signal.
-- The run record, `.best-software.json`, goes in the project's `.gitignore`, in a commit of its own, not in
-  `.git/info/exclude`, so formatters, linters and scanners that read `.gitignore` skip it too (`SKILL.md`, "Run
-  record").
 
 ## 2026-11-20
 ### Added

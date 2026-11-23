@@ -61,11 +61,10 @@ which do not shrink with project size:
 Every procedure, scoring included, appends one run to `.best-software.json` at the repository root, as its last
 step before any report; only a reused score appends none (`score.md`, "Procedure"). *Why:* it marks that the skill
 was applied, with which procedure and which skill version, so a later run knows what changed since.
-- **Private:** add `.best-software.json` to the project's `.gitignore`, unless it is already there, in a commit of its
-  own. The record stays uncommitted, and formatters, linters and scanners that read `.gitignore` skip it. When the
-  project builds a package, check that the record is not in it. *Why:* the record is the skill's notes, not part of
-  the project, so the project's tools should not judge it; `.gitignore` is where a project lists the files that are
-  not its own, and most tools read it. A build tool may still pack files git does not track, hence the package check.
+- **Private:** add `.best-software.json` to the file that `git rev-parse --git-path info/exclude` names, unless it is
+  already there. The record stays uncommittable without touching the project's `.gitignore`. When the project
+  builds a package, check that the record is not in it. *Why:* a build tool may pack files git does not track, so
+  an exclusion from git does not keep the record out of what is distributed.
 - **Not a git repo:** write it at the project root, with `commit` and `clean_tree` as `null`, and say that nothing
   excludes it.
 - **History:** append each run to `runs`, newest last; never rewrite earlier runs. *Why:* later runs compare against
