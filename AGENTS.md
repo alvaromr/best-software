@@ -2,19 +2,20 @@
 An agent skill: the engineering constitution and the procedures that apply it, for agents and their owners.
 
 ## Commands
-- Gate: `scripts/check.sh`. It runs the mechanical tests over the Markdown; Python 3 standard library only, on any
-  supported version. Adding a test: `references/testing.md`.
+- Gate: `scripts/check.sh`. It runs the mechanical tests over the Markdown and the scripts; Python 3 standard library
+  only, on any supported version. Adding a test: `references/testing.md`.
 - Hooks: the pre-commit hook runs the gate on the staged files, the commit-msg hook checks the subject
   (`references/git.md`), and the gate's first run in a clone installs both.
 - The gate cannot judge meaning. A change to a procedure is verified by running it on a real project, and by the
   evals in `evals/`, each when its README says it applies.
+- Eval setup: `scripts/eval-setup.sh <eval> <directory>` commits an eval's example project in a new directory.
 
 ## Architecture
 - `SKILL.md`: the entry point: the operations, and what they share (profile, run record, reports, guide template).
 - `bootstrap.md`, `score.md`, `elevate.md`, `publish.md`: one file per operation.
 - `constitution.md`: values, hard constraints, decision rules and the index of references.
 - `references/`: one practice file per topic, each practice with its *Why*; `toolchains.md` holds the concrete tools.
-- `tests/test_skill.py`: the mechanical tests.
+- `tests/`: the mechanical tests, `test_skill.py` over the Markdown and one file per script.
 - `evals/`: one folder per operation (`bootstrap`, `elevate`, `publish`, `score`), each with its example project where
   it needs one, and what running the procedure must produce.
 - The installed skill is this working tree, so uncommitted edits are live for every agent at once.

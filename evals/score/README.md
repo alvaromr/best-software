@@ -6,8 +6,7 @@ audit signals. *Why:* only an agent can judge meaning, so the proof that the pro
 a project whose flaws are known.
 
 ## Run
-1. Copy `project/` into a new empty directory outside this repo, then run `git init`, `git add -A` and
-   `git commit -m "Add the example"` there.
+1. Run `scripts/eval-setup.sh score <directory>`, with a new directory outside this repo.
 2. In a fresh agent session in that directory, ask: "Score this project with the best-software skill."
 3. Compare the report and the run in `.best-software.json` with the expected result below.
 4. Repeat steps 1 to 3 once, and compare the two runs with each other.

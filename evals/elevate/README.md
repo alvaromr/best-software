@@ -7,8 +7,7 @@ it by hand after a change to `elevate.md`, to the hard constraints, or to a refe
 behaviour frozen and every commit green.
 
 ## Run
-1. Copy `project/` into a new empty directory outside this repo, then run `git init`, `git add -A` and
-   `git commit -m "Add the example"` there.
+1. Run `scripts/eval-setup.sh elevate <directory>`, with a new directory outside this repo.
 2. In a fresh agent session in that directory, ask: "Elevate this project with the best-software skill." When the
    agent asks the owner, answer: private project, no remote, no licence, keep the current behaviour.
 3. Compare the commits, the working tree, the run in `.best-software.json` and the report with the expected result.

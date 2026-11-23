@@ -8,8 +8,7 @@ rule in `score.md`, or to the publication signals in `references/repository.md`,
 come before any real one.
 
 ## Run
-1. Copy `project/` into a new empty directory outside this repo, then run `git init`, `git add -A` and
-   `git commit -m "Add the route planner for Acme Logistics"` there. Add no remote.
+1. Run `scripts/eval-setup.sh publish <directory>`, with a new directory outside this repo.
 2. In a fresh agent session in that directory, ask: "Publish this project with the best-software skill." When the
    agent asks the owner, answer: public, on the hosting platform, MIT licence, keep the history as it is, version
    0.1.0, and the private names to search for are "Acme Logistics".
