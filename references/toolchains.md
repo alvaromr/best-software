@@ -30,7 +30,8 @@ Last reviewed: 2026-10-29.
 - **Tests:** JUnit 5 or kotest, MockK, Turbine for flows, `kotlinx-coroutines-test` with injected
   dispatchers, Robolectric for JVM Android tests, Compose UI tests, and Roborazzi or Paparazzi for screenshots.
 - **Coverage:** Kover with verification rules (line and branch), or JaCoCo.
-- **Mutation:** PIT (pitest) with the Kotlin plugin, or Arcmutate.
+- **Mutation:** PIT (pitest) with the Kotlin plugin, or Arcmutate. On a loaded machine raise `timeoutConst`, not
+  `timeoutFactor`.
 - **Architecture rules:** Konsist, or detekt `ForbiddenImport`.
 - **Release:** R8 full mode, consumer ProGuard rules in libraries, and a `resourcePrefix` in library modules.
 
@@ -45,7 +46,7 @@ Last reviewed: 2026-10-29.
 - **Dead code:** knip.
 - **Architecture rules:** dependency-cruiser, or `noRestrictedImports` in Biome/ESLint.
 - **Tests:** Vitest with V8 coverage thresholds at 100. It is the default, because it enables per-test mutation
-  runs. Use `node --test` with coverage flags only when the project must stay dependency-free; mutation then needs
+  runs. Use `node --test` with coverage flags only when the project cannot take dev dependencies; mutation then needs
   the command runner. Use happy-dom for headless DOM and Playwright for e2e.
 - **Network block in unit tests:** a Vitest setup file, loaded only by the unit project, that makes
   `net.Socket.prototype.connect` throw. It blocks `fetch`, `http` and raw sockets with no dependency; integration
@@ -56,7 +57,8 @@ Last reviewed: 2026-10-29.
   for `node --test`) reports no coverage and re-runs its whole command per mutant. With it, point
   `commandRunner.command` at the unit test files only, and keep `concurrency` low. Add
   `@stryker-mutator/typescript-checker` to discard mutants that do not compile before running tests, and run with
-  `--incremental` so each run re-tests only what changed; `--force` makes it a full run.
+  `--incremental` so each run re-tests only what changed; `--force` makes it a full run. With pnpm, list the runner
+  plugin in `plugins`, or Stryker does not find it. On a loaded machine raise `timeoutMS`, not `timeoutFactor`.
 - **Audit:** `pnpm audit`.
 
 ## Python
@@ -85,7 +87,8 @@ Last reviewed: 2026-10-29.
   mutmut ≥ 3.8.1: pytest 9.2.0 (2026-10-27, pytest #14758) removed `Node._nodeid`, which mutmut 3.8.0 reads, so its
   run fails; 3.8.1 (2026-10-28) reads the public `nodeid` (mutmut #615, `HISTORY.rst`). `mutmut run` exits 0 even
   when mutants survive (checked on 3.8.1), so the mutation task fails when `mutmut results` prints any line. Name
-  the code to mutate with `source_paths`: 3.8.1 warns that `paths_to_mutate` is deprecated.
+  the code to mutate with `source_paths`: 3.8.1 warns that `paths_to_mutate` is deprecated. On a loaded machine raise
+  `timeout_constant`, not `timeout_multiplier`.
 - **Architecture rules:** import-linter.
 - **Security:** ruff's `S` rules, which reimplement bandit's checks inside the gate, so bandit itself is not needed.
   Use pip-audit for vulnerable dependencies.

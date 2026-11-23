@@ -27,6 +27,17 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   reports the last result and may run the scoped run for what changed. A task that re-runs every mutant for such a
   change is an `efficiency` signal, and an old result now means code or tests changed with no scoped run covering
   them since (`references/testing.md`, "Coverage and mutation").
+- A mutation run keeps the tool's own default per-mutant timeout instead of 10 to 20 times one test run; on a loaded
+  machine it raises the timeout's fixed part, not its multiplier. A change to the timeout re-runs only the mutants it
+  can flip: a longer one, those that timed out; a shorter one, those that survived. A timeout moved by its multiplier,
+  or with no recorded reason, is an `efficiency` signal (`references/testing.md`, "Coverage and mutation").
+- The test runner is one the mutation tool runs in one process, as a dev dependency even when the product ships none
+  (in JS, Vitest); the platform's built-in runner only when the project cannot take dev dependencies
+  (`references/testing.md`, "Levels").
+- Code that runs as a command, server or child process takes its process inputs as parameters, so tests drive its
+  logic in their own process with fakes; only the end-to-end smoke test starts the real program. Tests that start the
+  program to test its logic are a `changeability` signal (`references/testing.md`, "Isolation and speed").
+- With pnpm, Stryker's runner plugin is listed in `plugins` (`references/toolchains.md`, "TypeScript / Node / Web").
 - Project skills live in one directory of the repo's choosing, which other tools' skill directories symlink to, not
   in a fixed `.agents/skills/` (`references/repository.md`, "Layout").
 - A project records the owner's acceptance of a platform's terms only when it uses that platform in a way the platform
