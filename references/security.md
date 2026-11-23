@@ -100,12 +100,14 @@ safety, the highest value.
   *Why:* these are the most common mobile vulnerability classes.
 - **Make anti-tamper checks unhookable and quiet.** *Why:* visible checks show the attacker where to patch.
 - **A project that uses another platform in a way it could object to** records in `docs/decisions/` that the owner
-  accepted that platform's terms, and how the project keeps to them. Such uses are scraping its site or calling
-  endpoints it does not document, acting beyond what a person does by hand (volume, rate, many accounts), acting on
-  behalf of other people, and redistributing its data or content. A client the account holder runs through the
-  platform's official means needs no record. *Why:* these uses are what a platform bans owner and users for, and only
-  a record shows it was weighed; the account holder's own use through official means is what the platform offers, so
-  a record of it adds only paperwork.
+  accepted that platform's terms, and how the project keeps to them. Such uses are harvesting its site or data at
+  scale (scraping), acting beyond what a person does by hand (volume, rate, many accounts), acting on behalf of other
+  people, and redistributing its data or content. A tool the account holder runs on their own account at a person's
+  pace needs no record, whether it goes through a documented API or through the routes the platform's own web client
+  uses. *Why:* these uses are what a platform bans owner and users for, and only a record shows it was weighed; the
+  account holder doing by tool what they could do by hand is not, so a record of it adds only paperwork. Relying on
+  undocumented routes is a maintenance risk, not a terms one: the project's tests or smoke check show the day those
+  routes change.
 
 ### Supply chain
 - **Block telemetry a dependency does not need;** auditing it before install is in `tooling.md`, "Dependencies".

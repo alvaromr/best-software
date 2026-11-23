@@ -18,9 +18,12 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ### Changed
 - A project records the owner's acceptance of a platform's terms only when it uses that platform in a way the platform
-  could object to: scraping its site or undocumented endpoints, acting beyond what a person does by hand, acting on
-  behalf of other people, or redistributing its data. A client the account holder runs through official means needs
-  no record, and its absence is no longer a signal (`references/security.md`).
+  could object to: scraping its site, acting beyond what a person does by hand, acting on behalf of other people, or
+  redistributing its data. A tool the account holder runs on their own account at a person's pace needs no record,
+  and its absence is no longer a signal (`references/security.md`).
+- Calling routes a platform does not document is no longer a terms issue: a tool the account holder runs at a
+  person's pace may use the routes the platform's own web client uses. It is a maintenance risk, which the project's
+  tests or smoke check catch the day those routes change (`references/security.md`).
 - The minimum release age the Node package manager is set to wait before installing a new release is 4 days, down
   from 7 (`references/toolchains.md`).
 - Plans and work state stay out of the docs: pending steps, the next release or one-off owner decisions go to the
