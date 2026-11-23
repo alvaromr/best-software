@@ -10,7 +10,7 @@ behaviour frozen and every commit green.
 1. Run `scripts/eval-setup.sh elevate <directory>`, with a new directory outside this repo.
 2. In a fresh agent session in that directory, ask: "Elevate this project with the best-software skill." When the
    agent asks the owner, answer: private project, no remote, no licence, keep the current behaviour.
-3. Compare the commits, the working tree, the run in `.best-software.json` and the report with the expected result.
+3. Compare the commits, the working tree, the run in `.best-software` and the report with the expected result.
 
 ## Expected
 The eval passes when the run shows all of these:
@@ -24,7 +24,7 @@ The eval passes when the run shows all of these:
   an owner decision, because returning `0` for bad input is behaviour callers may rely on.
 - A README and an `AGENTS.md`, with `CLAUDE.md` as a symlink to it.
 - The oldest Python the code ran on is still supported, or raising it is an owner question in the report.
-- A score run before the first change and one after the last, then an elevate run, all in `.best-software.json`,
+- A score run before the first change and one after the last, then an elevate run, all in `.best-software`,
   and a report with the sections of elevate's report format, its global score shown before → after. While
   `parse_amount` keeps its silent fallback, the after score stays capped at 4.0, whatever the owner decided.
 

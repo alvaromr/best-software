@@ -36,7 +36,7 @@ depends on them.
   simulation, data or ML.
 - **Stack and runtime versions.** For an existing project, also read its current gate, tests, coverage and conventions.
 - **Constraints:** frozen legacy, team conventions, deadlines, platforms, compliance (privacy, data residency).
-- **Previous runs:** if the repo root has `.best-software.json` (Run record, below), list this skill's commits since
+- **Previous runs:** if the repo root has `.best-software` (Run record, below), list this skill's commits since
   the last run's `skill_commit` (`git log --oneline <sha>..HEAD` in the skill's folder), and report those that
   require updating the project.
 
@@ -57,14 +57,17 @@ which do not shrink with project size:
 | release channel and packaging | single version source, changelog, immutable tags |
 | | scripted release, clean-environment install test |
 
-## Run record (`.best-software.json`)
-Every procedure, scoring included, appends one run to `.best-software.json` at the repository root, as its last
+## Run record (`.best-software`)
+Every procedure, scoring included, appends one run to `.best-software` at the repository root, as its last
 step before any report; only a reused score appends none (`score.md`, "Procedure"). *Why:* it marks that the skill
 was applied, with which procedure and which skill version, so a later run knows what changed since.
-- **Private:** add `.best-software.json` to the file that `git rev-parse --git-path info/exclude` names, unless it is
+- **Private:** add `.best-software` to the file that `git rev-parse --git-path info/exclude` names, unless it is
   already there. The record stays uncommittable without touching the project's `.gitignore`. When the project
   builds a package, check that the record is not in it. *Why:* a build tool may pack files git does not track, so
   an exclusion from git does not keep the record out of what is distributed.
+- **Name:** the file is `.best-software`, with no extension, though its content is JSON. *Why:* formatters and
+  linters check only the file extensions they know, so a name without one keeps the project's own checks from judging
+  the skill's notes, whatever tools the project uses.
 - **Not a git repo:** write it at the project root, with `commit` and `clean_tree` as `null`, and say that nothing
   excludes it.
 - **History:** append each run to `runs`, newest last; never rewrite earlier runs. *Why:* later runs compare against

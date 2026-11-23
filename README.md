@@ -25,7 +25,7 @@ In a project, call the skill with the operation you want:
 | `/best-software bootstrap` | Starts a new project with the gate, hooks and a first working path before any feature. |
 
 The slash form is Claude Code's; in other agents, ask in words, such as "score this project with the best-software
-skill". Each run is recorded in a private `.best-software.json`.
+skill". Each run is recorded in a private `.best-software`.
 
 ## What it asks of a project
 The bar does not shrink with project size, even for a small script: what never scales down is the "Never scales

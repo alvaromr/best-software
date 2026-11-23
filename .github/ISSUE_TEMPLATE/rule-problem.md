@@ -12,4 +12,4 @@ about: An agent following the skill did something a senior reviewer would not ac
 <!-- The file and section, such as `references/git.md`, "Commits", if you know it. -->
 
 ## Skill commit
-<!-- `skill_commit` from the project's `.best-software.json`, or `git rev-parse HEAD` in the skill's folder. -->
+<!-- `skill_commit` from the project's `.best-software`, or `git rev-parse HEAD` in the skill's folder. -->

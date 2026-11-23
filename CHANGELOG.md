@@ -17,6 +17,8 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   procedure goes to that home.
 
 ### Changed
+- The run record is `.best-software`, with no extension though its content is JSON, so the project's formatters and
+  linters leave it alone (`SKILL.md`, "Run record").
 - The full mutation set runs once, when the owner chooses, one repository at a time with the machine free and kept
   awake; from then on each change mutates what it touches before it is pushed, so the result stays whole, and a full
   run happens again only when the owner asks. A change re-runs only the mutants whose result it can change: config
