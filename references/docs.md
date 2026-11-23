@@ -49,7 +49,12 @@ home.
   harm than a gap.
 - **Record negative results and dead ends:** what was tried, why it failed, the numbers. Put a short summary at the top.
   *Why:* nobody repeats the analysis, and nobody retries the approach that already failed.
-- **Record known limitations and deferred ideas** in the repo. *Why:* chat history is not a project memory.
+- **Record known limitations and deferred ideas** in the repo: what the project cannot do, and ideas set aside with
+  their reason. *Why:* chat history is not a project memory.
+- **Keep plans and work state out of the docs:** pending steps, the next release, what happens before the first push,
+  who decided what this week. They go to the issue tracker or the owner's task list; a lasting decision goes to
+  `docs/decisions/`, a repeatable procedure to `docs/runbooks/`. *Why:* a plan is true only until it is done, so in the
+  docs it turns into a stale statement the next agent follows as a rule.
 - **Generalize:** write the rule a case reveals, folded into the existing structure, without dated anecdotes, ticket
   names or tool names in agent-agnostic docs. *Why:* a rule teaches every future case, while an anecdote teaches one.
 - **Keep docs short and telegraphic** without losing information. Leave out what a thing does not do. *Why:* long docs
@@ -85,3 +90,4 @@ home.
 - No record of rejected alternatives. `changeability`
 - Broken links. `truth`
 - A fact outside its reader's home in "Layers by reader", such as user help only in `AGENTS.md`. `changeability`
+- A plan, pending step or one-off owner decision in the docs, such as `AGENTS.md` steps before the first push. `truth`
