@@ -17,6 +17,14 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   procedure goes to that home.
 
 ### Changed
+- The full mutation set runs once, when the owner chooses, one repository at a time with the machine free and kept
+  awake; from then on each change mutates what it touches before it is pushed, so the result stays whole, and a full
+  run happens again only when the owner asks. A change re-runs only the mutants whose result it can change: config
+  that does not change the mutants or how their tests run, tools the tests do not use and version numbers re-run
+  nothing. A score, an elevate pass or a release with no previous result no longer runs the full set; the score
+  reports the last result and may run the scoped run for what changed. A task that re-runs every mutant for such a
+  change is an `efficiency` signal, and an old result now means code or tests changed with no scoped run covering
+  them since (`references/testing.md`, "Coverage and mutation").
 - Project skills live in one directory of the repo's choosing, which other tools' skill directories symlink to, not
   in a fixed `.agents/skills/` (`references/repository.md`, "Layout").
 - A project records the owner's acceptance of a platform's terms only when it uses that platform in a way the platform

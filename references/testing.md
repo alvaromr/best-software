@@ -35,7 +35,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   They run on the toolchain production code pins and need no pin of their own. *Why:* testing the tests never ends, a
   check seen catching a real violation has already shown it works, and a check that cannot run fails loudly.
 - **Add mutation testing on the core,** or on everything when it is cheap, run where `tooling.md`, "The gate" puts
-  heavy checks, and only on what a change touches (next practice):
+  heavy checks, and kept current by scoped runs (next practice):
   - Its command runs only the unit suite. Prefer a runner that executes only the tests covering each mutant.
   - Bound every run, scoped or full, so the machine stays usable: at most half the cores in parallel, fewer when
     one test run is a heavy process, at lower scheduling priority, and a per-mutant timeout of about 10 to 20 times
@@ -50,18 +50,21 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   tests stay safe at that scale. A run that takes every core, or more memory than the machine has, leaves it
   unusable for the owner until it ends. A timeout far above the real time lets each hung mutant hold its slot for
   minutes, and one too close to it counts mutants slowed by the load as killed.
-- **Run mutation scoped; run the full set only when asked, or for a stated reason.** A scoped run covers the code and
-  tests a change touches, incrementally or limited to the affected module, and the default mutation task runs
-  scoped. A full run happens only when the owner asks for one, or for a reason stated with it, such as:
-  - no previous result exists yet;
-  - something every mutant depends on changed: shared test helpers, the test or mutation config, the dependencies.
+- **Run the full set once, then keep it current with scoped runs.**
+  - The first full run happens when the owner chooses, at a time the machine is free, one repository at a time, with
+    the machine kept awake.
+  - From then on, each change mutates what it touches before it is pushed, and ends at zero unexplained survivors,
+    so the result stays whole without another full run.
+  - Invalidate precisely: a change re-runs only the mutants whose result it can change. Code or tests a mutant runs
+    re-run that mutant; a shared test helper re-runs the mutants whose tests use it; a dependency re-runs only the
+    mutants whose code or tests import it. Config that does not change which mutants exist or how their tests run,
+    tools the tests do not use (linters, formatters, release-age settings) and version numbers re-run nothing.
+  - When it is unclear what a change reaches, re-run the affected module, not the whole set.
+  - A full run happens again only when the owner asks for one.
 
-  Once a result exists, a score, an elevate pass, a release or a commit is not a reason to run the full set again;
-  with no previous result, any of them may run it.
   *Why:* a full run costs the suite's time once per mutant, from tens of minutes to hours, with half the machine
-  held all along. The bounds keep one run tolerable, but nothing stops several sessions from running full sets at
-  once. Mutants in code and tests a change did not touch, with nothing they depend on changed, give the result they
-  gave last time, so re-running them buys no evidence.
+  held all along. Kept current by scoped runs, the result stays complete at a fraction of the cost, and a full run
+  caused by a change that cannot alter any mutant's result buys no evidence.
 
 ### Test design
 - **Write tests as specification.**
@@ -164,7 +167,8 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 ## Audit signals
 - No coverage threshold, or one below 100 with no reason. `correctness`
 - A mutation task, hook or script that runs the full set by default. `efficiency`
-- No mutation result, or an old one: production code or tests changed since the commit it ran on. `correctness`
+- A mutation task that re-runs every mutant for config, versions or tools the tests do not use. `efficiency`
+- No mutation result yet, or an old one: code or tests changed with no scoped run covering them since. `correctness`
 - More integration or e2e tests than unit tests, or tests that re-test rules at high level. `changeability`
 - A unit suite that takes minutes; sleeps or real timers in tests. `changeability`
 - Tests named after methods. `changeability`
