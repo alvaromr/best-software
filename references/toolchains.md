@@ -83,10 +83,9 @@ Last reviewed: 2026-10-29.
   makes that call, and `NO_PROXY=*` skips it (CPython bpo-33725; B. Warsaw, "How macOS Broke Python", 2018-11-27).
   setproctitle made it too until mutmut 3.6.0 disabled it on macOS (`HISTORY.rst`). With pytest ≥ 9.2.0 use
   mutmut ≥ 3.8.1: pytest 9.2.0 (2026-10-27, pytest #14758) removed `Node._nodeid`, which mutmut 3.8.0 reads, so its
-  run fails; 3.8.1 (2026-10-28) reads the public `nodeid` (mutmut #615, `HISTORY.rst`). Until 3.8.1 passes the
-  release-age delay, pin pytest ≤ 9.1.x. `mutmut run` exits 0 even when mutants survive (checked on 3.8.1), so the
-  mutation task fails when `mutmut results` prints any line. Name the code to mutate with `source_paths`: 3.8.1 warns
-  that `paths_to_mutate` is deprecated.
+  run fails; 3.8.1 (2026-10-28) reads the public `nodeid` (mutmut #615, `HISTORY.rst`). `mutmut run` exits 0 even
+  when mutants survive (checked on 3.8.1), so the mutation task fails when `mutmut results` prints any line. Name
+  the code to mutate with `source_paths`: 3.8.1 warns that `paths_to_mutate` is deprecated.
 - **Architecture rules:** import-linter.
 - **Security:** ruff's `S` rules, which reimplement bandit's checks inside the gate, so bandit itself is not needed.
   Use pip-audit for vulnerable dependencies.
