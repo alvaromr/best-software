@@ -20,9 +20,9 @@ could be published at any moment without leaking anything. This serves safety, t
   keeps modules consistent.
 - **Use one deliverable per top-level folder** in multi-package repos, each with the same layout, all listed in one
   root manifest. *Why:* uniform packages can be audited and changed uniformly.
-- **Keep one canonical home for agent guidance:** `AGENTS.md`, with `CLAUDE.md` as a symlink, and project skills in
-  `.agents/skills/`, which other tools' skill directories symlink to. A project-owned skill or CLI lives in its repo.
-  *Why:* two copies of instructions diverge (truth), and a tool outside its repo goes stale.
+- **Keep one canonical home for agent guidance:** `AGENTS.md`, with `CLAUDE.md` as a symlink, and project skills in one
+  directory, which other tools' skill directories symlink to. A project-owned skill or CLI lives in its repo. *Why:*
+  two copies of instructions diverge (truth), and a tool outside its repo goes stale.
 
 ### Root files
 

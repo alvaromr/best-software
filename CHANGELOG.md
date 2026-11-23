@@ -11,12 +11,14 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   `GIT_DIR` pointing at a decoy repository and asserts the decoy is untouched. Missing either is a `safety` signal
   (`references/testing.md`, "Isolation and speed").
 - Each repeatable procedure has one home, with an agent as its usual operator: a script exposed as a named task when
-  it can be scripted, otherwise a runbook in `docs/runbooks/`, and a project skill in `.agents/skills/` that triggers
-  on the task and points to the script or runbook without repeating its steps. A procedure written out in a skill or
-  doc, and a scriptable routine left as manual steps, are new signals. A plan kept out of the docs that turns out to
-  be a repeatable procedure goes to that home.
+  it can be scripted, otherwise a runbook in `docs/runbooks/`, and a project skill that triggers on the task and points
+  to the script or runbook without repeating its steps. A procedure written out in a skill or doc, and a scriptable
+  routine left as manual steps, are new signals. A plan kept out of the docs that turns out to be a repeatable
+  procedure goes to that home.
 
 ### Changed
+- Project skills live in one directory of the repo's choosing, which other tools' skill directories symlink to, not
+  in a fixed `.agents/skills/` (`references/repository.md`, "Layout").
 - A project records the owner's acceptance of a platform's terms only when it uses that platform in a way the platform
   could object to: scraping its site, acting beyond what a person does by hand, acting on behalf of other people, or
   redistributing its data. A tool the account holder runs on their own account at a person's pace needs no record,
