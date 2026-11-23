@@ -105,6 +105,17 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 
   *Why:* a test that depends on the world fails for reasons unrelated to the code. A process left alive by a failing
   test keeps consuming the machine, and repeated runs exhaust it.
+- **Code that runs git on a repository of its own clears git's repository variables first,** whether it is a test, a
+  fixture, a helper or a script:
+  - Before its git commands, it unsets every name `git rev-parse --local-env-vars` prints (`GIT_DIR`,
+    `GIT_INDEX_FILE`, `GIT_WORK_TREE` and the rest), and it works in a throwaway repository.
+  - A test proves it: it runs that code with `GIT_DIR` and `GIT_INDEX_FILE` pointing at a decoy repository, and
+    asserts the decoy's history, branches and config are unchanged.
+  - The hook keeps the variables, because the gate's own git commands need the index being committed.
+
+  *Why:* git exports these variables to its hooks, so a test or script the gate runs in the pre-commit hook inherits
+  them, and its git commands act on the real repository: stray commits and branches, and settings such as
+  `core.bare` written to the shared `.git/config`.
 - **Mock only system boundaries;** project code runs for real, and fakes beat mocks. A test needing many mocks sits at
   the wrong level. *Why:* mocking project code tests the mocks and freezes the implementation.
 - **Test a module through its interface,** not its internals: its private helpers, its constants or the text of its
@@ -159,6 +170,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 - Tests named after methods. `changeability`
 - `isNotNull`-only assertions. `correctness`
 - Network or wall-clock in unit tests. `correctness`
+- Code that runs git on a repository of its own with git's repository variables set, or no decoy test. `safety`
 - Mocks of project classes. `changeability`
 - Tests that assert private helpers, constants or the source text of the code under test. `changeability`
 - No regression test next to a fix. `correctness`

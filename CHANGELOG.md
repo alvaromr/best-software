@@ -5,6 +5,11 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-23
 ### Added
+- Code that runs git on a repository of its own (a test, fixture, helper or script) unsets the variables
+  `git rev-parse --local-env-vars` lists before its git commands, because a hook exports them and a gate run from the
+  pre-commit hook would otherwise commit, branch and write config in the real repository. A test runs that code with
+  `GIT_DIR` pointing at a decoy repository and asserts the decoy is untouched. Missing either is a `safety` signal
+  (`references/testing.md`, "Isolation and speed").
 - Each repeatable procedure has one home, with an agent as its usual operator: a script exposed as a named task when
   it can be scripted, otherwise a runbook in `docs/runbooks/`, and a project skill in `.agents/skills/` that triggers
   on the task and points to the script or runbook without repeating its steps. A procedure written out in a skill or
