@@ -99,9 +99,13 @@ safety, the highest value.
 
   *Why:* these are the most common mobile vulnerability classes.
 - **Make anti-tamper checks unhookable and quiet.** *Why:* visible checks show the attacker where to patch.
-- **A project that drives another platform** (a bot, a client of its API, an automation of its site) records in
-  `docs/decisions/` that the owner accepted that platform's terms, and how the project keeps to them. *Why:* a tool
-  that breaks a platform's terms exposes its owner and every user to a ban, and only a record shows it was weighed.
+- **A project that uses another platform in a way it could object to** records in `docs/decisions/` that the owner
+  accepted that platform's terms, and how the project keeps to them. Such uses are scraping its site or calling
+  endpoints it does not document, acting beyond what a person does by hand (volume, rate, many accounts), acting on
+  behalf of other people, and redistributing its data or content. A client the account holder runs through the
+  platform's official means needs no record. *Why:* these uses are what a platform bans owner and users for, and only
+  a record shows it was weighed; the account holder's own use through official means is what the platform offers, so
+  a record of it adds only paperwork.
 
 ### Supply chain
 - **Block telemetry a dependency does not need;** auditing it before install is in `tooling.md`, "Dependencies".
