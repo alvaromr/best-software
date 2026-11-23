@@ -15,9 +15,9 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 - The minimum release age the Node package manager is set to wait before installing a new release is 4 days, down
   from 7 (`references/toolchains.md`).
 - Plans and work state stay out of the docs: pending steps, the next release or one-off owner decisions go to the
-  issue tracker or the owner's task list, a lasting decision to `docs/decisions/`, a repeatable procedure to
-  `docs/runbooks/`. Known limitations cover only what the project cannot do and deferred ideas. Scoring flags a plan,
-  pending step or one-off owner decision in the docs, `AGENTS.md` and `README.md` included, as a `truth` signal.
+  issue tracker or the owner's task list, a lasting decision to `docs/decisions/`, a repeatable procedure to its one
+  home, as added above. Known limitations cover only what the project cannot do and deferred ideas. Scoring flags a
+  plan, pending step or one-off owner decision in the docs, `AGENTS.md` and `README.md` included, as a `truth` signal.
 
 ## 2026-11-20
 ### Added
