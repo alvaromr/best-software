@@ -4,6 +4,13 @@ What changes for the agents that use this skill, newest first. The skill has no 
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-23
+### Added
+- Each repeatable procedure has one home, with an agent as its usual operator: a script exposed as a named task when
+  it can be scripted, otherwise a runbook in `docs/runbooks/`, and a project skill in `.agents/skills/` that triggers
+  on the task and points to the script or runbook without repeating its steps. A procedure written out in a skill or
+  doc, and a scriptable routine left as manual steps, are new signals. A plan kept out of the docs that turns out to
+  be a repeatable procedure goes to that home.
+
 ### Changed
 - The minimum release age the Node package manager is set to wait before installing a new release is 4 days, down
   from 7 (`references/toolchains.md`).

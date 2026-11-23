@@ -16,6 +16,15 @@ only in a chat or in someone's head. This serves truth and coherence, and the ch
   executable copy is the one that is always current.
 - **Keep generated reference docs in sync with the code, enforced by a test.** Fix the docs, never the code, to match.
   *Why:* drift becomes a red gate instead of a surprise.
+- **Give each repeatable procedure one home, for an agent as its usual operator:**
+  - What can be scripted is a script exposed as a named task (`tooling.md`, "The gate"), not steps to follow.
+  - What cannot, such as an approval in a web UI or a server recovered by hand, is a runbook in `docs/runbooks/`.
+  - A project skill (`repository.md`, "Layout") is the agent's entry point: its description triggers when the task
+    comes up, and its body points to the task or runbook without repeating its steps.
+
+  *Why:* a script runs the same way every time, while followed steps drift and get skipped; a runbook in the repo is
+  versioned with what it operates; and an agent finds a procedure by a skill's trigger, so a skill that only points
+  keeps the procedure in one home.
 - **Enforce docstring rules by machine.** The linter checks the convention (for example, Google style). A test checks
   the project's own rules, such as a fixed phrasing for recurring parameters or no transport details. *Why:* docstring
   rules kept only in prose drift with every new method, while a red gate catches the first deviation.
@@ -35,7 +44,8 @@ only in a chat or in someone's head. This serves truth and coherence, and the ch
 | newcomer / user | `README.md` | what it is, install, run, test, where to read next |
 | contributor / agent | `AGENTS.md` | commands, gate, architecture map, non-negotiables with their why |
 | maintainer | `docs/architecture/`, `docs/decisions/` | design reasons, rejected alternatives, measured results |
-| operator | `docs/runbooks/` | deploy, rollback, rebuild from scratch, secrets backup, recovery — runnable by hand |
+| operator | `docs/runbooks/` | deploy, rollback, rebuild, secrets backup, recovery: the steps no script can take |
+| agent running a procedure | project skill | when it applies, and a pointer to its task or runbook |
 | API consumer | docstrings, central "Errors" section | the contract in consumer terms, no transport details |
 | CLI user | `--help` | usage; others point to it |
 | release reader | `CHANGELOG.md` | user-facing changes per version |
@@ -53,8 +63,8 @@ home.
   their reason. *Why:* chat history is not a project memory.
 - **Keep plans and work state out of the docs:** pending steps, the next release, what happens before the first push,
   who decided what this week. They go to the issue tracker or the owner's task list; a lasting decision goes to
-  `docs/decisions/`, a repeatable procedure to `docs/runbooks/`. *Why:* a plan is true only until it is done, so in the
-  docs it turns into a stale statement the next agent follows as a rule.
+  `docs/decisions/`, a repeatable procedure to its one home ("Single source of truth"). *Why:* a plan is true only
+  until it is done, so in the docs it turns into a stale statement the next agent follows as a rule.
 - **Generalize:** write the rule a case reveals, folded into the existing structure, without dated anecdotes, ticket
   names or tool names in agent-agnostic docs. *Why:* a rule teaches every future case, while an anecdote teaches one.
 - **Keep docs short and telegraphic** without losing information. Leave out what a thing does not do. *Why:* long docs
@@ -84,6 +94,8 @@ home.
 ## Audit signals
 - The same instruction in two docs. `changeability`
 - Docs quoting config values. `changeability`
+- A procedure written out in a skill or doc instead of pointing to its task or runbook. `changeability`
+- A scriptable routine left as manual steps. `correctness`
 - Stale commands, ports or versions. `truth`
 - A README that lacks install, run or test. `changeability`
 - Knowledge found only in chat or on a server. `changeability`
