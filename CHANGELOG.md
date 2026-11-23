@@ -3,6 +3,11 @@
 What changes for the agents that use this skill, newest first. The skill has no version numbers: each entry is
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
+## 2026-11-23
+### Changed
+- The minimum release age the Node package manager is set to wait before installing a new release is 4 days, down
+  from 7 (`references/toolchains.md`).
+
 ## 2026-11-20
 ### Added
 - When a project builds a package, the agent checks that the private run record is not in it, because build tools
