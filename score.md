@@ -54,11 +54,13 @@ number traceable to the signals behind it.
   of types, tests and coverage in a repo with no executable code, or a link to the project's own public home before
   its first publication, which no one follows yet, is skipped. What that repo still needs, such as coherent docs, is
   judged for what it is, and what publishing must make true goes to the observations. A practice in the "Never scales
-  down" column never shrinks with size, only with the absence of its subject. A signal that only rewriting published
-  history could fix, such as a published commit that mixes changes, is skipped unless it breaks a hard constraint,
-  since hard constraint 8 forbids that fix. A section has no score only when none
-  of its practices applies, such as `ui` in a library with no interface. *Why:* an agent scores, not a script, so
-  that each practice is weighed against the project it meets.
+  down" column never shrinks with size, only with the absence of its subject. History is judged by how commits are
+  made from now on: the convention, the hooks, and the commits of the work being scored, such as an unintegrated
+  branch or an elevate pass. An earlier commit's shape or message, published or not, is not a signal unless it
+  breaks a hard constraint, such as a secret, a personal datum or a moved tag, since only rewriting it could fix it,
+  which breaks every clone and reference to it (`references/git.md`, "Branches and integration"). A section has no
+  score only when none of its practices applies, such as `ui` in a library with no interface. *Why:* an agent
+  scores, not a script, so that each practice is weighed against the project it meets.
 - **To be published.** When the profile says the project is to be published or shared (`SKILL.md`, "Profile the
   project"), every practice a public repo needs counts as if it were public already, and what publishing must make
   true goes to the "Publishable" verdict as a blocker, not to the observations. *Why:* the score must show what the

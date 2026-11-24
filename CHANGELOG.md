@@ -9,8 +9,9 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   push or a commit, and not scored. Bootstrap installs no mutation config, elevate and releases run none, a score
   neither runs nor reports it, and its audit signals, run scheduling, invalidation and timeout rules are gone; the
   toolchains name the tools only (`references/testing.md`, "Coverage").
-- A score skips a signal that only rewriting published history could fix, such as a published commit that mixes
-  changes, unless it breaks a hard constraint (`score.md`, "Rules").
+- A score judges history by how commits are made from now on: the convention, the hooks and the commits of the
+  work being scored. An earlier commit's shape or message, published or not, lowers no score unless it breaks a hard
+  constraint, such as a secret, a personal datum or a moved tag (`score.md`, "Rules").
 - The decoy test, which runs code that runs git with `GIT_DIR` pointing at a decoy repository, applies in production
   code only; verification code gets no such test (`references/testing.md`, "Isolation and speed").
 - The gate lints every language of the production code, not every language in the repo; tests and scripts are
