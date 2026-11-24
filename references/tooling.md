@@ -16,10 +16,11 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   Its exit code is the verdict, and the same command runs locally, in the hook and in CI. *Why:* one command means one
   definition of "done" that nobody can partially forget.
 - **Keep code where the gate checks it.** Code with logic (several statements, branches or loops) lives in its own
-  file, with its language's extension, and the gate lints every language the repo contains. A string is fine for a
-  one-line command, or when a check in the gate verifies that code, such as a test that runs the query or a tool that
-  validates it. *Why:* the gate checks only what its tools can parse. Code in a string escapes format, lint and
-  type-check, needs escaping, and editors show it as text, so its bugs surface only when it runs.
+  file, with its language's extension, and the gate lints every language of the production code, and verification
+  code with those same tools only (`testing.md`, "Test design"). A string is fine for a one-line command, or when a
+  check in the gate verifies that code, such as a test that runs the query or a tool that validates it. *Why:* the
+  gate checks only what its tools can parse. Code in a string escapes format, lint and type-check, needs escaping, and
+  editors show it as text, so its bugs surface only when it runs.
 - **Provide a `fix` companion** that formats, autofixes and re-runs the gate. *Why:* fixing mechanical findings by hand
   wastes attention.
 - **Version the hooks in the repo and install them automatically:**

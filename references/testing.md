@@ -115,8 +115,9 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
   fixture, a helper or a script:
   - Before its git commands, it unsets every name `git rev-parse --local-env-vars` prints (`GIT_DIR`,
     `GIT_INDEX_FILE`, `GIT_WORK_TREE` and the rest), and it works in a throwaway repository.
-  - A test proves it: it runs that code with `GIT_DIR` and `GIT_INDEX_FILE` pointing at a decoy repository, and
-    asserts the decoy's history, branches and config are unchanged.
+  - In production code, a test proves it: it runs that code with `GIT_DIR` and `GIT_INDEX_FILE` pointing at a decoy
+    repository, and asserts the decoy's history, branches and config are unchanged. Verification code gets no such
+    test ("Measure production code only").
   - The hook keeps the variables, because the gate's own git commands need the index being committed.
 
   *Why:* git exports these variables to its hooks, so a test or script the gate runs in the pre-commit hook inherits
@@ -187,7 +188,8 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 - Tests named after methods. `changeability`
 - `isNotNull`-only assertions. `correctness`
 - Network or wall-clock in unit tests. `correctness`
-- Code that runs git on a repository of its own with git's repository variables set, or no decoy test. `safety`
+- Code that runs git on a repository of its own with git's repository variables set. `safety`
+- Production code that runs git on a repository of its own with no decoy test. `safety`
 - Mocks of project classes. `changeability`
 - Tests that assert private helpers, constants or the source text of the code under test. `changeability`
 - No regression test next to a fix. `correctness`
