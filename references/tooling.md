@@ -25,12 +25,12 @@ trusted. This serves correctness and safety, at no cost to the author's attentio
   wastes attention.
 - **Version the hooks in the repo and install them automatically:**
   - The pre-commit hook is fast, runs on staged files, and is skipped when no relevant file is staged.
-  - Heavy checks (full matrix, mutation scoped as `testing.md` says, integration tests, audits) run before push or
+  - Heavy checks (full matrix, integration tests, audits) run before push or
     integration.
 
   *Why:* manual installation means some clones run no hooks, and a slow hook gets bypassed.
-- **Expose every routine action as a named, described task:** run, test, gate, fix, coverage, mutation, audit, build,
-  release, logs, smoke. *Why:* nobody should have to remember a command, and a forgotten step is a skipped step.
+- **Expose every routine action as a named, described task:** run, test, gate, fix, coverage, audit, build, release,
+  logs, smoke. *Why:* nobody should have to remember a command, and a forgotten step is a skipped step.
 
 ### Static analysis
 - **Commit the formatter config and an `.editorconfig`.** *Why:* style decided by a machine ends style debates.

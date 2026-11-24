@@ -19,8 +19,7 @@ The eval passes when the run shows all of these:
   either for the first time.
 - The conversion rule lives in a pure core module, apart from the command-line adapter that reads arguments and
   prints.
-- The gate runs format, lint, strict types and tests with a 100 % coverage threshold, and mutation is configured on
-  the core.
+- The gate runs format, lint, strict types and tests with a 100 % coverage threshold.
 - The feature is built test-first: its test lands in the same commit as its code, or before it.
 - A README with install, run and test, and an `AGENTS.md` that follows the template, with `CLAUDE.md` as a symlink.
 - A bootstrap run appended to `.best-software`.

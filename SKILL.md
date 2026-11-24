@@ -1,6 +1,6 @@
 ---
 name: best-software
-description: Procedures to bootstrap a new software project at professional quality, to audit and raise an existing one, to score one, or to publish one (architecture, tests with TDD/100 % coverage/mutation, tooling, repo, docs, git, release, security, UI). Use when asked to start a project, make it professional or publishable, review or score its quality, or apply best practices. Not for CI/CD pipeline design.
+description: Procedures to bootstrap a new software project at professional quality, to audit and raise an existing one, to score one, or to publish one (architecture, tests with TDD/100 % coverage, tooling, repo, docs, git, release, security, UI). Use when asked to start a project, make it professional or publishable, review or score its quality, or apply best practices. Not for CI/CD pipeline design.
 ---
 
 # Best software — procedures
@@ -48,14 +48,13 @@ which do not shrink with project size:
 | number of layers and modules; DI framework or plain constructors | pure core separated from I/O |
 | containers, deploy hooks, health endpoints (services only) | one source of truth; testable seams at the boundaries |
 | structured logging depth, metrics | gate: format, lint, strict types, tests, 100 % coverage |
-| web and authorization hardening (exposure-dependent) | mutation testing on the core |
 | ADRs, runbooks, SECURITY/PRIVACY docs | no secrets in repo or history; validated input; loopback binding when local |
 | i18n resources once a second language is planned | real names, typed signatures, no silent failures |
 | assistive-tech verification depth | keyboard and contrast basics |
 | comment density; docstrings in a public library | README + AGENTS.md, `.gitignore`, lockfile |
 | folder depth | docs single-sourced and coherent |
 | release channel and packaging | single version source, changelog, immutable tags |
-| | scripted release, clean-environment install test |
+| web and authorization hardening (exposure-dependent) | scripted release, clean-environment install test |
 
 ## Run record (`.best-software`)
 Every procedure, scoring included, appends one run to `.best-software` at the repository root, as its last
@@ -109,7 +108,7 @@ contributors can apply them with judgment.
 <One line: what it is and for whom.>
 
 ## Commands
-<gate, fix, test, coverage, mutation, run, build, release — one line each, pointing to the task runner>
+<gate, fix, test, coverage, run, build, release — one line each, pointing to the task runner>
 
 ## Architecture
 <core vs adapters, module map, the dependency rule and how it is enforced>

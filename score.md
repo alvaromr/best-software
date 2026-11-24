@@ -8,18 +8,12 @@ number traceable to the signals behind it.
 
 ## Rules
 - **Read-only.** Change nothing in the project except the run record. Files the commands write as usual
-  and git ignores (coverage, caches, build output, mutation results) are fine. If the dependencies are missing,
+  and git ignores (coverage, caches, build output) are fine. If the dependencies are missing,
   install them from the lockfile alone, with the project's own package manager and no updates; if that is not
   possible, the commands are unverified.
 - **The commands:** the gate (`references/tooling.md`), plus the heavy checks the project runs before push or
   integration (audits) and its documented build or package check. Never run them against live or
   production systems. *Why:* they need real credentials and act on real data (safety).
-- **Mutation is reported, not re-run in full:** record the project's last mutation result, with its commit and
-  whether it was scoped or full. Its commit is the one the run record or the tool's report names, or else the last
-  commit before the report was written. The score does not launch a full run, since the first one is the owner's
-  choice; when the project keeps its result current with scoped runs, it may run the scoped run for what changed
-  since that result. With no result, the result is `not_run`. A missing or old result is a `testing` signal
-  (`references/testing.md`, "Audit signals"; "Coverage and mutation" for when to run).
 - **Cached results** count only when the tool invalidates them on every change that could alter them. Otherwise run
   the tool fresh, deleting its git-ignored output first; if a fresh run cannot finish, the result is unverified.
 - **One commit.** If HEAD moves during the run, rerun the commands on the final HEAD, score that commit and say so.
@@ -126,7 +120,7 @@ A score run has `"procedure": "score"` and adds these fields to the common ones:
   "profile": "<kind · stack · audience · constraints>",
   "basis": "full",
   "commands": [
-    { "command": "<command>", "result": "pass", "detail": "<coverage, mutation score and scope, cached or not>" }
+    { "command": "<command>", "result": "pass", "detail": "<coverage, cached or not>" }
   ],
   "global": 6.4,
   "hard_constraints_broken": [{ "constraint": 1, "evidence": "<file:line, commit or command>" }],

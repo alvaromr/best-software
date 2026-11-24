@@ -112,7 +112,7 @@ touches. *Why:* this file says what to protect and only the references say how, 
 |---|---|
 | module structure, layering, dependencies between parts, APIs | `architecture.md` |
 | writing or reviewing code, names, types, error handling | `code.md` |
-| writing or changing tests, coverage, mutation | `testing.md` |
+| writing or changing tests, coverage | `testing.md` |
 | lint, format, type-check, hooks, adding or updating a dependency | `tooling.md` |
 | creating files or folders, `.gitignore`, root files, assets | `repository.md` |
 | README, AGENTS.md, docs, docstrings, changelog text | `docs.md` |

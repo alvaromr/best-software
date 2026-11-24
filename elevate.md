@@ -25,8 +25,7 @@ profile, the run record and the project guide template are in `SKILL.md`.
    3. Secrets and security fixes. A leaked secret is reported to the owner at once, for rotation.
    4. Repository hygiene and toolchain pin.
    5. Structure and code refactors, under tests, with no behaviour change.
-   6. Tests up to the coverage and mutation targets, with mutation scoped to what the pass touched
-      (`references/testing.md`, "Coverage and mutation").
+   6. Tests up to the coverage target (`references/testing.md`, "Coverage").
    7. Docs and the project guide (`SKILL.md`, "Project guide template").
    8. Release artifacts.
 4. **Behaviour is frozen during the pass** (hard constraint 6). When you find a real bug:

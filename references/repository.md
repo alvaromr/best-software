@@ -43,7 +43,7 @@ could be published at any moment without leaking anything. This serves safety, t
 | `docs/` | beyond small tools | decisions, operations, limitations |
 
 ### Hygiene
-- **`.gitignore` covers** build outputs, dependency folders, caches, coverage and mutation dirs, IDE state, local
+- **`.gitignore` covers** build outputs, dependency folders, caches, coverage dirs, IDE state, local
   config, local agent settings, secrets and OS junk. Use generic patterns, and never version files the program
   rewrites at runtime. *Why:* noise in `git status` hides real changes, and runtime files cause endless churn.
 - **Track every config file the build needs,** such as `tsconfig`, wrappers, lint configs and the version catalog.

@@ -5,6 +5,10 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
 ## 2026-11-24
 ### Changed
+- Mutation testing is optional: a tool a project may run to find missing tests, never a step of the gate, a hook, a
+  push or a commit, and not scored. Bootstrap installs no mutation config, elevate and releases run none, a score
+  neither runs nor reports it, and its audit signals, run scheduling, invalidation and timeout rules are gone; the
+  toolchains name the tools only (`references/testing.md`, "Coverage").
 - A score skips a signal that only rewriting published history could fix, such as a published commit that mixes
   changes, unless it breaks a hard constraint (`score.md`, "Rules").
 - The decoy test, which runs code that runs git with `GIT_DIR` pointing at a decoy repository, applies in production
@@ -36,11 +40,11 @@ dated, and the run record names the exact commit (`SKILL.md`, "Run record").
   nothing. A score, an elevate pass or a release with no previous result no longer runs the full set; the score
   reports the last result and may run the scoped run for what changed. A task that re-runs every mutant for such a
   change is an `efficiency` signal, and an old result now means code or tests changed with no scoped run covering
-  them since (`references/testing.md`, "Coverage and mutation").
+  them since (`references/testing.md`, "Coverage").
 - A mutation run keeps the tool's own default per-mutant timeout instead of 10 to 20 times one test run; on a loaded
   machine it raises the timeout's fixed part, not its multiplier. A change to the timeout re-runs only the mutants it
   can flip: a longer one, those that timed out; a shorter one, those that survived. A timeout moved by its multiplier,
-  or with no recorded reason, is an `efficiency` signal (`references/testing.md`, "Coverage and mutation").
+  or with no recorded reason, is an `efficiency` signal (`references/testing.md`, "Coverage").
 - The test runner is one the mutation tool runs in one process, as a dev dependency even when the product ships none
   (in JS, Vitest); the platform's built-in runner only when the project cannot take dev dependencies
   (`references/testing.md`, "Levels").

@@ -12,7 +12,7 @@ template are in `SKILL.md`.
    - `.gitignore`, `.editorconfig`
    - toolchain pin and lockfile
    - env template if needed
-3. **Install the gate, its hooks and the mutation config before any feature** (`references/tooling.md`, "The
+3. **Install the gate and its hooks before any feature** (`references/tooling.md`, "The
    gate"; `references/testing.md`; `references/toolchains.md`). *Why:* quality added later means fixing a backlog;
    installed first, it means never creating one.
 4. **Write a walking skeleton:** one end-to-end path through core and adapter, with its tests, and the gate green.

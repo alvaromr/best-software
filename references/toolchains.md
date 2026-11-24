@@ -30,8 +30,7 @@ Last reviewed: 2026-10-29.
 - **Tests:** JUnit 5 or kotest, MockK, Turbine for flows, `kotlinx-coroutines-test` with injected
   dispatchers, Robolectric for JVM Android tests, Compose UI tests, and Roborazzi or Paparazzi for screenshots.
 - **Coverage:** Kover with verification rules (line and branch), or JaCoCo.
-- **Mutation:** PIT (pitest) with the Kotlin plugin, or Arcmutate. On a loaded machine raise `timeoutConst`, not
-  `timeoutFactor`.
+- **Mutation:** PIT (pitest) with the Kotlin plugin, or Arcmutate.
 - **Architecture rules:** Konsist, or detekt `ForbiddenImport`.
 - **Release:** R8 full mode, consumer ProGuard rules in libraries, and a `resourcePrefix` in library modules.
 
@@ -45,20 +44,13 @@ Last reviewed: 2026-10-29.
 - **Lint and format:** Biome, or ESLint (`typescript-eslint` strict-type-checked) with Prettier.
 - **Dead code:** knip.
 - **Architecture rules:** dependency-cruiser, or `noRestrictedImports` in Biome/ESLint.
-- **Tests:** Vitest with V8 coverage thresholds at 100. It is the default, because it enables per-test mutation
-  runs. Use `node --test` with coverage flags only when the project cannot take dev dependencies; mutation then needs
-  the command runner. Use happy-dom for headless DOM and Playwright for e2e.
+- **Tests:** Vitest with V8 coverage thresholds at 100, or `node --test` with coverage flags when the project cannot
+  take dev dependencies. Use happy-dom for headless DOM and Playwright for e2e.
 - **Network block in unit tests:** a Vitest setup file, loaded only by the unit project, that makes
   `net.Socket.prototype.connect` throw. It blocks `fetch`, `http` and raw sockets with no dependency; integration
   tests run in a separate Vitest project without it. MSW (`onUnhandledFrame: 'error'` in v3) and nock
   (`disableNetConnect()`) also reject unmatched HTTP requests, but not raw sockets.
-- **Mutation:** StrykerJS. Prefer a runner plugin with per-test coverage, such as `@stryker-mutator/vitest-runner`,
-  which always uses `perTest`: each mutant runs only the tests that cover it. The command runner (the only option
-  for `node --test`) reports no coverage and re-runs its whole command per mutant. With it, point
-  `commandRunner.command` at the unit test files only, and keep `concurrency` low. Add
-  `@stryker-mutator/typescript-checker` to discard mutants that do not compile before running tests, and run with
-  `--incremental` so each run re-tests only what changed; `--force` makes it a full run. With pnpm, list the runner
-  plugin in `plugins`, or Stryker does not find it. On a loaded machine raise `timeoutMS`, not `timeoutFactor`.
+- **Mutation:** StrykerJS, with `@stryker-mutator/vitest-runner`.
 - **Audit:** `pnpm audit`.
 
 ## Python
@@ -78,17 +70,7 @@ Last reviewed: 2026-10-29.
   `socket.getaddrinfo` raise, skipped for tests with the project's integration marker. It needs no dependency;
   `pytest-socket` (`--disable-socket`, `@pytest.mark.enable_socket`) is the packaged equivalent. Drivers with native
   network code, such as libpq, bypass both, so real databases stay in integration tests.
-- **Mutation:** mutmut, or cosmic-ray. mutmut adds methods to classes, so tests that introspect classes (generated
-  docs, per-method docstring checks) fail under it. Leave those tests out of the mutation command, with the reason
-  recorded. On macOS, run mutmut ≥ 3.6 with `NO_PROXY=*`. It forks one child per mutant, and a child that calls
-  CoreFoundation crashes at random, which mutmut reports as a segfault. urllib's system proxy lookup (`_scproxy`)
-  makes that call, and `NO_PROXY=*` skips it (CPython bpo-33725; B. Warsaw, "How macOS Broke Python", 2018-11-27).
-  setproctitle made it too until mutmut 3.6.0 disabled it on macOS (`HISTORY.rst`). With pytest ≥ 9.2.0 use
-  mutmut ≥ 3.8.1: pytest 9.2.0 (2026-10-27, pytest #14758) removed `Node._nodeid`, which mutmut 3.8.0 reads, so its
-  run fails; 3.8.1 (2026-10-28) reads the public `nodeid` (mutmut #615, `HISTORY.rst`). `mutmut run` exits 0 even
-  when mutants survive (checked on 3.8.1), so the mutation task fails when `mutmut results` prints any line. Name
-  the code to mutate with `source_paths`: 3.8.1 warns that `paths_to_mutate` is deprecated. On a loaded machine raise
-  `timeout_constant`, not `timeout_multiplier`.
+- **Mutation:** mutmut, or cosmic-ray.
 - **Architecture rules:** import-linter.
 - **Security:** ruff's `S` rules, which reimplement bandit's checks inside the gate, so bandit itself is not needed.
   Use pip-audit for vulnerable dependencies.

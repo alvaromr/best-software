@@ -20,7 +20,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 - **Every bug found in the field becomes a regression case,** kept in a growing scenario suite. *Why:* a bug that
   escaped once has proven that the suite had a hole there.
 
-### Coverage and mutation
+### Coverage
 - **Gate on 100 % line and branch coverage,** plus functions in JS/TS, measured on the full suite.
   - A new branch ships with its test.
 
@@ -31,43 +31,14 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 
   *Why:* an exclusion is a claim that the code needs no proof, so it must be stated and defended.
 - **Measure production code only.** Tests, test helpers and the gate's own checks are verification code: they get no
-  coverage target, mutation run or tests of their own. A new check proves itself by failing once on a known violation.
+  coverage target or tests of their own. A new check proves itself by failing once on a known violation.
   They run on the toolchain production code pins and need no pin of their own. *Why:* testing the tests never ends, a
   check seen catching a real violation has already shown it works, and a check that cannot run fails loudly.
-- **Add mutation testing on the core,** or on everything when it is cheap, run where `tooling.md`, "The gate" puts
-  heavy checks, and kept current by scoped runs (next practice):
-  - Its command runs only the unit suite. Prefer a runner that executes only the tests covering each mutant.
-  - Bound every run, scoped or full, so the machine stays usable: at most half the cores in parallel, fewer when
-    one test run is a heavy process, at lower scheduling priority, and the mutation tool's default per-mutant
-    timeout. On a loaded machine, raise the timeout's fixed part, not its multiplier.
-  - Start small, with one module or a sample, before the full run.
-  - Triage every survivor: a real hole gets a test, an equivalent mutant gets a recorded reason.
-  - Improve the tests before touching production code.
-  - End every run with zero unexplained survivors in what it mutated.
-
-  *Why:* coverage proves the code ran, while mutation proves the tests would notice if it were wrong. Mutation runs
-  the tests once per mutant, so it multiplies their cost and side effects by hundreds. Only fast, in-process unit
-  tests stay safe at that scale. A run that takes every core, or more memory than the machine has, leaves it
-  unusable for the owner until it ends. A timeout too close to the real time counts mutants slowed by the load as
-  killed, and one far above it lets each hung mutant hold its slot for minutes. Each tool's default fits how it runs
-  the tests, and time added to the fixed part keeps the margin at a few seconds instead of growing with the tests.
-- **Run the full set once, then keep it current with scoped runs.**
-  - The first full run happens when the owner chooses, at a time the machine is free, one repository at a time, with
-    the machine kept awake.
-  - From then on, each change mutates what it touches before it is pushed, and ends at zero unexplained survivors,
-    so the result stays whole without another full run.
-  - Invalidate precisely: a change re-runs only the mutants whose result it can change. Code or tests a mutant runs
-    re-run that mutant; a shared test helper re-runs the mutants whose tests use it; a dependency re-runs only the
-    mutants whose code or tests import it. A change to the per-mutant timeout re-runs only the mutants it can flip: a
-    longer one, those that timed out; a shorter one, those that survived. Config that does not change which mutants
-    exist or how their tests run, tools the tests do not use (linters, formatters, release-age settings) and version
-    numbers re-run nothing.
-  - When it is unclear what a change reaches, re-run the affected module, not the whole set.
-  - A full run happens again only when the owner asks for one.
-
-  *Why:* a full run costs the suite's time once per mutant, from tens of minutes to hours, with half the machine
-  held all along. Kept current by scoped runs, the result stays complete at a fraction of the cost, and a full run
-  caused by a change that cannot alter any mutant's result buys no evidence.
+- **Mutation testing may help find missing tests,** run when the project wants that evidence, on the unit suite
+  only, with at most half the cores. A surviving mutant is a missing test, a weak assertion or an equivalent mutant.
+  It is never a step of the gate, a hook, a push or a commit, and its result is not scored. *Why:* coverage proves
+  the code ran, and a survivor shows where the tests would not notice it being wrong; but a run executes the suite
+  once per mutant, for minutes to hours, so as a required step it would hold up every change, however small.
 
 ### Test design
 - **Write tests as specification.**
@@ -126,8 +97,7 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 - **Test the logic in the test's own process.** Code that runs as a command, server or child process takes its process
   inputs (argv, env, stdio, exit, signals) as parameters, so tests drive it with fakes; only the end-to-end smoke test
   starts the real program. *Why:* a test that starts a process pays its start-up, flakes on ports, timing and leftover
-  processes, loses the child's coverage and cannot inspect where it fails, and a mutation runner that works in one
-  process cannot reach code that runs only in the child.
+  processes, loses the child's coverage and cannot inspect where it fails.
 - **Mock only system boundaries;** project code runs for real, and fakes beat mocks. A test needing many mocks sits at
   the wrong level. *Why:* mocking project code tests the mocks and freezes the implementation.
 - **Test a module through its interface,** not its internals: its private helpers, its constants or the text of its
@@ -157,10 +127,6 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 - **Automate UI behaviour checks:** a headless DOM when no browser is needed, config-change and process-death survival,
   accessibility, the release build. *Why:* manual checks are skipped under pressure.
 - **Run the gate on every supported runtime version.** *Why:* behaviour differs between versions.
-- **Use a test runner the mutation tool runs in one process,** as a dev dependency even when the product ships none.
-  The platform's built-in runner is only for a project that cannot take dev dependencies. *Why:* a runner the tool
-  must start once per mutant multiplies the full run: two projects that moved off one went from 138 to 5 minutes and
-  from 60 to 18.
 
 ### After green
 - **Verify in the real runtime before declaring done:**
@@ -178,10 +144,6 @@ turns it red. Feedback arrives in seconds. This serves correctness, truth and ch
 
 ## Audit signals
 - No coverage threshold, or one below 100 with no reason. `correctness`
-- A mutation task, hook or script that runs the full set by default. `efficiency`
-- A mutation task that re-runs every mutant for config, versions or tools the tests do not use. `efficiency`
-- No mutation result yet, or an old one: code or tests changed with no scoped run covering them since. `correctness`
-- A per-mutant timeout raised by its multiplier, not its fixed part, or moved with no recorded reason. `efficiency`
 - Tests that start the program as a child process to test its logic. `changeability`
 - More integration or e2e tests than unit tests, or tests that re-test rules at high level. `changeability`
 - A unit suite that takes minutes; sleeps or real timers in tests. `changeability`
