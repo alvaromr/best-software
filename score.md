@@ -60,7 +60,9 @@ number traceable to the signals behind it.
   of types, tests and coverage in a repo with no executable code, or a link to the project's own public home before
   its first publication, which no one follows yet, is skipped. What that repo still needs, such as coherent docs, is
   judged for what it is, and what publishing must make true goes to the observations. A practice in the "Never scales
-  down" column never shrinks with size, only with the absence of its subject. A section has no score only when none
+  down" column never shrinks with size, only with the absence of its subject. A signal that only rewriting published
+  history could fix, such as a published commit that mixes changes, is skipped unless it breaks a hard constraint,
+  since hard constraint 8 forbids that fix. A section has no score only when none
   of its practices applies, such as `ui` in a library with no interface. *Why:* an agent scores, not a script, so
   that each practice is weighed against the project it meets.
 - **To be published.** When the profile says the project is to be published or shared (`SKILL.md`, "Profile the

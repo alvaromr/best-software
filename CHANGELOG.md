@@ -3,6 +3,11 @@
 What changes for the agents that use this skill, newest first. The skill has no version numbers: each entry is
 dated, and the run record names the exact commit (`SKILL.md`, "Run record").
 
+## 2026-11-24
+### Changed
+- A score skips a signal that only rewriting published history could fix, such as a published commit that mixes
+  changes, unless it breaks a hard constraint (`score.md`, "Rules").
+
 ## 2026-11-23
 ### Added
 - Code that runs git on a repository of its own (a test, fixture, helper or script) unsets the variables
